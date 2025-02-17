@@ -259,7 +259,7 @@ def postprocess_excel(filename):
             address_cell = get_column_letter(res_address_idx) + str(row)
             street_formula = f'=RIGHT({address_cell},LEN({address_cell})-FIND(" ",{address_cell}))'
             ws.cell(row=row, column=res_address_idx + 1, value=street_formula)
-
+            
     wb.save(filename)
     print(f"Post-processing complete. Final file saved as {filename}")
 
@@ -285,7 +285,7 @@ unique_wards = sorted_df["WARD"].unique()
 
 for ward in unique_wards:
     ward_df = sorted_df[sorted_df["WARD"] == ward]
-    ward_filename = f"City of {ward}-{today_str}.xlsx"
+    ward_filename = f"City_of_{ward}-{today_str}.xlsx"
     try:
         ward_df.to_excel(ward_filename, index=False, engine='openpyxl')
         print(f"Data for ward '{ward}' written to {ward_filename}")
