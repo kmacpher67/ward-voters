@@ -3,6 +3,11 @@ Ohio Sos secretary of state county voter database filter for warren city, score 
 
 wrote several programs in stages to figure out the python code.
 
+Found a problem with the formulas, they are hard coded the column calculations $BA### sorting breaks badly. 
+
+
+
+
 ## main code to run 
 this program runs selenium and downloads the .txt file and converts them to xlsx file filtering just the city of warren
 then calculates the scores of tot, D, R, muni voters. 
@@ -49,4 +54,43 @@ I'm re-reading the instructions to clarify that the "Latest" column will sum vot
 Mapping out voting columns
 
 To calculate votes for the "Latest" column, I'll count non-blank cells in the contiguous range from new_primary_idx to last_vote_col_idx for columns with dates above the threshold.
+
+
+
+Muni columns: 
+
+2023 May, 2021, 2019 may 
+
+DW = PRIMARY-05/02/2023
+DO = PRIMARY-05/04/2021
+DJ = PRIMARY-05/07/2019
+DD = PRIMARY-05/02/2017
+CW = PRIMARY-05/05/2015
+CL = PRIMARY-05/03/2011
+CC = PRIMARY-05/05/2009
+
+=IF(CC2="D",1,0)+IF(CL2="D",1,0)+IF(CW2="D",1,0)+IF(DD2="D",1,0)+IF(DJ2="D",1,0)+IF(DO2="D",1,0)+IF(DW2="D",1,0)+IF(CC2="D",1,0)+IF(CD2="D",1,0)+IF(CJ2="D",1,0)+IF(CK2="D",1,0)+IF(CO2="D",1,0)+IF(CP2="D",1,0)+IF(CQ2="D",1,0)+IF(CU2="D",1,0)+IF(CV2="D",1,0)+IF(DB2="D",1,0)+IF(DC2="D",1,0)+IF(DH2="D",1,0)+IF(CW2="D",1,0)+IF(DM2="D",1,0)+IF(DD2="D",1,0)+IF(DO2="D",1,0)+IF(DJ2="D",1,0)+IF(DW2="D",1,0)
+
+
+LATEST: 
+=COUNTIF($EA2:$DJ2, "<>")
+=IF(DH2<>"",1,0)+IF(DI2<>"",1,0)+IF(DK2<>"",1,0)+IF(DM2<>"",1,0)+IF(DN2<>"",1,0)+IF(DO2<>"",1,0)+IF(DQ2<>"",1,0)+IF(DR2<>"",1,0)+IF(DT2<>"",1,0)+IF(DU2<>"",1,0)+IF(DV2<>"",1,0)+IF(DW2<>"",1,0)+IF(DX2<>"",1,0)+IF(DZ2<>"",1,0)+IF(EA2<>"",1,0)+IF(EB2<>"",1,0)+IF(EE2<>"",1,0)
+
+DISPLAY
+
+=CONCATENATE(D3," ",LEFT(I3,4),"T=",AW3,"D=",AX3,"R=",AY3,"M=",AZ3,"L=",BA3,"B=",BB3)
+WISWELL 1951T=48D=17R=0M=7L=12B=0
+
+StreetName
+BRADFORD ST NW
+
+
+Add a program for parsing filtering the wards for google maps 
+I manually created the "CityOfWarren2025-02-06-target-googlemaps.csv" deleting all the unneed rows.
+Use the file "CityOfWarren2025-02-06-target-googlemaps.csv" and write a python program to read this csv and  save individual CSV files by ward with a maximum size of 2000 rows per ward file, each file would be named with CityOfWarren2025-02-06-target-googlemaps-WARD1-Rows1-2000.csv where WARD1= WARD column and -Rows1-2000 would be required for Rows2001-4000 etc. Call the python program  wardfilterforgooglemaps.py 
+
+Below is an example Python script named wardfilterforgooglemaps.py that reads the CSV file, groups the data by the "WARD" column, and then splits each ward’s data into multiple files (with up to 2000 rows per file). Each file is named following the pattern:
+
+Format:
+CityOfWarren2025-02-06-target-googlemaps-{WARD}-Rows{start}-{end}.csv
 
