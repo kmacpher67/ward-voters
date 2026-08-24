@@ -165,11 +165,13 @@ def filter_county_file(raw_path: Path, county: str, ward: str, city: str, output
     if sort_columns:
         filtered = filtered.sort_values(by=sort_columns, kind="stable")
 
-    output_dir.mkdir(parents=True, exist_ok=True)
-    today_str = datetime.today().strftime("%Y-%m-%d")
+    today = datetime.today()
+    year_dir = output_dir / f"{today:%Y}"
+    year_dir.mkdir(parents=True, exist_ok=True)
+    today_str = today.strftime("%Y-%m-%d")
     city_slug = (city or "ALL_CITIES").replace(" ", "_").upper()
-    csv_path = output_dir / f"{county.upper()}_{city_slug}_WARD{ward}_{today_str}.csv"
-    xlsx_path = output_dir / f"{county.upper()}_{city_slug}_WARD{ward}_{today_str}.xlsx"
+    csv_path = year_dir / f"{county.upper()}_{city_slug}_WARD{ward}_{today_str}.csv"
+    xlsx_path = year_dir / f"{county.upper()}_{city_slug}_WARD{ward}_{today_str}.xlsx"
 
     filtered.to_csv(csv_path, index=False)
     filtered.to_excel(xlsx_path, index=False, engine="openpyxl")

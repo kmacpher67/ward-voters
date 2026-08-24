@@ -33,6 +33,8 @@ If the SOS site blocks automated access, you can filter a local raw file instead
 bash download_trumbull_ward.sh --input 'downloads/TRUMBULL (1).txt' --ward 4
 ```
 
+Outputs are written under `outputs/<year>/` so each run stays grouped by year.
+
 Notes from kens google drive on how to integate google maps: 
 https://docs.google.com/document/d/1Miosc88rydmc6TaZL_I1nJBV-QTW3dCpGULZ1GwGor4/edit?tab=t.0
 
