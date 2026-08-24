@@ -97,6 +97,7 @@ def postprocess_excel(filename):
       3. REPS:   =COUNTIF(vote_range,"R")
       4. Muni:   =SUM(IF(...)) for odd-year vote columns (if cell="D", count 1)
       5. Latest: =SUM(IF(...)) for vote columns in the last 6 years (if cell<>"", count 1)
+      6. Last:   =countif (last column is NOT blank <>)
       6. Both:   =IF(AND(Dems_cell>0, REPS_cell>0),1,0)
     Then, insert a column after FIRST_NAME named DISPLAY that concatenates:
          LAST_NAME + " " + LEFT(DATE_OF_BIRTH,4) + "T=" + Total + "D=" + Dems + "R=" + REPS + "M=" + Muni + "L=" + Latest + "B=" + Both
@@ -104,7 +105,7 @@ def postprocess_excel(filename):
     """
     wb = load_workbook(filename)
     ws = wb.active
-
+    print(f"ws.column name: {get_column_letter(ws.max_column)} (max column index: {ws.max_column})")    
     # -------------------------------
     # (A) Insert 6 columns after WARD
     # -------------------------------
@@ -125,6 +126,42 @@ def postprocess_excel(filename):
     if primary_col_idx is None:
         print("Could not find 'PRIMARY-03/07/2000' column in the header of", filename)
         return
+    # -------------------------------
+    # (B) Insert a "DISPLAY" column after FIRST_NAME
+    # -------------------------------
+    first_name_idx = None
+    last_name_idx = None
+    dob_idx = None
+    # Also locate RESIDENTIAL_ADDRESS1 for later use.
+    res_address_idx = 14
+    for col in range(1, ws.max_column + 1):
+        cell_val = ws.cell(row=1, column=col).value
+        if cell_val:
+            header = str(cell_val).strip().upper()
+            if header == "FIRST_NAME":
+                first_name_idx = col
+            elif header == "LAST_NAME":
+                last_name_idx = col
+            elif header == "DATE_OF_BIRTH":
+                dob_idx = col
+            elif header == "RESIDENTIAL_ADDRESS1":
+                res_address_idx = col
+
+    print(f"res_address_idx = {res_address_idx}, first_name_idx = {first_name_idx}, last_name_idx = {last_name_idx}, dob_idx = {dob_idx}")
+    if first_name_idx is not None:
+        ws.insert_cols(first_name_idx + 1)
+        ws.cell(row=1, column=first_name_idx + 1, value="DISPLAY")
+    res_address_idx=res_address_idx+1
+
+    # -------------------------------
+    # (C) Insert a "StreetName" column after RESIDENTIAL_ADDRESS1
+    # -------------------------------
+    if res_address_idx is not None:
+        ws.insert_cols(res_address_idx + 1)
+        ws.cell(row=1, column=res_address_idx + 1, value="StreetName")
+            
+    wb.save(filename)
+
 
     # Insert 6 new columns immediately to the right of WARD.
     insert_position = ward_col_idx + 1
@@ -132,8 +169,15 @@ def postprocess_excel(filename):
     # Adjust primary vote column index:
     new_primary_idx = primary_col_idx + 6
 
+    # Write the new header labels for the 6 inserted columns.
+    new_headers = ["Total:", "Dems", "REPS", "Muni", "Latest", "Last"]
+    for i, header in enumerate(new_headers):
+        ws.cell(row=1, column=insert_position + i, value=header)
+    print(f"Inserted 6 new columns after WARD at position {insert_position}.")
+
     # Identify the last vote column (assumed to be the last column in the worksheet).
     last_vote_col_idx = ws.max_column
+    print ("Last vote column index:", last_vote_col_idx)
 
     # Determine odd-year vote columns (for "Muni")
     odd_year_cols = []
@@ -164,11 +208,8 @@ def postprocess_excel(filename):
                 pass
     latest_letters = [get_column_letter(c) for c in latest_cols]
 
-    # Write the new header labels for the 6 inserted columns.
-    new_headers = ["Total:", "Dems", "REPS", "Muni", "Latest", "Both"]
-    for i, header in enumerate(new_headers):
-        ws.cell(row=1, column=insert_position + i, value=header)
-
+    last_voter_col = get_column_letter(ws.max_column)
+    print(f"Last voter column: {last_voter_col} (index {last_vote_col_idx})")
     # For each data row, add formulas in the 6 inserted columns.
     first_vote_letter = get_column_letter(new_primary_idx)
     last_vote_letter = get_column_letter(last_vote_col_idx)
@@ -200,67 +241,43 @@ def postprocess_excel(filename):
         latest_formula = "=" + "+".join(latest_parts) if latest_parts else "=0"
         ws.cell(row=row, column=insert_position + 4, value=latest_formula)
 
-        # Both: if Dems > 0 AND REPS > 0 then 1, else 0.
-        dem_cell = get_column_letter(insert_position + 1) + str(row)
-        rep_cell = get_column_letter(insert_position + 2) + str(row)
-        both_formula = f"=IF(AND({dem_cell}>0, {rep_cell}>0),1,0)"
-        ws.cell(row=row, column=insert_position + 5, value=both_formula)
+        # print ('ws.max_column get_column_letter:', get_column_letter(ws.max_column))
+        # Last: count the last election column
+        last_formula = f'=IF({last_voter_col}{row}<>"",1,0)'
+        ws.cell(row=row, column=insert_position + 5, value=last_formula)
 
-    # -------------------------------
-    # (B) Insert a "DISPLAY" column after FIRST_NAME
-    # -------------------------------
-    first_name_idx = None
-    last_name_idx = None
-    dob_idx = None
-    # Also locate RESIDENTIAL_ADDRESS1 for later use.
-    res_address_idx = None
-    for col in range(1, ws.max_column + 1):
-        cell_val = ws.cell(row=1, column=col).value
-        if cell_val:
-            header = str(cell_val).strip().upper()
-            if header == "FIRST_NAME":
-                first_name_idx = col
-            elif header == "LAST_NAME":
-                last_name_idx = col
-            elif header == "DATE_OF_BIRTH":
-                dob_idx = col
-            elif header == "RESIDENTIAL_ADDRESS1":
-                res_address_idx = col
+        # # Both: if Dems > 0 AND REPS > 0 then 1, else 0.
+        # dem_cell = get_column_letter(insert_position + 1) + str(row)
+        # rep_cell = get_column_letter(insert_position + 2) + str(row)last_vote_letter
+        # both_formula = f"=IF(AND({dem_cell}>0, {rep_cell}>0),1,0)"
+        # ws.cell(row=row, column=insert_position + 5, value=both_formula)
 
-    if first_name_idx is not None:
-        ws.insert_cols(first_name_idx + 1)
-        ws.cell(row=1, column=first_name_idx + 1, value="DISPLAY")
-        for row in range(2, ws.max_row + 1):
-            # Build cell references for LAST_NAME and DATE_OF_BIRTH.
-            last_name_cell = get_column_letter(last_name_idx) + str(row) if last_name_idx else ""
-            dob_cell = get_column_letter(dob_idx) + str(row) if dob_idx else ""
-            # The inserted vote columns (Total, Dems, REPS, Muni, Latest, Both) are located after WARD.
-            # Their positions relative to WARD: Total at (ward_col_idx+1), Dems at (ward_col_idx+2),
-            # REPS at (ward_col_idx+3), Muni at (ward_col_idx+4), Latest at (ward_col_idx+5), Both at (ward_col_idx+6).
-            total_cell = get_column_letter(ward_col_idx + 1) + str(row)
-            dems_cell = get_column_letter(ward_col_idx + 2) + str(row)
-            reps_cell = get_column_letter(ward_col_idx + 3) + str(row)
-            muni_cell = get_column_letter(ward_col_idx + 4) + str(row)
-            latest_cell = get_column_letter(ward_col_idx + 5) + str(row)
-            both_cell = get_column_letter(ward_col_idx + 6) + str(row)
-            display_formula = (
-                f'=CONCATENATE({last_name_cell}," ",LEFT({dob_cell},4),"T=",'
-                f'{total_cell},"D=",{dems_cell},"R=",{reps_cell},"M=",{muni_cell},"L=",{latest_cell},"B=",{both_cell})'
-            )
-            ws.cell(row=row, column=first_name_idx + 1, value=display_formula)
+        # Build cell references for LAST_NAME and DATE_OF_BIRTH.
+        last_name_cell = get_column_letter(last_name_idx) + str(row) if last_name_idx else ""
+        dob_cell = get_column_letter(dob_idx) + str(row) if dob_idx else ""
+        # The inserted vote columns (Total, Dems, REPS, Muni, Latest, Both) are located after WARD.
+        # Their positions relative to WARD: Total at (ward_col_idx+1), Dems at (ward_col_idx+2),
+        # REPS at (ward_col_idx+3), Muni at (ward_col_idx+4), Latest at (ward_col_idx+5), Both at (ward_col_idx+6).
+        total_cell = get_column_letter(ward_col_idx + 1) + str(row)
+        dems_cell = get_column_letter(ward_col_idx + 2) + str(row)
+        reps_cell = get_column_letter(ward_col_idx + 3) + str(row)
+        muni_cell = get_column_letter(ward_col_idx + 4) + str(row)
+        latest_cell = get_column_letter(ward_col_idx + 5) + str(row)
+        both_cell = get_column_letter(ward_col_idx + 6) + str(row)
+        display_formula = (
+            f'=CONCATENATE({last_name_cell}," ",LEFT({dob_cell},4),"T=",'
+            f'{total_cell},"D=",{dems_cell},"R=",{reps_cell},"M=",{muni_cell},"L=",{latest_cell},"B=",{both_cell})'
+        )
+        ws.cell(row=row, column=first_name_idx + 1, value=display_formula)
 
-    # -------------------------------
-    # (C) Insert a "StreetName" column after RESIDENTIAL_ADDRESS1
-    # -------------------------------
-    if res_address_idx is not None:
-        ws.insert_cols(res_address_idx + 1)
-        ws.cell(row=1, column=res_address_idx + 1, value="StreetName")
-        for row in range(2, ws.max_row + 1):
-            address_cell = get_column_letter(res_address_idx) + str(row)
-            street_formula = f'=RIGHT({address_cell},LEN({address_cell})-FIND(" ",{address_cell}))'
-            ws.cell(row=row, column=res_address_idx + 1, value=street_formula)
-            
+        address_cell = get_column_letter(res_address_idx) + str(row)
+        street_formula = f'=RIGHT({address_cell},LEN({address_cell})-FIND(" ",{address_cell}))'
+        ws.cell(row=row, column=res_address_idx + 1, value=street_formula)
+
+
+    # Save the modified workbook
     wb.save(filename)
+
     print(f"Post-processing complete. Final file saved as {filename}")
 
 #############################################

@@ -30,6 +30,7 @@ driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), opti
 
 # URL for the TRUMBULL download (county #78)
 url = "https://www6.ohiosos.gov/ords/f?p=VOTERFTP:DOWNLOAD::FILE:NO:2:P2_PRODUCT_NUMBER:78"
+url = "https://www6.ohiosos.gov/ords/f?p=VOTERFTP:DOWNLOAD::FILE:NO:2:P2_PRODUCT_NUMBER:43"
 
 # Navigate to the URL to trigger the file download.
 driver.get(url)

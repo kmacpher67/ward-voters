@@ -29,10 +29,7 @@ chrome_options.add_experimental_option("prefs", prefs)
 # 2. Use Selenium to Download the File
 # ----------------------------------
 # Initialize the Selenium WebDriver with Chrome
-driver = webdriver.Chrome(
-    service=Service(ChromeDriverManager().install()),
-    options=chrome_options
-)
+driver = webdriver.Chrome(ChromeDriverManager(version="114.0.5735.90").install())
 
 # URL for TRUMBULL county file (county #78) that returns a 403 via requests
 download_url = "https://www6.ohiosos.gov/ords/f?p=VOTERFTP:DOWNLOAD::FILE:NO:2:P2_PRODUCT_NUMBER:78"
