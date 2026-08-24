@@ -15,6 +15,24 @@ then calculates the scores of tot, D, R, muni voters.
 python voters_warren-scored.py 
 ```
 
+## Trumbull ward download
+Use this helper when you want the latest Trumbull County SOS voter file and a Warren ward filter in one step.
+
+Default: Warren City Ward 4
+```
+bash download_trumbull_ward.sh
+```
+
+Other ward example:
+```
+bash download_trumbull_ward.sh --ward 3
+```
+
+If the SOS site blocks automated access, you can filter a local raw file instead:
+```
+bash download_trumbull_ward.sh --input 'downloads/TRUMBULL (1).txt' --ward 4
+```
+
 Notes from kens google drive on how to integate google maps: 
 https://docs.google.com/document/d/1Miosc88rydmc6TaZL_I1nJBV-QTW3dCpGULZ1GwGor4/edit?tab=t.0
 
@@ -69,8 +87,17 @@ CW = PRIMARY-05/05/2015
 CL = PRIMARY-05/03/2011
 CC = PRIMARY-05/05/2009
 
+=countif(dw2,"D")+countif(DO2,"D")++countif(DJ2,"D")+countif(DD2,"D")++countif(CW2,"D")
+
+
 =IF(CC2="D",1,0)+IF(CL2="D",1,0)+IF(CW2="D",1,0)+IF(DD2="D",1,0)+IF(DJ2="D",1,0)+IF(DO2="D",1,0)+IF(DW2="D",1,0)+IF(CC2="D",1,0)+IF(CD2="D",1,0)+IF(CJ2="D",1,0)+IF(CK2="D",1,0)+IF(CO2="D",1,0)+IF(CP2="D",1,0)+IF(CQ2="D",1,0)+IF(CU2="D",1,0)+IF(CV2="D",1,0)+IF(DB2="D",1,0)+IF(DC2="D",1,0)+IF(DH2="D",1,0)+IF(CW2="D",1,0)+IF(DM2="D",1,0)+IF(DD2="D",1,0)+IF(DO2="D",1,0)+IF(DJ2="D",1,0)+IF(DW2="D",1,0)
 
+
+MAILER 
+Valid (3449)
+
+
+=IF(DN2="D",1,0)+IF(DF2="D",1,0)+IF(DA2="D",1,0)+IF(CU2="D",1,0)
 
 LATEST: 
 =COUNTIF($EA2:$DJ2, "<>")
@@ -93,4 +120,3 @@ Below is an example Python script named wardfilterforgooglemaps.py that reads th
 
 Format:
 CityOfWarren2025-02-06-target-googlemaps-{WARD}-Rows{start}-{end}.csv
-
