@@ -15,10 +15,9 @@ Pipeline (see docs/warren-voters-pipeline.md for full write-up):
      years). Sort by TOTAL_VOTES desc.
   4. Filter to VOTES_LAST_4YR >= 1 -> warren-all-4yr-vote1
   5. Dedupe warren-all-4yr-vote1 to one row per household, keyed on
-     RESIDENTIAL_ADDRESS1 + RESIDENTIAL_SECONDARY_ADDR, keep the
-     highest-TOTAL_VOTES voter per address, and emit it in the Vista mailing
-     list template format (Recipient/Company/Address/City/State/Zip code)
-     with Recipient = "<Last_Name> Household" -> warren-all-4yr-vote1-deduped
+     RESIDENTIAL_ADDRESS1 + RESIDENTIAL_SECONDARY_ADDR, rank by recent local
+     votes then lifetime votes, and emit a Vista mailing-list CSV with the
+     recent-vote score retained as the final column for trimming decisions.
 
 Usage:
   python3 warren_voters_pipeline.py
@@ -56,8 +55,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--max-addresses",
         type=int,
-        default=2000,
-        help="Maximum number of deduped mailing addresses; 0 means unlimited (default: 2000)",
+        default=3000,
+        help="Maximum number of deduped mailing addresses; 0 means unlimited (default: 3000)",
     )
     parser.add_argument(
         "--min-recent-votes",
@@ -180,14 +179,14 @@ def score_existing_xlsx(input_path: Path, output_path: Path, recent_years: int, 
     print(f"Scoring columns: Total:, Dems, REPS, Latest ({len(latest_cols)} recent election columns)")
 
 
-def build_deduped_mailing_list(df: pd.DataFrame) -> pd.DataFrame:
+def build_deduped_mailing_list(df: pd.DataFrame, recent_col: str) -> pd.DataFrame:
     work = df.copy()
     work["_ADDR_KEY"] = (
         work["RESIDENTIAL_ADDRESS1"].str.strip().str.upper()
         + "|"
         + work["RESIDENTIAL_SECONDARY_ADDR"].str.strip().str.upper()
     )
-    work = work.sort_values("TOTAL_VOTES", ascending=False, kind="stable").copy()
+    work = work.sort_values([recent_col, "TOTAL_VOTES"], ascending=[False, False], kind="stable").copy()
     reps = work.groupby("_ADDR_KEY", as_index=False, sort=False).first()
 
     address = reps["RESIDENTIAL_ADDRESS1"].str.strip()
@@ -201,6 +200,9 @@ def build_deduped_mailing_list(df: pd.DataFrame) -> pd.DataFrame:
         "City": reps["RESIDENTIAL_CITY"].str.strip().str.title(),
         "State": reps["RESIDENTIAL_STATE"].str.strip(),
         "Zip code": reps["RESIDENTIAL_ZIP"].str.strip(),
+        # Keep the ranking signal as the final column so Vista rows can be
+        # trimmed or reviewed without reopening the scored voter workbook.
+        recent_col: reps[recent_col].astype(int),
     })
     return mailing.sort_values("Recipient", kind="stable")
 
@@ -334,9 +336,11 @@ def filter_no_delivery(df: pd.DataFrame, exception_keys: set[str]) -> tuple[pd.D
         ),
         axis=1,
     )
-    # Match exact 5-digit ZIP first, then allow an exception with a blank ZIP to cover ZIP changes.
-    broad_keys = {key for key in exception_keys if key.endswith("||")}
-    match = keys.isin(exception_keys) | keys.map(lambda key: "|".join(key.split("|")[:3] + [""]) in broad_keys)
+    # Exceptions are residential-address exclusions.  Match city/state too,
+    # but ignore ZIP differences because voter-file ZIPs can be stale or use
+    # a different ZIP for the same street address.
+    exception_base_keys = {"|".join(key.split("|")[:3]) for key in exception_keys}
+    match = keys.isin(exception_keys) | keys.map(lambda key: "|".join(key.split("|")[:3]) in exception_base_keys)
     return df.loc[~match].copy(), df.loc[match].copy()
 
 
@@ -414,7 +418,7 @@ def main() -> int:
     print(f"Voters with >={args.min_recent_votes} vote(s) in last {args.years} years{pres_note}: {len(recent_voters)}")
     print(f"Voters removed by no-delivery address exceptions: {len(removed_voters)}")
 
-    deduped = build_deduped_mailing_list(recent_voters)
+    deduped = build_deduped_mailing_list(recent_voters, recent_col)
     before_limit = len(deduped)
     deduped = limit_mailing_list(deduped, recent_voters, args.max_addresses)
     print(f"Deduped households before cap: {before_limit}")
@@ -427,11 +431,11 @@ def main() -> int:
 
     all_path = year_dir / f"warren-all_{today_str}.xlsx"
     vote1_path = year_dir / f"warren-all-4yr-vote1_{today_str}.xlsx"
-    deduped_path = year_dir / f"warren-all-4yr-vote1-deduped_{today_str}.xlsx"
+    vista_path = year_dir / f"warren-vista-print_{today_str}.csv"
 
     warren.to_excel(all_path, index=False, engine="openpyxl")
     recent_voters.to_excel(vote1_path, index=False, engine="openpyxl")
-    deduped.to_excel(deduped_path, index=False, engine="openpyxl")
+    deduped.to_csv(vista_path, index=False, quoting=csv.QUOTE_MINIMAL)
     removed_path = year_dir / f"warren-no-delivery-matches_{today_str}.xlsx"
     removed_voters.to_excel(removed_path, index=False, engine="openpyxl")
     if not exception_rows.empty:
@@ -441,7 +445,7 @@ def main() -> int:
 
     print(f"Wrote: {all_path}")
     print(f"Wrote: {vote1_path}")
-    print(f"Wrote: {deduped_path}")
+    print(f"Wrote: {vista_path}")
     print(f"Wrote: {removed_path}")
     return 0
 

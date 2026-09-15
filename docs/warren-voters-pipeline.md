@@ -2,8 +2,8 @@
 
 Script: [`warren_voters_pipeline.py`](../warren_voters_pipeline.py)
 
-Turns a raw Trumbull County SOS voter export into three Warren-City-only outputs:
-scored full list, recent-voter subset, and a deduped household mailing list.
+Turns a raw Trumbull County SOS voter export into Warren-City-only scored lists
+and a Vista Print mailing-list CSV.
 
 ## Input
 
@@ -44,7 +44,7 @@ machine where SOS access works.
 4. **Apply no-delivery exceptions**: remove every voter whose residential
    address matches an active row in [`config/warren_no_delivery_addresses.csv`](../config/warren_no_delivery_addresses.csv).
    Matching normalizes case, punctuation, common street types, and directions;
-   a blank ZIP in an exception matches any ZIP at that address. This is
+   ZIP differences do not prevent an address-level match. This is
    address-level, so every registered voter at an excluded official's address
    is removed. Audit files are written for removed voters and active exceptions.
 5. **Dedupe to one row per household**: group the recent-voter list by
@@ -55,8 +55,10 @@ machine where SOS access works.
    household representative, and emit it in the Vista mailing-list template
    format (`Vista_ListTemplate.xlsx`): `Recipient, Company, Address, City,
    State, Zip code`, with `Recipient = "<Last_Name> Household"`.
-   - `→ outputs/<year>/warren-all-4yr-vote1-deduped_<date>.xlsx`
-   - By default, keep only the top 2,000 ranked addresses. Use
+   - `→ outputs/<year>/warren-vista-print_<date>.csv`
+   - The CSV uses the Vista columns `Recipient, Company, Address, City, State,
+     Zip code`, followed by `VOTES_LAST_4YR` as the final review column.
+   - By default, keep only the top 3,000 ranked addresses. Use
      `--max-addresses 0` for no cap.
 
 ## Usage
@@ -65,7 +67,8 @@ machine where SOS access works.
 python3 warren_voters_pipeline.py
 python3 warren_voters_pipeline.py --input "downloads/TRUMBULL (1).txt"
 python3 warren_voters_pipeline.py --years 4 --output-dir outputs
-python3 warren_voters_pipeline.py --min-recent-votes 2 --max-addresses 2000
+python3 warren_voters_pipeline.py --min-recent-votes 2 --max-addresses 3000
+python3 warren_voters_pipeline.py --max-addresses 2500
 python3 warren_voters_pipeline.py --exceptions-csv config/warren_no_delivery_addresses.csv
 python3 warren_voters_pipeline.py --input downloads/TRUMBULL.txt --verify-exceptions
 python3 warren_voters_pipeline.py --input downloads/TRUMBULL.txt --verify-exceptions --clean-exceptions
@@ -90,11 +93,30 @@ Recommended copy/paste upgrade instruction:
 > punctuation, standardize street types and directions), then remove every
 > voter whose normalized address/city/state/ZIP matches an active exception.
 > Perform this before household deduplication and before applying the
-> 2,000-address cap. Sort remaining households by `VOTES_LAST_4YR` descending,
+> 3,000-address cap. Sort remaining households by `VOTES_LAST_4YR` descending,
 > then `TOTAL_VOTES` descending, dedupe by residential street address plus unit,
-> and retain only the first 2,000 addresses. Export an audit file of removed
+> and retain only the first 3,000 addresses. Export an audit file of removed
 > voter IDs and the exception row that caused each removal. Do not use mailing
 > address as a fallback for the official-home exclusion.
+
+### Adjusting the number of addresses
+
+The default run produces 3,000 deduped households. To see the cutoff and
+further trim the list, change `--max-addresses`; the final
+`VOTES_LAST_4YR` column in the CSV shows the recent local-vote score for each
+retained household. For example:
+
+```bash
+python3 warren_voters_pipeline.py --max-addresses 2500
+python3 warren_voters_pipeline.py --max-addresses 2000 --min-recent-votes 2
+```
+
+The no-delivery exceptions are applied before deduplication and before the cap.
+Every active address in
+[`config/warren_no_delivery_addresses.csv`](../config/warren_no_delivery_addresses.csv)
+is removed from the voter rows, including all voters sharing that residential
+address. The removed rows are written to
+`warren-no-delivery-matches_<date>.xlsx` for review.
 
 To score an existing all-city workbook, use the same script's XLSX mode:
 

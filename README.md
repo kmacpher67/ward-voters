@@ -46,6 +46,19 @@ produces a household-deduped mailing list in the Vista template format.
 python3 warren_voters_pipeline.py
 ```
 
+The Vista output is a CSV at `outputs/<year>/warren-vista-print_<date>.csv`
+(not an `.xls`/`.xlsx` file). It contains up to 3,000 households, deduped on
+`RESIDENTIAL_ADDRESS1` plus `RESIDENTIAL_SECONDARY_ADDR`, with active addresses
+from `config/warren_no_delivery_addresses.csv` removed before the cap. The
+final `VOTES_LAST_4YR` column shows the local-vote score used to rank the list.
+Use `--max-addresses N` to finesse the count, or `--max-addresses 0` for all
+matching households:
+
+```
+python3 warren_voters_pipeline.py --max-addresses 2500
+python3 warren_voters_pipeline.py --max-addresses 2000 --min-recent-votes 2
+```
+
 To add the legacy party/activity score columns to an existing all-city workbook
 without changing the input file:
 
