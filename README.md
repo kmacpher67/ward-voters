@@ -35,6 +35,30 @@ bash download_trumbull_ward.sh --input 'downloads/TRUMBULL (1).txt' --ward 4
 
 Outputs are written under `outputs/<year>/` so each run stays grouped by year.
 
+## Warren City scored + deduped mailing list
+
+See [docs/warren-voters-pipeline.md](docs/warren-voters-pipeline.md) for full
+details. Filters the raw Trumbull SOS file to Warren City (all wards), scores
+every voter by total lifetime votes and votes in the last 4 years, and
+produces a household-deduped mailing list in the Vista template format.
+
+```
+python3 warren_voters_pipeline.py
+```
+
+To add the legacy party/activity score columns to an existing all-city workbook
+without changing the input file:
+
+```
+python3 warren_voters_pipeline.py \
+  --score-xlsx outputs/2026/warren-all_2026-09-15.xlsx \
+  --score-output outputs/2026/warren-all-scored_2026-09-15.xlsx
+```
+
+This inserts `Total:`, `Dems`, `REPS`, and `Latest` immediately after `WARD`.
+`Latest` counts nonblank election columns from the last six calendar years;
+use `--recent-years N` to change that window. The source workbook is preserved.
+
 Notes from kens google drive on how to integate google maps: 
 https://docs.google.com/document/d/1Miosc88rydmc6TaZL_I1nJBV-QTW3dCpGULZ1GwGor4/edit?tab=t.0
 
