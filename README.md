@@ -59,6 +59,34 @@ This inserts `Total:`, `Dems`, `REPS`, and `Latest` immediately after `WARD`.
 `Latest` counts nonblank election columns from the last six calendar years;
 use `--recent-years N` to change that window. The source workbook is preserved.
 
+## Verify no-delivery addresses
+
+Before mailing, verify the no-delivery list against the latest raw voter file:
+
+```
+python3 warren_voters_pipeline.py \
+  --input downloads/TRUMBULL.txt \
+  --verify-exceptions
+```
+
+Verification compares normalized `RESIDENTIAL_ADDRESS1` values only; city,
+state, and ZIP are not used to decide whether an address is present. Named
+officials are also checked against their actual residential address in the
+voter file. The audit is written under `outputs/<year>/`.
+
+To deactivate stale, definitive elected-official address rows while preserving
+the original rows for audit history, add `--clean-exceptions`:
+
+```
+python3 warren_voters_pipeline.py \
+  --input downloads/TRUMBULL.txt \
+  --verify-exceptions \
+  --clean-exceptions
+```
+
+The normal pipeline automatically uses only rows whose `active` value is
+`yes`. Re-run verification whenever a newer SOS voter file is downloaded.
+
 Notes from kens google drive on how to integate google maps: 
 https://docs.google.com/document/d/1Miosc88rydmc6TaZL_I1nJBV-QTW3dCpGULZ1GwGor4/edit?tab=t.0
 

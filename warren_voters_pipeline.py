@@ -31,6 +31,7 @@ Usage:
 from __future__ import annotations
 
 import argparse
+import csv
 import re
 from datetime import datetime
 from pathlib import Path
@@ -47,9 +48,44 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--city", default="WARREN CITY", help='CITY filter (default: "WARREN CITY")')
     parser.add_argument("--years", type=int, default=4, help="Window size in years for the recent-vote score (default: 4)")
     parser.add_argument("--output-dir", default="outputs", help="Base directory for outputs, grouped under outputs/<year>/ (default: outputs)")
+    parser.add_argument(
+        "--exceptions-csv",
+        default="config/warren_no_delivery_addresses.csv",
+        help="CSV of address-level no-delivery exceptions (default: config/warren_no_delivery_addresses.csv)",
+    )
+    parser.add_argument(
+        "--max-addresses",
+        type=int,
+        default=2000,
+        help="Maximum number of deduped mailing addresses; 0 means unlimited (default: 2000)",
+    )
+    parser.add_argument(
+        "--min-recent-votes",
+        type=int,
+        default=1,
+        help="Minimum recent-vote score before address deduplication (default: 1)",
+    )
+    parser.add_argument(
+        "--verify-exceptions",
+        action="store_true",
+        help="Verify no-delivery addresses against the raw voter file and write an audit CSV, then exit",
+    )
+    parser.add_argument(
+        "--clean-exceptions",
+        action="store_true",
+        help="With --verify-exceptions, deactivate definitive elected-official address mismatches in the exceptions CSV",
+    )
     parser.add_argument("--score-xlsx", default="", help="Existing .xlsx workbook to add Total:/Dems/REPS/Latest columns to")
     parser.add_argument("--score-output", default="", help="Output .xlsx path for --score-xlsx (default: add -scored before .xlsx)")
     parser.add_argument("--recent-years", type=int, default=6, help="Recent-vote window for --score-xlsx (default: 6)")
+    parser.add_argument(
+        "--include-presidential-general",
+        dest="exclude_presidential_general",
+        action="store_false",
+        default=True,
+        help="Count presidential-year (year %% 4 == 0) GENERAL elections in the recent/latest vote score "
+        "(default: excluded, since presidential-year turnout is not representative of local-election turnout)",
+    )
     return parser.parse_args()
 
 
@@ -74,10 +110,18 @@ def vote_year(col: str) -> int:
     return int(VOTE_COL_RE.match(col).group(4))
 
 
-def add_scores(df: pd.DataFrame, vote_cols: list[str], years: int) -> pd.DataFrame:
+def is_presidential_general(col: str) -> bool:
+    """True for a GENERAL election column in a presidential year (year % 4 == 0)."""
+    match = VOTE_COL_RE.match(col)
+    return match.group(1) == "GENERAL" and int(match.group(4)) % 4 == 0
+
+
+def add_scores(df: pd.DataFrame, vote_cols: list[str], years: int, exclude_presidential_general: bool = True) -> pd.DataFrame:
     df = df.copy()
     current_year = datetime.today().year
     recent_cols = [c for c in vote_cols if vote_year(c) >= current_year - years]
+    if exclude_presidential_general:
+        recent_cols = [c for c in recent_cols if not is_presidential_general(c)]
 
     non_blank = df[vote_cols].apply(lambda s: s.str.strip().ne(""))
     df["TOTAL_VOTES"] = non_blank.sum(axis=1)
@@ -91,7 +135,7 @@ def add_scores(df: pd.DataFrame, vote_cols: list[str], years: int) -> pd.DataFra
     return df
 
 
-def score_existing_xlsx(input_path: Path, output_path: Path, recent_years: int) -> None:
+def score_existing_xlsx(input_path: Path, output_path: Path, recent_years: int, exclude_presidential_general: bool = True) -> None:
     """Add the legacy Excel scoring columns to an already-created workbook.
 
     The source workbook is not modified.  The four columns are inserted after
@@ -101,7 +145,9 @@ def score_existing_xlsx(input_path: Path, output_path: Path, recent_years: int) 
       Total:  all non-blank election cells
       Dems    election cells equal to D
       REPS    election cells equal to R
-      Latest  non-blank election cells dated within the recent-year window
+      Latest  non-blank election cells dated within the recent-year window,
+              excluding presidential-year (year % 4 == 0) GENERAL elections
+              by default (see --include-presidential-general)
     """
     if recent_years < 0:
         raise ValueError("--recent-years must be zero or greater")
@@ -122,6 +168,8 @@ def score_existing_xlsx(input_path: Path, output_path: Path, recent_years: int) 
 
     current_year = datetime.today().year
     latest_cols = [column for column in vote_cols if vote_year(column) >= current_year - recent_years]
+    if exclude_presidential_general:
+        latest_cols = [column for column in latest_cols if not is_presidential_general(column)]
     scores["Latest"] = non_blank[latest_cols].sum(axis=1) if latest_cols else 0
 
     ward_position = df.columns.get_loc("WARD") + 1
@@ -157,6 +205,157 @@ def build_deduped_mailing_list(df: pd.DataFrame) -> pd.DataFrame:
     return mailing.sort_values("Recipient", kind="stable")
 
 
+def normalize_address(value: object) -> str:
+    """Normalize an address for comparison while retaining unit information."""
+    text = re.sub(r"[^A-Z0-9 ]", " ", str(value or "").upper())
+    replacements = {
+        r"\bNORTH\b": "N", r"\bSOUTH\b": "S", r"\bEAST\b": "E", r"\bWEST\b": "W",
+        r"\bNORTHEAST\b": "NE", r"\bNORTHWEST\b": "NW", r"\bSOUTHEAST\b": "SE", r"\bSOUTHWEST\b": "SW",
+        r"\bAVENUE\b": "AVE", r"\bSTREET\b": "ST", r"\bROAD\b": "RD", r"\bDRIVE\b": "DR",
+        r"\bBOULEVARD\b": "BLVD", r"\bLANE\b": "LN", r"\bCOURT\b": "CT", r"\bPLACE\b": "PL",
+    }
+    for pattern, replacement in replacements.items():
+        text = re.sub(pattern, replacement, text)
+    return re.sub(r"\s+", " ", text).strip()
+
+
+def address_key(address: object, city: object, state: object, zip_code: object = "") -> str:
+    """Create a city/state-aware address key; ZIP is optional for stale ZIP changes."""
+    return "|".join(
+        [normalize_address(address), normalize_address(city), normalize_address(state), normalize_address(zip_code)[:5]]
+    )
+
+
+def residential_address_key(address: object) -> str:
+    """Normalize the voter-file street address used for no-delivery matching.
+
+    Deliberately ignores city, state, and ZIP.  The source is already the
+    selected voter file, and ZIP changes should not make an address exception
+    stop working.
+    """
+    return normalize_address(address)
+
+
+def verify_no_delivery_addresses(
+    raw: pd.DataFrame, exceptions_path: Path, report_path: Path, clean: bool = False
+) -> pd.DataFrame:
+    """Audit exceptions against RESIDENTIAL_ADDRESS1 in the current voter file.
+
+    For named official rows, also compare the exception address to the actual
+    residential address of the matching voter(s).  A mismatch is only cleaned
+    automatically when the official can be identified and the address is
+    unambiguously different; ordinary address exceptions are never removed.
+    """
+    exception_keys, exceptions = load_no_delivery_addresses(exceptions_path, active_only=False)
+    del exception_keys  # The audit intentionally uses street address only.
+    required = {"RESIDENTIAL_ADDRESS1", "FIRST_NAME", "LAST_NAME"}
+    missing = required - set(raw.columns)
+    if missing:
+        raise KeyError(f"Raw voter file missing columns: {', '.join(sorted(missing))}")
+
+    voter_keys = raw["RESIDENTIAL_ADDRESS1"].map(residential_address_key)
+    report_rows = []
+    cleanup_indexes = []
+    for index, exception in exceptions.iterrows():
+        exception_address = residential_address_key(exception["address"])
+        address_matches = raw.loc[voter_keys == exception_address]
+        row = exception.to_dict()
+        row["address_match_count"] = len(address_matches)
+        row["address_match_status"] = "MATCH" if len(address_matches) else "NOT_FOUND"
+        row["official_match_count"] = ""
+        row["official_actual_residential_address1"] = ""
+        row["official_address_status"] = "NOT_APPLICABLE"
+
+        official = str(exception.get("official", "")).strip()
+        if official:
+            official_tokens = re.findall(r"[A-Z]+", official.upper())
+            if len(official_tokens) >= 2:
+                first_name, last_name = official_tokens[0], official_tokens[-1]
+                official_matches = raw.loc[
+                    raw["FIRST_NAME"].str.strip().str.upper().eq(first_name)
+                    & raw["LAST_NAME"].str.strip().str.upper().eq(last_name)
+                ]
+                actual_addresses = list(dict.fromkeys(
+                    official_matches["RESIDENTIAL_ADDRESS1"].map(str).str.strip().tolist()
+                ))
+                row["official_match_count"] = len(official_matches)
+                row["official_actual_residential_address1"] = "; ".join(actual_addresses)
+                if not len(official_matches):
+                    row["official_address_status"] = "OFFICIAL_NOT_FOUND"
+                elif exception_address in {
+                    residential_address_key(address) for address in actual_addresses
+                }:
+                    row["official_address_status"] = "MATCH"
+                else:
+                    row["official_address_status"] = "MISMATCH"
+                    is_active = str(exception.get("active", "")).strip().upper() in {"1", "TRUE", "YES", "Y"}
+                    if is_active and len(actual_addresses) == 1:
+                        cleanup_indexes.append(index)
+        report_rows.append(row)
+
+    report = pd.DataFrame(report_rows)
+    report_path.parent.mkdir(parents=True, exist_ok=True)
+    report.to_csv(report_path, index=False, quoting=csv.QUOTE_MINIMAL)
+
+    if clean and cleanup_indexes:
+        source = pd.read_csv(exceptions_path, dtype=str, keep_default_na=False)
+        active_column = next(column for column in source.columns if column.strip().lower() == "active")
+        for source_index in cleanup_indexes:
+            source.loc[source_index, active_column] = "no"
+        source.to_csv(exceptions_path, index=False, quoting=csv.QUOTE_MINIMAL)
+        print(f"Deactivated {len(cleanup_indexes)} definitive official address mismatch(es): {exceptions_path}")
+
+    print(f"Exception verification report written: {report_path}")
+    return report
+
+
+def load_no_delivery_addresses(path: Path, active_only: bool = True) -> tuple[set[str], pd.DataFrame]:
+    """Load active address exceptions and return keys plus rows for an audit report."""
+    if not path.exists():
+        return set(), pd.DataFrame(columns=["address", "city", "state", "zip", "role", "official", "source", "active"])
+    exceptions = pd.read_csv(path, dtype=str, keep_default_na=False).fillna("")
+    required = {"address", "city", "state", "zip", "active"}
+    missing = required - set(exceptions.columns.str.lower())
+    if missing:
+        raise KeyError(f"Exceptions CSV missing columns: {', '.join(sorted(missing))}")
+    exceptions.columns = [str(column).strip().lower() for column in exceptions.columns]
+    active = exceptions[exceptions["active"].str.strip().str.upper().isin({"1", "TRUE", "YES", "Y"})].copy()
+    if not active_only:
+        active = exceptions.copy()
+    keys = {address_key(row.address, row.city, row.state, row.zip) for row in active.itertuples()}
+    return keys, active
+
+
+def filter_no_delivery(df: pd.DataFrame, exception_keys: set[str]) -> tuple[pd.DataFrame, pd.DataFrame]:
+    """Remove every voter living at an exception address and return removed rows for audit."""
+    keys = df.apply(
+        lambda row: address_key(
+            row["RESIDENTIAL_ADDRESS1"], row["RESIDENTIAL_CITY"], row["RESIDENTIAL_STATE"], row["RESIDENTIAL_ZIP"]
+        ),
+        axis=1,
+    )
+    # Match exact 5-digit ZIP first, then allow an exception with a blank ZIP to cover ZIP changes.
+    broad_keys = {key for key in exception_keys if key.endswith("||")}
+    match = keys.isin(exception_keys) | keys.map(lambda key: "|".join(key.split("|")[:3] + [""]) in broad_keys)
+    return df.loc[~match].copy(), df.loc[match].copy()
+
+
+def limit_mailing_list(mailing: pd.DataFrame, ranked_voters: pd.DataFrame, max_addresses: int) -> pd.DataFrame:
+    """Keep the top ranked household representatives, preserving voter-score priority."""
+    if max_addresses <= 0 or len(mailing) <= max_addresses:
+        return mailing
+    ranked = ranked_voters.drop_duplicates("_ADDR_KEY", keep="first").head(max_addresses)
+    allowed = set()
+    for row in ranked.itertuples():
+        full_address = str(row.RESIDENTIAL_ADDRESS1).strip()
+        secondary = str(row.RESIDENTIAL_SECONDARY_ADDR).strip()
+        if secondary:
+            full_address = f"{full_address} {secondary}"
+        allowed.add(address_key(full_address, row.RESIDENTIAL_CITY, row.RESIDENTIAL_STATE, row.RESIDENTIAL_ZIP))
+    mailing_keys = mailing.apply(lambda row: address_key(row["Address"], row["City"], row["State"], row["Zip code"]), axis=1)
+    return mailing.loc[mailing_keys.isin(allowed)].copy()
+
+
 def main() -> int:
     args = parse_args()
 
@@ -168,7 +367,7 @@ def main() -> int:
             output_path = Path(args.score_output).expanduser().resolve()
         else:
             output_path = input_path.with_name(f"{input_path.stem}-scored{input_path.suffix}")
-        score_existing_xlsx(input_path, output_path, args.recent_years)
+        score_existing_xlsx(input_path, output_path, args.recent_years, args.exclude_presidential_general)
         return 0
 
     download_dir = Path(args.download_dir).resolve()
@@ -178,6 +377,12 @@ def main() -> int:
     print(f"Using raw file: {raw_path}")
 
     df = load_raw(raw_path)
+    if args.verify_exceptions:
+        exception_path = Path(args.exceptions_csv).expanduser().resolve()
+        report_path = output_dir / f"{datetime.today():%Y}" / f"warren-no-delivery-verification_{datetime.today():%Y-%m-%d}.csv"
+        verify_no_delivery_addresses(df, exception_path, report_path, clean=args.clean_exceptions)
+        return 0
+
     vote_cols = vote_columns(df)
     if not vote_cols:
         raise KeyError("No election columns (PRIMARY-/GENERAL-/SPECIAL-MM/DD/YYYY) found in raw file.")
@@ -187,15 +392,33 @@ def main() -> int:
         raise ValueError(f'No rows matched CITY == "{args.city}"')
     print(f"Warren City voters: {len(warren)}")
 
-    warren = add_scores(warren, vote_cols, args.years)
+    warren = add_scores(warren, vote_cols, args.years, args.exclude_presidential_general)
     recent_col = f"VOTES_LAST_{args.years}YR"
     warren = warren.sort_values("TOTAL_VOTES", ascending=False, kind="stable")
 
-    recent_voters = warren[warren[recent_col] >= 1].copy()
-    print(f"Voters with >=1 vote in last {args.years} years: {len(recent_voters)}")
+    if args.min_recent_votes < 0:
+        raise ValueError("--min-recent-votes must be zero or greater")
+    recent_voters = warren[warren[recent_col] >= args.min_recent_votes].copy()
+    exception_path = Path(args.exceptions_csv).expanduser().resolve()
+    exception_keys, exception_rows = load_no_delivery_addresses(exception_path)
+    recent_voters, removed_voters = filter_no_delivery(recent_voters, exception_keys)
+    recent_voters["_ADDR_KEY"] = (
+        recent_voters["RESIDENTIAL_ADDRESS1"].str.strip().str.upper()
+        + "|"
+        + recent_voters["RESIDENTIAL_SECONDARY_ADDR"].str.strip().str.upper()
+    )
+    recent_voters = recent_voters.sort_values(
+        [recent_col, "TOTAL_VOTES"], ascending=[False, False], kind="stable"
+    )
+    pres_note = " (excl. presidential GENERAL)" if args.exclude_presidential_general else ""
+    print(f"Voters with >={args.min_recent_votes} vote(s) in last {args.years} years{pres_note}: {len(recent_voters)}")
+    print(f"Voters removed by no-delivery address exceptions: {len(removed_voters)}")
 
     deduped = build_deduped_mailing_list(recent_voters)
-    print(f"Deduped households: {len(deduped)}")
+    before_limit = len(deduped)
+    deduped = limit_mailing_list(deduped, recent_voters, args.max_addresses)
+    print(f"Deduped households before cap: {before_limit}")
+    print(f"Mailing addresses after cap: {len(deduped)}")
 
     today = datetime.today()
     year_dir = output_dir / f"{today:%Y}"
@@ -209,10 +432,17 @@ def main() -> int:
     warren.to_excel(all_path, index=False, engine="openpyxl")
     recent_voters.to_excel(vote1_path, index=False, engine="openpyxl")
     deduped.to_excel(deduped_path, index=False, engine="openpyxl")
+    removed_path = year_dir / f"warren-no-delivery-matches_{today_str}.xlsx"
+    removed_voters.to_excel(removed_path, index=False, engine="openpyxl")
+    if not exception_rows.empty:
+        exception_report_path = year_dir / f"warren-no-delivery-exceptions-used_{today_str}.csv"
+        exception_rows.to_csv(exception_report_path, index=False, quoting=csv.QUOTE_MINIMAL)
+        print(f"Wrote: {exception_report_path}")
 
     print(f"Wrote: {all_path}")
     print(f"Wrote: {vote1_path}")
     print(f"Wrote: {deduped_path}")
+    print(f"Wrote: {removed_path}")
     return 0
 
 
