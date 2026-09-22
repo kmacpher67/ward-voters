@@ -76,10 +76,9 @@ python3 warren_voters_pipeline.py \
 This inserts `Total:`, `Dems`, `REPS`, `Latest`, and `Local_Tot` immediately
 after `WARD`, and moves any existing `VOTES_LAST_*YR` score next to them. By
 default those inserted columns are numeric values. Add `--score-format formulas`
-to write live Excel formulas for `Total:`, `Dems`, `REPS`, and `Latest`
-instead. `Latest` counts nonblank election columns from the last six calendar
-years; use `--recent-years N` to change that window. The source workbook is
-preserved.
+to write live Excel formulas for the score columns instead. `Latest` counts
+nonblank election columns from the last six calendar years; use
+`--recent-years N` to change that window. The source workbook is preserved.
 
 To filter any existing Warren workbook (raw or already scored) down to one
 ward, without touching the input file:

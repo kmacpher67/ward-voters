@@ -168,6 +168,14 @@ def excel_column_letter(index: int) -> str:
     return letters
 
 
+def nonblank_count_formula(row: int, columns: list[int]) -> str:
+    """Build an Excel formula counting nonblank cells in non-contiguous columns."""
+    if not columns:
+        return "=0"
+    parts = [f'IF({excel_column_letter(column)}{row}<>"",1,0)' for column in columns]
+    return f"={'+'.join(parts)}"
+
+
 def score_existing_xlsx_values(input_path: Path, output_path: Path, recent_years: int, exclude_presidential_general: bool = True) -> int:
     df = pd.read_excel(input_path, dtype=str, keep_default_na=False)
     df.columns = [str(column).strip() for column in df.columns]
@@ -195,6 +203,9 @@ def score_existing_xlsx_values(input_path: Path, output_path: Path, recent_years
         df = df.drop(columns=[LEGACY_TOTAL_COL])
     existing_score_cols = [LOCAL_TOTAL_COL]
     existing_score_cols.extend(column for column in df.columns if re.match(r"^VOTES_LAST_\d+YR$", column))
+    for column in existing_score_cols:
+        if column in df.columns:
+            df[column] = pd.to_numeric(df[column], errors="raise")
 
     ward_position = df.columns.get_loc("WARD") + 1
     after_ward = df.iloc[:, ward_position:]
@@ -219,11 +230,6 @@ def score_existing_xlsx_formulas(input_path: Path, output_path: Path, recent_yea
         header for header in headers
         if header == LOCAL_TOTAL_COL or header == LEGACY_TOTAL_COL or re.match(r"^VOTES_LAST_\d+YR$", header)
     ]
-    carried_values = {
-        header: [ws.cell(row=row, column=headers[header]).value for row in range(2, ws.max_row + 1)]
-        for header in carried_score_headers
-        if header not in (LOCAL_TOTAL_COL, LEGACY_TOTAL_COL)
-    }
     for column in sorted((headers[header] for header in carried_score_headers), reverse=True):
         ws.delete_cols(column)
 
@@ -268,27 +274,29 @@ def score_existing_xlsx_formulas(input_path: Path, output_path: Path, recent_yea
         inserted_before_votes[column] for column in original_vote_columns
         if is_odd_year_vote(column)
     ]
+    recent_score_positions = {}
+    for header in extra_headers:
+        match = re.match(r"^VOTES_LAST_(\d+)YR$", header)
+        if not match:
+            continue
+        years = int(match.group(1))
+        columns = [column for column in original_vote_columns if vote_year(column) >= current_year - years]
+        if exclude_presidential_general:
+            columns = [column for column in columns if not is_presidential_general(column)]
+        recent_score_positions[header] = [inserted_before_votes[column] for column in columns]
 
     for row in range(2, ws.max_row + 1):
         vote_range = f"${first_vote_letter}${row}:${last_vote_letter}${row}"
         ws.cell(row=row, column=insert_position, value=f"=COUNTA({vote_range})")
         ws.cell(row=row, column=insert_position + 1, value=f'=COUNTIF({vote_range},"D")')
         ws.cell(row=row, column=insert_position + 2, value=f'=COUNTIF({vote_range},"R")')
-        latest_parts = [
-            f'IF({excel_column_letter(column)}{row}<>"",1,0)'
-            for column in latest_positions
-        ]
-        ws.cell(row=row, column=insert_position + 3, value=f"={'+'.join(latest_parts)}" if latest_parts else "=0")
+        ws.cell(row=row, column=insert_position + 3, value=nonblank_count_formula(row, latest_positions))
         for offset, header in enumerate(extra_headers, start=4):
             cell = ws.cell(row=row, column=insert_position + offset)
             if header == LOCAL_TOTAL_COL:
-                cell.value = sum(
-                    1 for column in local_positions
-                    if str(ws.cell(row=row, column=column).value or "").strip() != ""
-                )
+                cell.value = nonblank_count_formula(row, local_positions)
             else:
-                values = carried_values.get(header, [])
-                cell.value = values[row - 2] if row - 2 < len(values) else None
+                cell.value = nonblank_count_formula(row, recent_score_positions.get(header, []))
 
     if hasattr(wb, "calculation"):
         wb.calculation.fullCalcOnLoad = True

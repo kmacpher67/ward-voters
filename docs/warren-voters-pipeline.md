@@ -145,7 +145,7 @@ not live Excel formulas:
 
 Use `--recent-years N` to change the `Latest` window; use
 `--include-presidential-general` to count presidential-year GENERAL elections
-in `Latest` too. Use `--score-format formulas` to write those four inserted
+in `Latest` too. Use `--score-format formulas` to write the inserted score
 columns as live Excel formulas instead:
 
 ```bash
@@ -157,11 +157,11 @@ python3 warren_voters_pipeline.py \
 
 Formula mode writes `=COUNTA(...)`, `=COUNTIF(...,"D")`,
 `=COUNTIF(...,"R")`, and a row-specific `Latest` sum of nonblank recent
-election cells. `Local_Tot` remains a calculated numeric value in both modes.
-Open the workbook in Excel or LibreOffice to calculate and display formula
-results. Value mode is safer for viewers that do not recalculate formulas. The
-ward-filter mode preserves these score columns as numbers instead of rewriting
-them as text.
+election cells. It also writes formula versions of `Local_Tot` and any
+`VOTES_LAST_*YR` column present in the source workbook. Open the workbook in
+Excel or LibreOffice to calculate and display formula results. Value mode is
+safer for viewers that do not recalculate formulas. The ward-filter mode
+preserves these score columns as numbers instead of rewriting them as text.
 
 To pull a single ward out of an existing workbook (raw or scored), use the
 same script's ward-filter mode:
