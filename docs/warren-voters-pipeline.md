@@ -47,11 +47,10 @@ machine where SOS access works.
    ZIP differences do not prevent an address-level match. This is
    address-level, so every registered voter at an excluded official's address
    is removed. Audit files are written for removed voters and active exceptions.
-5. **Dedupe to one row per household**: group the recent-voter list by
-   `RESIDENTIAL_ADDRESS1 + RESIDENTIAL_SECONDARY_ADDR` (street address + unit/apt,
-   exact match after trim/uppercase — `UNIT 3` and `APT 3` at the same street
-   number are treated as different households since the SOS data doesn't
-   normalize those). Keep the highest-`TOTAL_VOTES` voter per address as the
+5. **Dedupe to one row per household**: group the recent-voter list by a
+   canonicalized `RESIDENTIAL_ADDRESS1 + RESIDENTIAL_SECONDARY_ADDR` (trim
+   whitespace, remove punctuation, standardize directions/street types, and
+   treat `UNIT`, `APT`, and `APARTMENT` equivalently). Keep the highest-`TOTAL_VOTES` voter per address as the
    household representative, and emit it in the Vista mailing-list template
    format (`Vista_ListTemplate.xlsx`): `Recipient, Company, Address, City,
    State, Zip code`, with `Recipient = "<Last_Name> Household"`.
@@ -134,12 +133,32 @@ after `WARD`. The columns are calculated values: all-time nonblank votes,
 `--recent-years N`; use `--include-presidential-general` to count
 presidential-year GENERAL elections in `Latest` too.
 
+To pull a single ward out of an existing workbook (raw or scored), use the
+same script's ward-filter mode:
+
+```bash
+python3 warren_voters_pipeline.py \
+  --ward-xlsx outputs/2026/warren-all-scored_2026-09-15.xlsx \
+  --ward 4 \
+  --ward-output outputs/2026/warren-ward4-scored_2026-09-15.xlsx
+```
+
+This preserves the source workbook and writes only the rows whose `WARD`
+column matches. Matching is on the ward number only (`normalize_ward()`
+extracts digits from both the `--ward` value and each `WARD` cell), so `4`
+and `WARREN-WARD 4` are equivalent. Omitting `--ward-output` defaults to
+`<input-stem>-ward<N>.xlsx`.
+
 ## Notes / open questions
 
 - Household dedup key is address-only (last-name-at-household is not part of
   the key), matching the request to dedupe "based on RESIDENTIAL_ADDRESS1,
   RESIDENTIAL_SECONDARY_ADDR". Two unrelated voters sharing a duplex address
   with identical secondary-address text will collapse into one household.
+- Known manual corrections are applied before deduplication: Pennock's address
+  is `182 HIGH ST NE`, the Northwoods correction is `3820 NORTHWOODS CT NE`,
+  and printed unit labels use `UNIT`. Explicit additions are read from
+  `config/warren_manual_addresses.csv` and retained after the cap.
 - This pipeline is independent of the ward-specific scoring script
   (`voters-warren-scored.py`), which adds Excel-formula-driven Total/Dems/
   REPS/Muni/Latest columns per ward file instead of a pandas-computed score

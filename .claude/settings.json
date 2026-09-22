@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(*)",
+      "Bash(python3 -c *)",
+      "Bash(timeout 100 python3 *)",
+      "Bash(python3 *)",
+      "Bash(python3 warren_voters_pipeline.py --input \"downloads/TRUMBULL \\(1\\).txt\")",
+      "Bash(git *)",
+      "Bash(python3 warren_voters_pipeline.py)",
+      "Bash(python3 -c ' *)",
+      "Bash(git status *)",
+      "Bash(python3 -m py_compile warren_voters_pipeline.py)",
+      "Bash(python3 warren_voters_pipeline.py --ward-xlsx outputs/2026/warren-all-scored_2026-09-15.xlsx --ward 4)"
+    ]
+  }
+}

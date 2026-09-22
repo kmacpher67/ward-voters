@@ -25,6 +25,8 @@ Usage:
   python3 warren_voters_pipeline.py --years 4 --output-dir outputs
   python3 warren_voters_pipeline.py --score-xlsx outputs/2026/warren-all_2026-09-15.xlsx \
       --score-output outputs/2026/warren-all-scored_2026-09-15.xlsx
+  python3 warren_voters_pipeline.py --ward-xlsx outputs/2026/warren-all-scored_2026-09-15.xlsx \
+      --ward 4 --ward-output outputs/2026/warren-ward4-scored_2026-09-15.xlsx
 """
 
 from __future__ import annotations
@@ -53,6 +55,11 @@ def parse_args() -> argparse.Namespace:
         help="CSV of address-level no-delivery exceptions (default: config/warren_no_delivery_addresses.csv)",
     )
     parser.add_argument(
+        "--manual-addresses-csv",
+        default="config/warren_manual_addresses.csv",
+        help="CSV of manually requested mailing addresses (default: config/warren_manual_addresses.csv)",
+    )
+    parser.add_argument(
         "--max-addresses",
         type=int,
         default=3000,
@@ -76,6 +83,9 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument("--score-xlsx", default="", help="Existing .xlsx workbook to add Total:/Dems/REPS/Latest columns to")
     parser.add_argument("--score-output", default="", help="Output .xlsx path for --score-xlsx (default: add -scored before .xlsx)")
+    parser.add_argument("--ward-xlsx", default="", help="Existing .xlsx workbook to filter down to a single WARD (e.g. an already-scored workbook)")
+    parser.add_argument("--ward", default="", help='Ward to keep for --ward-xlsx, e.g. "4" or "WARREN-WARD 4"')
+    parser.add_argument("--ward-output", default="", help="Output .xlsx path for --ward-xlsx (default: add -ward<N> before .xlsx)")
     parser.add_argument("--recent-years", type=int, default=6, help="Recent-vote window for --score-xlsx (default: 6)")
     parser.add_argument(
         "--include-presidential-general",
@@ -179,18 +189,52 @@ def score_existing_xlsx(input_path: Path, output_path: Path, recent_years: int, 
     print(f"Scoring columns: Total:, Dems, REPS, Latest ({len(latest_cols)} recent election columns)")
 
 
+def normalize_ward(value: object) -> str:
+    """Extract the bare ward number from a WARD cell or a --ward CLI value.
+
+    Accepts either form and reduces both to digits only, e.g. "WARREN-WARD 4"
+    and "4" both normalize to "4", so the CLI value doesn't need to match the
+    source file's exact "<CITY>-WARD <N>" formatting.
+    """
+    match = re.search(r"(\d+)", str(value or ""))
+    if not match:
+        raise ValueError(f'No ward number found in "{value}"')
+    return match.group(1)
+
+
+def filter_xlsx_by_ward(input_path: Path, ward: str, output_path: Path) -> None:
+    """Filter an existing Warren voter workbook down to a single WARD.
+
+    Works on any workbook that still has a WARD column, scored or not, so it
+    can run on the raw warren-all export or on a --score-xlsx output.
+    """
+    df = pd.read_excel(input_path, dtype=str, keep_default_na=False)
+    df.columns = [str(column).strip() for column in df.columns]
+    if "WARD" not in df.columns:
+        raise KeyError(f"Column WARD not found in {input_path}")
+
+    target = normalize_ward(ward)
+    result = df.loc[df["WARD"].map(normalize_ward) == target].copy()
+    if result.empty:
+        raise ValueError(f'No rows matched ward "{ward}" (normalized: "{target}") in {input_path}')
+
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    result.to_excel(output_path, index=False, engine="openpyxl")
+    print(f"Ward {target} workbook written: {output_path}")
+    print(f"Ward {target} voters: {len(result)}")
+
+
 def build_deduped_mailing_list(df: pd.DataFrame, recent_col: str) -> pd.DataFrame:
     work = df.copy()
-    work["_ADDR_KEY"] = (
-        work["RESIDENTIAL_ADDRESS1"].str.strip().str.upper()
-        + "|"
-        + work["RESIDENTIAL_SECONDARY_ADDR"].str.strip().str.upper()
+    work["_ADDR_KEY"] = work.apply(
+        lambda row: residential_address_key(combined_residential_address(row["RESIDENTIAL_ADDRESS1"], row["RESIDENTIAL_SECONDARY_ADDR"])),
+        axis=1,
     )
     work = work.sort_values([recent_col, "TOTAL_VOTES"], ascending=[False, False], kind="stable").copy()
     reps = work.groupby("_ADDR_KEY", as_index=False, sort=False).first()
 
-    address = reps["RESIDENTIAL_ADDRESS1"].str.strip()
-    secondary = reps["RESIDENTIAL_SECONDARY_ADDR"].str.strip()
+    address = reps["RESIDENTIAL_ADDRESS1"].map(fix_address)
+    secondary = reps["RESIDENTIAL_SECONDARY_ADDR"].map(fix_secondary_address)
     full_address = address.where(secondary == "", address + " " + secondary)
 
     mailing = pd.DataFrame({
@@ -215,10 +259,78 @@ def normalize_address(value: object) -> str:
         r"\bNORTHEAST\b": "NE", r"\bNORTHWEST\b": "NW", r"\bSOUTHEAST\b": "SE", r"\bSOUTHWEST\b": "SW",
         r"\bAVENUE\b": "AVE", r"\bSTREET\b": "ST", r"\bROAD\b": "RD", r"\bDRIVE\b": "DR",
         r"\bBOULEVARD\b": "BLVD", r"\bLANE\b": "LN", r"\bCOURT\b": "CT", r"\bPLACE\b": "PL",
+        r"\bAPARTMENT\b": "UNIT", r"\bAPT\b": "UNIT",
     }
     for pattern, replacement in replacements.items():
         text = re.sub(pattern, replacement, text)
     return re.sub(r"\s+", " ", text).strip()
+
+
+def fix_address(value: object) -> str:
+    """Apply known source corrections and return a stable printable address."""
+    text = normalize_address(value)
+    # The SOS export has occasionally reported this Northwoods address with
+    # the wrong quadrant.  Keep the correction narrow so a legitimate NW
+    # address elsewhere is not changed.
+    text = re.sub(r"^3820 NORTHWOODS CT NW(?=\s|$)", "3820 NORTHWOODS CT NE", text)
+    # Preserve the requested correction even if it arrives in a legacy form.
+    text = re.sub(r"^182 HIGH ST NW(?=\s|$)", "182 HIGH ST NE", text)
+    return text
+
+
+def fix_secondary_address(value: object) -> str:
+    """Canonicalize apartment/unit labels for both display and deduplication."""
+    return normalize_address(value)
+
+
+def combined_residential_address(address: object, secondary: object) -> str:
+    street = fix_address(address)
+    unit = fix_secondary_address(secondary)
+    return f"{street} {unit}".strip()
+
+
+def load_manual_addresses(path: Path) -> pd.DataFrame:
+    """Load explicitly requested addresses, if configured."""
+    if not path.exists():
+        return pd.DataFrame(columns=["Recipient", "Company", "Address", "City", "State", "Zip code", "VOTES_LAST_4YR"])
+    manual = pd.read_csv(path, dtype=str, keep_default_na=False).fillna("")
+    required = {"recipient", "address", "city", "state", "zip code"}
+    missing = required - {str(column).strip().lower() for column in manual.columns}
+    if missing:
+        raise KeyError(f"Manual addresses CSV missing columns: {', '.join(sorted(missing))}")
+    manual.columns = [str(column).strip() for column in manual.columns]
+    canonical_columns = {str(column).strip().lower(): column for column in manual.columns}
+    manual = manual.rename(columns={column: canonical_columns[column.lower()] for column in manual.columns})
+    manual = manual.rename(columns={
+        canonical_columns["recipient"]: "Recipient",
+        canonical_columns["address"]: "Address",
+        canonical_columns["city"]: "City",
+        canonical_columns["state"]: "State",
+        canonical_columns["zip code"]: "Zip code",
+    })
+    if "company" in canonical_columns:
+        manual = manual.rename(columns={canonical_columns["company"]: "Company"})
+    if "votes_last_4yr" in canonical_columns:
+        manual = manual.rename(columns={canonical_columns["votes_last_4yr"]: "VOTES_LAST_4YR"})
+    manual["Address"] = manual["Address"].map(fix_address)
+    manual["City"] = manual["City"].map(normalize_address).str.title()
+    manual["State"] = manual["State"].map(normalize_address)
+    manual["Zip code"] = manual["Zip code"].str.strip()
+    if "Company" not in manual:
+        manual["Company"] = ""
+    if "VOTES_LAST_4YR" not in manual:
+        manual["VOTES_LAST_4YR"] = 0
+    manual["VOTES_LAST_4YR"] = manual["VOTES_LAST_4YR"].replace("", "0").astype(int)
+    return manual[["Recipient", "Company", "Address", "City", "State", "Zip code", "VOTES_LAST_4YR"]]
+
+
+def add_manual_addresses(mailing: pd.DataFrame, manual: pd.DataFrame) -> pd.DataFrame:
+    """Add requested addresses, replacing an existing row at the same address."""
+    if manual.empty:
+        return mailing
+    combined = pd.concat([manual, mailing], ignore_index=True)
+    keys = combined.apply(lambda row: address_key(row["Address"], row["City"], row["State"], row["Zip code"]), axis=1)
+    return combined.loc[~keys.duplicated(keep="first")].copy()
 
 
 def address_key(address: object, city: object, state: object, zip_code: object = "") -> str:
@@ -351,10 +463,7 @@ def limit_mailing_list(mailing: pd.DataFrame, ranked_voters: pd.DataFrame, max_a
     ranked = ranked_voters.drop_duplicates("_ADDR_KEY", keep="first").head(max_addresses)
     allowed = set()
     for row in ranked.itertuples():
-        full_address = str(row.RESIDENTIAL_ADDRESS1).strip()
-        secondary = str(row.RESIDENTIAL_SECONDARY_ADDR).strip()
-        if secondary:
-            full_address = f"{full_address} {secondary}"
+        full_address = combined_residential_address(row.RESIDENTIAL_ADDRESS1, row.RESIDENTIAL_SECONDARY_ADDR)
         allowed.add(address_key(full_address, row.RESIDENTIAL_CITY, row.RESIDENTIAL_STATE, row.RESIDENTIAL_ZIP))
     mailing_keys = mailing.apply(lambda row: address_key(row["Address"], row["City"], row["State"], row["Zip code"]), axis=1)
     return mailing.loc[mailing_keys.isin(allowed)].copy()
@@ -372,6 +481,20 @@ def main() -> int:
         else:
             output_path = input_path.with_name(f"{input_path.stem}-scored{input_path.suffix}")
         score_existing_xlsx(input_path, output_path, args.recent_years, args.exclude_presidential_general)
+        return 0
+
+    if args.ward_xlsx:
+        if not args.ward:
+            raise ValueError("--ward is required with --ward-xlsx")
+        input_path = Path(args.ward_xlsx).expanduser().resolve()
+        if not input_path.exists():
+            raise FileNotFoundError(input_path)
+        if args.ward_output:
+            output_path = Path(args.ward_output).expanduser().resolve()
+        else:
+            ward_num = normalize_ward(args.ward)
+            output_path = input_path.with_name(f"{input_path.stem}-ward{ward_num}{input_path.suffix}")
+        filter_xlsx_by_ward(input_path, args.ward, output_path)
         return 0
 
     download_dir = Path(args.download_dir).resolve()
@@ -406,10 +529,9 @@ def main() -> int:
     exception_path = Path(args.exceptions_csv).expanduser().resolve()
     exception_keys, exception_rows = load_no_delivery_addresses(exception_path)
     recent_voters, removed_voters = filter_no_delivery(recent_voters, exception_keys)
-    recent_voters["_ADDR_KEY"] = (
-        recent_voters["RESIDENTIAL_ADDRESS1"].str.strip().str.upper()
-        + "|"
-        + recent_voters["RESIDENTIAL_SECONDARY_ADDR"].str.strip().str.upper()
+    recent_voters["_ADDR_KEY"] = recent_voters.apply(
+        lambda row: residential_address_key(combined_residential_address(row["RESIDENTIAL_ADDRESS1"], row["RESIDENTIAL_SECONDARY_ADDR"])),
+        axis=1,
     )
     recent_voters = recent_voters.sort_values(
         [recent_col, "TOTAL_VOTES"], ascending=[False, False], kind="stable"
@@ -421,6 +543,8 @@ def main() -> int:
     deduped = build_deduped_mailing_list(recent_voters, recent_col)
     before_limit = len(deduped)
     deduped = limit_mailing_list(deduped, recent_voters, args.max_addresses)
+    manual_path = Path(args.manual_addresses_csv).expanduser().resolve()
+    deduped = add_manual_addresses(deduped, load_manual_addresses(manual_path))
     print(f"Deduped households before cap: {before_limit}")
     print(f"Mailing addresses after cap: {len(deduped)}")
 

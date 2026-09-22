@@ -59,6 +59,11 @@ python3 warren_voters_pipeline.py --max-addresses 2500
 python3 warren_voters_pipeline.py --max-addresses 2000 --min-recent-votes 2
 ```
 
+The pipeline canonicalizes whitespace, punctuation, directions, street types,
+and unit labels before deduplication. Manual mailing additions are kept in
+`config/warren_manual_addresses.csv`; use `--manual-addresses-csv PATH` to
+provide a different file. The current publish run uses `--max-addresses 3002`.
+
 To add the legacy party/activity score columns to an existing all-city workbook
 without changing the input file:
 
@@ -71,6 +76,21 @@ python3 warren_voters_pipeline.py \
 This inserts `Total:`, `Dems`, `REPS`, and `Latest` immediately after `WARD`.
 `Latest` counts nonblank election columns from the last six calendar years;
 use `--recent-years N` to change that window. The source workbook is preserved.
+
+To filter any existing Warren workbook (raw or already scored) down to one
+ward, without touching the input file:
+
+```
+python3 warren_voters_pipeline.py \
+  --ward-xlsx outputs/2026/warren-all-scored_2026-09-15.xlsx \
+  --ward 4 \
+  --ward-output outputs/2026/warren-ward4-scored_2026-09-15.xlsx
+```
+
+`--ward` accepts either a bare number (`4`) or the full `WARD` cell text
+(`WARREN-WARD 4`) — both normalize to the digits only, so this works
+regardless of how the source file spells the ward label. Omit
+`--ward-output` to default to `<input>-ward<N>.xlsx` next to the input file.
 
 ## Verify no-delivery addresses
 

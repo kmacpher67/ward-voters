@@ -1,4 +1,5 @@
 Recipient,Company,Address,City,State,Zip code,VOTES_LAST_4YR
+Home Household,,331 CENTRAL PARKWAY AVE SE,Warren,OH,44483,0
 Abdul Aziz Household,,1095 RAYMOND ST NW,Warren,OH,44485,8
 Abell Household,,608 MAHONING AVE NW,Warren,OH,44483,9
 Abruzzi Household,,371 MARWOOD AVE SE,Warren,OH,44484,6
@@ -23,7 +24,7 @@ Allen Household,,1692 HAMILTON ST SW,Warren,OH,44485,9
 Allen Household,,1704 EDGEWOOD ST NE,Warren,OH,44483,8
 Allen Household,,1316 ATLANTIC ST NE,Warren,OH,44483,8
 Allen Household,,134 DELAWARE AVE NW,Warren,OH,44485,8
-Allen Household,,1874 SOUTHWEST BLVD SW,Warren,OH,44485,8
+Allen Household,,1874 SW BLVD SW,Warren,OH,44485,8
 Allen Household,,885 PALMYRA RD SW,Warren,OH,44485,7
 Allen Household,,316 IDDINGS AVE SE,Warren,OH,44483,6
 Allen Household,,845 FIFTH ST SW,Warren,OH,44485,5
@@ -33,7 +34,7 @@ Alls Household,,2742 BEAL ST NW,Warren,OH,44485,10
 Alls Household,,240 FEDERAL ST NW,Warren,OH,44483,10
 Amazing Household,,867 TRUMBULL AVE SE,Warren,OH,44484,8
 Ambrose Household,,853 KENILWORTH AVE SE,Warren,OH,44484,6
-Amburgy Household,,2180 REEVES RD NE APT 9,Warren,OH,44483,7
+Amburgy Household,,2180 REEVES RD NE UNIT 9,Warren,OH,44483,7
 Amorganos Household,,1464 MILLIKIN PL NE,Warren,OH,44483,9
 Amos Household,,2697 BEAL ST NW,Warren,OH,44485,10
 Amos Household,,535 ADELAIDE AVE NE,Warren,OH,44483,6
@@ -44,7 +45,7 @@ Anderson Household,,2078 SARATOGA AVE SW,Warren,OH,44485,9
 Anderson Household,,458 PERKINSWOOD BLVD SE,Warren,OH,44483,9
 Anderson Household,,3133 RANDOLPH ST NW,Warren,OH,44485,7
 Anderson Household,,2164 PALMYRA RD SW,Warren,OH,44481,6
-Anderson Household,,2406 NORTHWEST BLVD NW,Warren,OH,44485,6
+Anderson Household,,2406 NW BLVD NW,Warren,OH,44485,6
 Anderson Household,,426 FIRST ST SW,Warren,OH,44485,6
 Anderson Household,,405 KENMORE AVE SE,Warren,OH,44483,6
 Anderson Household,,2250 PARKWOOD DR NW,Warren,OH,44485,5
@@ -64,7 +65,7 @@ Angelo Household,,3050 HALSEY DR NE,Warren,OH,44483,6
 Angelo Household,,2863 WOODLAND AVE NE,Warren,OH,44483,6
 Angle Household,,1018 MELWOOD DR NE,Warren,OH,44483,10
 Annandono Household,,255 WAINWOOD DR SE,Warren,OH,44484,9
-Ansman Household,,329 SCOTT ST NE APT 1,Warren,OH,44483,8
+Ansman Household,,329 SCOTT ST NE UNIT 1,Warren,OH,44483,8
 Ansman Household,,307 SCOTT ST NE,Warren,OH,44483,7
 Anstadt Household,,1176 HARVARD DR SE,Warren,OH,44484,7
 Anstrom Household,,2052 WOODLAND AVE NE,Warren,OH,44483,10
@@ -78,7 +79,7 @@ Armbruster Household,,623 OAK KNOLL AVE NE,Warren,OH,44483,10
 Armistead Household,,188 DICKEY AVE NW,Warren,OH,44485,9
 Armstrong Household,,1902 WILLOW BROOK DR NE,Warren,OH,44483,10
 Arnold Household,,1249 WILLARD AVE SE,Warren,OH,44484,7
-Arroyo Household,,400 QUARRY LN NE APT D,Warren,OH,44483,7
+Arroyo Household,,400 QUARRY LN NE UNIT D,Warren,OH,44483,7
 Artle Household,,1709 TOD AVE NW,Warren,OH,44485,9
 Artle Household,,2244 W MARKET ST,Warren,OH,44485,9
 Arvin Household,,588 WILLARD AVE SE,Warren,OH,44483,10
@@ -118,11 +119,11 @@ Bankhead Household,,3138 OVERLOOK DR NE,Warren,OH,44483,5
 Banks Household,,3254 ARIS ST NW,Warren,OH,44485,9
 Barbe Household,,985 BROADACRES DR SE,Warren,OH,44484,7
 Barber Household,,1378 ARTHUR DR NW,Warren,OH,44485,8
-Barbusci Household,,2300 PLAZA AVE NE APT 412,Warren,OH,44483,7
+Barbusci Household,,2300 PLAZA AVE NE UNIT 412,Warren,OH,44483,7
 Barbusci Household,,2821 RED FOX RUN DR NW,Warren,OH,44485,7
 Barile Household,,629 FAIRMOUNT AVE NE,Warren,OH,44483,10
 Barkley Household,,582 KENMORE AVE NE,Warren,OH,44483,7
-Barnes Household,,832 N PARK AVE APT 2,Warren,OH,44483,10
+Barnes Household,,832 N PARK AVE UNIT 2,Warren,OH,44483,10
 Barnes Household,,187 IDYLWILD ST NE,Warren,OH,44483,9
 Barnes Household,,3141 CRESCENT DR NE,Warren,OH,44483,8
 Barnes Household,,1881 BEECHWOOD ST NE,Warren,OH,44483,7
@@ -160,7 +161,7 @@ Bauer Household,,1465 EDGEWOOD ST NE,Warren,OH,44483,5
 Baugh Household,,1255 HIGHLAND AVE SW,Warren,OH,44485,9
 Baugh Household,,1938 ARTHUR DR NW,Warren,OH,44485,9
 Baugh Household,,2164 DRAPER AVE SE,Warren,OH,44484,9
-Baugh Household,,4275 BERKSHIRE DR SE APT 2,Warren,OH,44484,6
+Baugh Household,,4275 BERKSHIRE DR SE UNIT 2,Warren,OH,44484,6
 Bauman Household,,4013 SUNNYBROOK DR SE,Warren,OH,44484,7
 Beachler Household,,347 IDDINGS AVE SE,Warren,OH,44483,7
 Bear Household,,507 KENMORE AVE SE,Warren,OH,44483,9
@@ -177,10 +178,10 @@ Bell Household,,2765 LINDA DR NW,Warren,OH,44485,10
 Bell Household,,212 COMSTOCK ST NE,Warren,OH,44483,10
 Bell Household,,2937 RED FOX RUN DR NW,Warren,OH,44485,10
 Bell Household,,1618 FERNDALE AVE SW,Warren,OH,44485,7
-Bell Household,,1431 SOUTHWEST BLVD SW,Warren,OH,44485,7
+Bell Household,,1431 SW BLVD SW,Warren,OH,44485,7
 Bell Household,,239 MARYLAND ST NE,Warren,OH,44483,7
 Belli Household,,1484 MILLIKIN PL NE,Warren,OH,44483,6
-Bellows Household,,182 HIGH ST NE APT 502,Warren,OH,44481,7
+Bellows Household,,182 HIGH ST NE UNIT 502,Warren,OH,44481,7
 Belmaggio Household,,2083 BEECHWOOD ST NE,Warren,OH,44483,7
 Belovich Household,,3317 BON AIR AVE NW,Warren,OH,44485,7
 Belser Household,,2857 RANDOLPH ST NW,Warren,OH,44485,7
@@ -202,7 +203,7 @@ Bernard Household,,820 MELWOOD DR NE,Warren,OH,44483,5
 Berresford Household,,707 PERKINSWOOD BLVD SE,Warren,OH,44483,6
 Bertleff Household,,1341 DREXEL AVE NW,Warren,OH,44485,8
 Bertuzzi Household,,369 HAZELWOOD AVE SE,Warren,OH,44483,10
-Beskid Household,,169 KENMORE AVE NE APT 311,Warren,OH,44483,6
+Beskid Household,,169 KENMORE AVE NE UNIT 311,Warren,OH,44483,6
 Bevan Household,,445 OAK KNOLL AVE NE,Warren,OH,44483,8
 Beyah Household,,1231 HIGHLAND AVE SW,Warren,OH,44485,10
 Beyah Household,,1555 DREXEL AVE NW,Warren,OH,44485,10
@@ -222,7 +223,7 @@ Bissett Household,,349 FOSTER DR NE,Warren,OH,44483,7
 Black Household,,1364 MILLIKIN PL NE,Warren,OH,44483,9
 Black Household,,1183 HARRISON ST NE,Warren,OH,44483,8
 Black Household,,131 LAIRD AVE NE,Warren,OH,44483,6
-Black Household,,259 PERKINSWOOD BLVD NE APT A11,Warren,OH,44483,6
+Black Household,,259 PERKINSWOOD BLVD NE UNIT A11,Warren,OH,44483,6
 Blackburn Household,,1221 PERKINSWOOD BLVD SE,Warren,OH,44484,9
 Blaine Household,,629 KINSMAN ST NW,Warren,OH,44483,10
 Blair Household,,792 BELVEDERE AVE SE,Warren,OH,44484,8
@@ -242,7 +243,7 @@ Blank Household,,791 ADELAIDE AVE NE,Warren,OH,44483,10
 Blazek Household,,155 OAK KNOLL AVE NE,Warren,OH,44483,5
 Bloomer Household,,1635 N PARK AVE,Warren,OH,44483,7
 Blose Household,,826 HOMEWOOD AVE SE,Warren,OH,44484,7
-Boardman Household,,1915 SOUTHERN BLVD NW APT 46,Warren,OH,44485,10
+Boardman Household,,1915 SOUTHERN BLVD NW UNIT 46,Warren,OH,44485,10
 Bobak Household,,1300 SURREY POINT DR SE,Warren,OH,44484,10
 Bobosh Household,,1338 OAKDALE DR NW,Warren,OH,44485,10
 Bock Household,,379 FOSTER DR NE,Warren,OH,44483,6
@@ -257,7 +258,7 @@ Bohanan Household,,750 FIFTH ST SW,Warren,OH,44485,9
 Bohyer Household,,148 ROYAL TROON DR SE,Warren,OH,44484,10
 Boich Household,,4053 SUNNYBROOK DR SE,Warren,OH,44484,10
 Bokone Household,,1440 SARKIES DR NE,Warren,OH,44483,7
-Bolen Household,,486 NORTH ST NW,Warren,OH,44483,5
+Bolen Household,,486 N ST NW,Warren,OH,44483,5
 Bolino Household,,501 BUTLER RD NE,Warren,OH,44483,10
 Bolino Household,,1837 BONNIE BRAE AVE NE,Warren,OH,44483,9
 Bolino Household,,427 FAIRWAY DR NE,Warren,OH,44483,7
@@ -293,12 +294,12 @@ Braden Household,,1909 ROBERTS LN NE,Warren,OH,44483,8
 Bradley Household,,2214 RISHER RD SW,Warren,OH,44485,10
 Bradley Household,,1320 FOURTH DR SW UNIT 204,Warren,OH,44485,8
 Bradley Household,,1562 EDGEHILL AVE SE,Warren,OH,44484,7
-Bradley Household,,423 SOUTHERN BLVD NW APT 307,Warren,OH,44485,7
+Bradley Household,,423 SOUTHERN BLVD NW UNIT 307,Warren,OH,44485,7
 Brady Household,,2256 MILTON ST SE,Warren,OH,44484,10
 Brady Household,,906 LOVERS LN NW,Warren,OH,44485,9
 Brainard Household,,359 KENILWORTH AVE SE,Warren,OH,44483,7
 Brandon Household,,1314 SOUTHERN BLVD NW,Warren,OH,44485,10
-Brandon Household,,3214 NORTHWEST BLVD NW,Warren,OH,44485,10
+Brandon Household,,3214 NW BLVD NW,Warren,OH,44485,10
 Brannan Household,,2022 PARKWOOD DR NW,Warren,OH,44485,8
 Brant Household,,1534 WOODLAND AVE NE,Warren,OH,44483,8
 Brantingham Household,,1880 NORTHFIELD AVE NW,Warren,OH,44485,8
@@ -310,7 +311,7 @@ Breese Household,,508 IDYLWILD ST NW,Warren,OH,44483,7
 Brekoski Household,,277 MARWOOD AVE SE,Warren,OH,44484,9
 Bremigan Household,,2037 WOODLAND AVE NE,Warren,OH,44483,7
 Brewster Household,,1766 HOLLYWOOD ST NE,Warren,OH,44483,7
-Brials Household,,1415 BLAKELY CIR SW APT 703,Warren,OH,44485,8
+Brials Household,,1415 BLAKELY CIR SW UNIT 703,Warren,OH,44485,8
 Brightwell Household,,3105 OVERLOOK DR NE,Warren,OH,44483,8
 Brinson Household,,2825 CHOCTAW ST SW,Warren,OH,44485,8
 Britton Household,,421 TOD AVE SW,Warren,OH,44485,10
@@ -323,7 +324,7 @@ Bronson Household,,607 TRUMBULL AVE SE,Warren,OH,44484,7
 Brooks Household,,1737 OAKDALE DR NW,Warren,OH,44485,10
 Brooks Household,,291 THIRD ST SW,Warren,OH,44483,10
 Brothers Household,,2950 CRESCENT DR NE,Warren,OH,44483,9
-Brown Household,,310 PERKINSWOOD BLVD SE APT A,Warren,OH,44483,10
+Brown Household,,310 PERKINSWOOD BLVD SE UNIT A,Warren,OH,44483,10
 Brown Household,,711 OAK KNOLL AVE NE,Warren,OH,44483,10
 Brown Household,,348 WILLARD AVE NE,Warren,OH,44483,10
 Brown Household,,2975 REGAL DR NW,Warren,OH,44485,10
@@ -341,14 +342,14 @@ Brown Household,,365 GENESEE AVE NE,Warren,OH,44483,8
 Brown Household,,2959 REGAL DR NW,Warren,OH,44485,8
 Brown Household,,1430 BLAKELY CIR SW UNIT 503,Warren,OH,44485,7
 Brown Household,,1887 MONTICELLO AVE NW,Warren,OH,44485,7
-Brown Household,,1380 ARBOR AVE SE APT 704,Warren,OH,44484,7
+Brown Household,,1380 ARBOR AVE SE UNIT 704,Warren,OH,44484,7
 Brown Household,,3860 NORTHWOODS CT NE UNIT 5,Warren,OH,44483,6
 Brown Household,,414 AUSTIN AVE SW,Warren,OH,44485,6
 Brown Household,,1137 BELVEDERE AVE SE,Warren,OH,44484,6
-Brown Household,,259 PERKINSWOOD BLVD NE APT B14,Warren,OH,44483,6
+Brown Household,,259 PERKINSWOOD BLVD NE UNIT B14,Warren,OH,44483,6
 Brown Household,,1191 TOD AVE SW,Warren,OH,44485,6
 Brown Household,,2700 CITADEL DR NE,Warren,OH,44483,5
-Browning Household,,2975 SEDGEWICK ST NE APT 195,Warren,OH,44483,10
+Browning Household,,2975 SEDGEWICK ST NE UNIT 195,Warren,OH,44483,10
 Brummer Household,,1826 JEFFERSON ST SW,Warren,OH,44485,7
 Bruner Household,,3241 RANDOLPH ST NW,Warren,OH,44485,10
 Brunstetter Household,,3106 TOD AVE NW,Warren,OH,44485,8
@@ -362,10 +363,9 @@ Bubba Household,,1976 OAKDALE DR NW,Warren,OH,44485,9
 Bubon Household,,1047 RIVERVIEW ST NW,Warren,OH,44485,7
 Bucci Household,,1647 WILSON AVE NW,Warren,OH,44483,8
 Buch Household,,730 LAIRD AVE NE,Warren,OH,44483,7
-Buchanan Household,,3870 NORTHWOODS CT NE APT 2,Warren,OH,44483,7
 Buchanan Household,,3870 NORTHWOODS CT NE UNIT 2,Warren,OH,44483,7
-Bucklew Household,,2300 PLAZA AVE NE APT 708,Warren,OH,44483,7
-Buday Household,,3861 NORTHWOODS CT NE APT 3,Warren,OH,44483,10
+Bucklew Household,,2300 PLAZA AVE NE UNIT 708,Warren,OH,44483,7
+Buday Household,,3861 NORTHWOODS CT NE UNIT 3,Warren,OH,44483,10
 Buehrle Household,,397 EASTLAND AVE SE,Warren,OH,44483,9
 Bufano Household,,2966 BEAL ST NW,Warren,OH,44485,8
 Buffone Household,,1747 HAMILTON ST SW,Warren,OH,44485,7
@@ -377,18 +377,18 @@ Bumgardner Household,,330 ELVINA ST,Leavittsburg,OH,44430,7
 Bunch Household,,2070 PALMYRA RD SW,Warren,OH,44485,7
 Buncic Household,,736 TRUMBULL AVE SE,Warren,OH,44484,6
 Bundy Household,,1726 MONCREST DR NW,Warren,OH,44485,6
-Burd Household,,3200 LODWICK DR NW APT 6,Warren,OH,44485,7
+Burd Household,,3200 LODWICK DR NW UNIT 6,Warren,OH,44485,7
 Burd Household,,367 WOODBINE AVE SE,Warren,OH,44483,6
 Burin Household,,136 ROYAL TROON DR SE,Warren,OH,44484,9
 Burk Household,,1076 PERKINSWOOD BLVD SE,Warren,OH,44484,7
-Burks Household,,3745 E MARKET ST APT 210,Warren,OH,44484,10
+Burks Household,,3745 E MARKET ST UNIT 210,Warren,OH,44484,10
 Burney Household,,2803 CITADEL DR NE,Warren,OH,44483,7
 Burns Household,,1983 STEWART DR NW,Warren,OH,44485,10
-Burns Household,,4275 BERKSHIRE DR SE APT 7,Warren,OH,44484,6
+Burns Household,,4275 BERKSHIRE DR SE UNIT 7,Warren,OH,44484,6
 Burtt Household,,2212 COLONIAL ST SE,Warren,OH,44484,7
 Bush Household,,289 BUTLER RD NE,Warren,OH,44483,9
 Bush Household,,4647 ELM ST,Leavittsburg,OH,44430,6
-Bush Household,,1340 MAHONING AVE NW APT 202,Warren,OH,44483,5
+Bush Household,,1340 MAHONING AVE NW UNIT 202,Warren,OH,44483,5
 Busko Household,,2830 REEVES RD NE,Warren,OH,44483,10
 Busko Household,,1309 ARTHUR DR NW,Warren,OH,44485,10
 Butchko Household,,355 MEADOWBROOK AVE SE,Warren,OH,44483,6
@@ -402,10 +402,10 @@ Buydos Household,,2637 BECK ST SE,Warren,OH,44484,5
 Byland Household,,1681 BONNIE BRAE AVE NE,Warren,OH,44483,8
 Byrd Household,,1043 WILLARD AVE SE,Warren,OH,44484,10
 Byrd Household,,1780 OAKDALE DR NW,Warren,OH,44485,9
-Byrd Household,,3000 MEADOW LN NE APT 203,Warren,OH,44483,8
+Byrd Household,,3000 MEADOW LN NE UNIT 203,Warren,OH,44483,8
 Cade Household,,1690 JACKSON ST SW,Warren,OH,44485,10
 Caffie Household,,1179 ORLO ST NW,Warren,OH,44485,8
-Cage Household,,1220 NORTH RD NE,Warren,OH,44483,10
+Cage Household,,1220 N RD NE,Warren,OH,44483,10
 Calderas Household,,1357 WOODLAND AVE NE,Warren,OH,44483,7
 Caldwell Household,,176 BONNIE BRAE AVE NE,Warren,OH,44483,9
 Callahan Household,,3129 FOSTER DR NE,Warren,OH,44483,9
@@ -451,7 +451,7 @@ Carter Household,,2072 STEWART DR NW,Warren,OH,44485,10
 Carter Household,,414 MARYLAND ST NE,Warren,OH,44483,9
 Cartino Household,,476 PERKINSWOOD BLVD SE,Warren,OH,44483,9
 Carvin Household,,649 PERKINS DR NW,Warren,OH,44483,10
-Casey Household,,199 WILLARD AVE SE APT B,Warren,OH,44483,8
+Casey Household,,199 WILLARD AVE SE UNIT B,Warren,OH,44483,8
 Cassidy Household,,477 TRUMBULL AVE SE,Warren,OH,44483,10
 Castellano Household,,2651 GRANDVIEW ST SE,Warren,OH,44483,5
 Catheline Household,,2787 CITADEL DR NE,Warren,OH,44483,5
@@ -482,7 +482,7 @@ Christy Household,,2703 REEVES RD NE,Warren,OH,44483,9
 Christy Household,,1209 GUARNIERI DR NE,Warren,OH,44483,7
 Chucksa Household,,2771 LEXINGTON AVE NW,Warren,OH,44485,8
 Chucksa Household,,3950 LONGHILL DR SE,Warren,OH,44484,6
-Chuppa Household,,2284 NORTHWEST BLVD NW,Warren,OH,44485,6
+Chuppa Household,,2284 NW BLVD NW,Warren,OH,44485,6
 Church Household,,936 MARYLAND ST NW,Warren,OH,44483,9
 Cicero Household,,3020 REEVES RD NE,Warren,OH,44483,7
 Cicero Household,,1010 FAIRWAY CT NE,Warren,OH,44483,6
@@ -490,15 +490,15 @@ Cickelli Household,,709 GENESEE AVE NE,Warren,OH,44483,8
 Ciferno Household,,1435 ATLANTIC ST NE,Warren,OH,44483,6
 Claar Household,,2670 ATLANTIC ST NE,Warren,OH,44483,9
 Claiborne Household,,609 ATLANTIC ST NE,Warren,OH,44483,8
-Clapper Household,,4395 BERKSHIRE DR SE APT 4,Warren,OH,44484,8
-Clark Household,,1341 BLAKELY CIR SW APT 304,Warren,OH,44485,8
+Clapper Household,,4395 BERKSHIRE DR SE UNIT 4,Warren,OH,44484,8
+Clark Household,,1341 BLAKELY CIR SW UNIT 304,Warren,OH,44485,8
 Clark Household,,853 FOURTH ST SW,Warren,OH,44483,7
 Clark Household,,417 ROSELAWN AVE NE,Warren,OH,44483,7
 Clark Household,,1544 DREXEL AVE NW,Warren,OH,44485,7
 Clark Household,,1640 MAHONING AVE NW,Warren,OH,44483,6
 Clarke Household,,1409 LOVERS LN NW,Warren,OH,44485,6
 Clarke Household,,1509 PALMYRA RD SW,Warren,OH,44485,5
-Clay Household,,225 NORTH ST NW,Warren,OH,44483,8
+Clay Household,,225 N ST NW,Warren,OH,44483,8
 Clay Household,,1148 WARD ST NW,Warren,OH,44485,6
 Clayton Household,,2022 VERNON AVE NW,Warren,OH,44483,6
 Clemens Household,,351 MARWOOD AVE SE,Warren,OH,44484,10
@@ -512,20 +512,20 @@ Cobb Household,,749 MAPLE ST SW,Warren,OH,44485,6
 Cocke Household,,1222 HARVARD DR SE,Warren,OH,44484,9
 Code Household,,712 KENILWORTH AVE NE,Warren,OH,44483,6
 Coe Household,,2111 NORTHFIELD AVE NW,Warren,OH,44485,10
-Coker Household,,476 LANE DR SW,Warren,OH,44483,10
+Coker Household,,476 LN DR SW,Warren,OH,44483,10
 Coker Household,,621 MAPLE ST SW,Warren,OH,44485,10
 Coker Household,,417 SECOND ST SW,Warren,OH,44483,6
 Cokrlic Household,,4190 TOD AVE NW,Warren,OH,44485,9
 Cola Household,,3216 SURREY RD SE,Warren,OH,44484,9
 Cole Household,,127 BONNIE BRAE AVE NE,Warren,OH,44483,6
 Coleman Household,,833 MAPLE ST SW,Warren,OH,44485,10
-Coleman Household,,2820 NORTHWEST BLVD NW,Warren,OH,44485,10
+Coleman Household,,2820 NW BLVD NW,Warren,OH,44485,10
 Coleman Household,,2882 RANDOLPH ST NW,Warren,OH,44485,9
 Coleman Household,,2858 DUNSTAN DR NW,Warren,OH,44485,9
 Coleman Household,,973 BROADACRES DR SE,Warren,OH,44484,8
 Coleman Household,,1333 HIGHLAND AVE SW,Warren,OH,44485,7
 Coleman Household,,1726 WESTWOOD DR NW,Warren,OH,44485,7
-Coleman Household,,1530 VERNON AVE NW APT A,Warren,OH,44483,6
+Coleman Household,,1530 VERNON AVE NW UNIT A,Warren,OH,44483,6
 Collazo Household,,318 WAINWOOD DR SE,Warren,OH,44484,6
 Colson Household,,1637 ELM RD NE,Warren,OH,44483,9
 Columbia Household,,646 DICKEY AVE NW,Warren,OH,44485,7
@@ -542,7 +542,7 @@ Consoldane Household,,704 WILLOW BROOK DR NE,Warren,OH,44483,5
 Conway Household,,1001 WILLOW BROOK DR NE,Warren,OH,44483,10
 Cook Household,,1931 DREXEL AVE NW,Warren,OH,44485,10
 Cook Household,,845 KENMORE AVE SE,Warren,OH,44484,10
-Cook Household,,169 KENMORE AVE NE APT 309,Warren,OH,44483,8
+Cook Household,,169 KENMORE AVE NE UNIT 309,Warren,OH,44483,8
 Cook Household,,415 TRUMBULL AVE SE,Warren,OH,44483,6
 Cook Household,,750 MAHONING AVE NW,Warren,OH,44483,5
 Cooke Household,,909 MARTIN LUTHER KING BLVD SW,Warren,OH,44485,7
@@ -563,7 +563,7 @@ Costanza Household,,630 ADELAIDE AVE NE,Warren,OH,44483,6
 Costello Household,,725 KENILWORTH AVE SE,Warren,OH,44484,8
 Costilow Household,,1016 PAIGE AVE NE,Warren,OH,44483,6
 Coulter Household,,2727 BEAL ST NW,Warren,OH,44485,10
-Courim Household,,4350 BERKSHIRE DR SE APT 304,Warren,OH,44484,6
+Courim Household,,4350 BERKSHIRE DR SE UNIT 304,Warren,OH,44484,6
 Covelli Household,,220 COUNTRY CLUB LN NE,Warren,OH,44484,6
 Cox Calloway Household,,2791 LEXINGTON AVE NW,Warren,OH,44485,10
 Cox Household,,1771 NORWOOD ST NW,Warren,OH,44485,10
@@ -588,7 +588,7 @@ Crusan Household,,815 TERRA ALTA ST NE,Warren,OH,44483,6
 Csehill Household,,1941 OAKDALE DR NW,Warren,OH,44485,9
 Culbert Household,,2319 HAMILTON ST SW,Warren,OH,44485,9
 Cullins Household,,1614 ADELAIDE AVE SE,Warren,OH,44484,7
-Cummings Household,,1420 FOURTH DR SW APT 1302,Warren,OH,44485,10
+Cummings Household,,1420 FOURTH DR SW UNIT 1302,Warren,OH,44485,10
 Cummins Household,,3906 TOD AVE NW,Warren,OH,44485,9
 Cunningham Household,,1194 SOUTHERN BLVD NW,Warren,OH,44485,10
 Cunningham Household,,674 PORTER ST NE,Warren,OH,44483,9
@@ -625,17 +625,17 @@ Daugherty Household,,663 MELWOOD DR NE,Warren,OH,44483,10
 Daugherty Household,,203 KENMORE AVE NE,Warren,OH,44483,10
 Daugherty Household,,2813 WOODLAND AVE NE,Warren,OH,44483,9
 Daugherty Household,,257 PARKMAN RD NW,Warren,OH,44485,5
-Davenport Household,,3141 LODWICK DR NW APT 5,Warren,OH,44485,10
+Davenport Household,,3141 LODWICK DR NW UNIT 5,Warren,OH,44485,10
 Davenport Household,,1409 WOODLAND AVE NE,Warren,OH,44483,9
-Davenport Household,,2295 NORTHWEST BLVD NW,Warren,OH,44485,6
+Davenport Household,,2295 NW BLVD NW,Warren,OH,44485,6
 Davenport Lampkin Household,,2445 WICK ST SE,Warren,OH,44484,9
 Davie Household,,1421 FOURTH DR SW UNIT 1106,Warren,OH,44485,10
 Davie Household,,724 MAPLE ST SW,Warren,OH,44485,9
 Davis Household,,788 PERKINSWOOD BLVD NE,Warren,OH,44483,10
 Davis Household,,3270 RISHER RD SW,Warren,OH,44481,10
-Davis Household,,3000 BURTON ST SE APT 20,Warren,OH,44484,9
+Davis Household,,3000 BURTON ST SE UNIT 20,Warren,OH,44484,9
 Davis Household,,2142 PARKMAN RD NW,Warren,OH,44485,9
-Davis Household,,1380 ARBOR AVE SE APT 508,Warren,OH,44484,9
+Davis Household,,1380 ARBOR AVE SE UNIT 508,Warren,OH,44484,9
 Davis Household,,1190 CENTRAL PARKWAY AVE SE,Warren,OH,44484,9
 Davis Household,,434 WASHINGTON ST NE,Warren,OH,44483,9
 Davis Household,,3841 NORTHWOODS CT NE UNIT 2,Warren,OH,44483,8
@@ -665,14 +665,14 @@ Deak Household,,180 COUNTRY CLUB DR SE,Warren,OH,44484,8
 Deal Household,,473 SCOTT ST NE,Warren,OH,44483,7
 Dean Household,,2846 PARKMAN RD NW,Warren,OH,44485,9
 Dean Household,,1028 WOODVIEW AVE SW,Warren,OH,44485,6
-Decapito Household,,169 KENMORE AVE NE APT 301,Warren,OH,44483,8
+Decapito Household,,169 KENMORE AVE NE UNIT 301,Warren,OH,44483,8
 Decapito Household,,530 PERKINS DR NW,Warren,OH,44483,7
 Decapito Household,,305 BROADWAY AVE SE,Warren,OH,44484,7
 Decaria Household,,725 PERKINSWOOD BLVD SE,Warren,OH,44483,10
 Decavitch Household,,820 OAK KNOLL AVE NE,Warren,OH,44483,10
-Deckerhoff Household,,182 HIGH ST NE APT 106,Warren,OH,44481,9
+Deckerhoff Household,,182 HIGH ST NE UNIT 106,Warren,OH,44481,9
 Decree Household,,1031 MAIN AVE SW,Warren,OH,44483,9
-Defoor Household,,4350 BERKSHIRE DR SE APT 209,Warren,OH,44484,7
+Defoor Household,,4350 BERKSHIRE DR SE UNIT 209,Warren,OH,44484,7
 Degross Household,,3108 RANDOLPH ST NW,Warren,OH,44485,8
 Dejacimo Household,,1040 FAIRWAY CT NE,Warren,OH,44483,8
 Dejacimo Household,,202 WILLOW BROOK DR NE,Warren,OH,44483,5
@@ -689,7 +689,7 @@ Dennison Household,,809 WILLARD AVE NE,Warren,OH,44483,9
 Denno Household,,380 QUARRY LN NE UNIT F,Warren,OH,44483,9
 Denson Household,,3321 LYNWOOD DR NW,Warren,OH,44485,7
 Dermott Household,,4101 GREENMONT DR SE,Warren,OH,44484,6
-Desalvo Household,,148 BROADWAY AVE SE APT 4,Warren,OH,44484,8
+Desalvo Household,,148 BROADWAY AVE SE UNIT 4,Warren,OH,44484,8
 Desalvo Household,,148 BROADWAY AVE SE,Warren,OH,44484,6
 Desanti Household,,2023 MONTCLAIR ST NE,Warren,OH,44483,10
 Desanti Household,,1618 VERNON AVE NW,Warren,OH,44483,6
@@ -710,7 +710,7 @@ Dickson Household,,3131 OVERLOOK DR NE,Warren,OH,44483,10
 Diehl Household,,3045 FOSTER DR NE,Warren,OH,44483,7
 Diggs Household,,730 BONNIE BRAE AVE NE,Warren,OH,44483,10
 Dignan Household,,464 BUTLER RD NE,Warren,OH,44483,6
-Dillard Household,,3342 LODWICK DR NW APT 2,Warren,OH,44485,6
+Dillard Household,,3342 LODWICK DR NW UNIT 2,Warren,OH,44485,6
 Dillard Household,,3342 LODWICK DR NW,Warren,OH,44485,6
 Dines Household,,1708 SUNSET DR NE,Warren,OH,44483,8
 Dippolito Household,,1563 ARTHUR DR NW,Warren,OH,44485,7
@@ -733,7 +733,7 @@ Dorsey Household,,4075 CHEVELLE DR SE,Warren,OH,44484,8
 Dorsey Household,,2454 PALMYRA RD SW,Warren,OH,44481,7
 Dotson Household,,1720 JACKSON ST SW,Warren,OH,44485,7
 Dotson Household,,965 SOUTHERN BLVD NW,Warren,OH,44485,6
-Doughty Household,,1380 ARBOR AVE SE APT 511,Warren,OH,44484,7
+Doughty Household,,1380 ARBOR AVE SE UNIT 511,Warren,OH,44484,7
 Douglas Household,,1430 BLAKELY CIR SW UNIT 501,Warren,OH,44485,10
 Douglas Household,,3871 NORTHWOODS CT NE UNIT 6,Warren,OH,44483,7
 Douglas Household,,1142 ORLO ST NW,Warren,OH,44485,7
@@ -744,7 +744,7 @@ Dowell Household,,687 HALL ST NW,Warren,OH,44483,7
 Downing Household,,1754 MAPLEWOOD ST NE,Warren,OH,44483,7
 Drabek Household,,1844 HOLLYWOOD ST NE,Warren,OH,44483,6
 Drake Household,,2822 RANDOLPH ST NW,Warren,OH,44485,8
-Dreher Household,,786 NORTH RD SE,Warren,OH,44484,6
+Dreher Household,,786 N RD SE,Warren,OH,44484,6
 Dreier Household,,3902 LONGHILL DR SE,Warren,OH,44484,10
 Droba Household,,291 GOLF DR NE,Warren,OH,44483,10
 Drum Household,,968 LANDSDOWNE AVE NW,Warren,OH,44485,8
@@ -759,7 +759,7 @@ Dunn Household,,907 HAZELWOOD AVE SE,Warren,OH,44484,7
 Dunn Household,,1190 SUMMIT ST NW,Warren,OH,44485,7
 Dunn Household,,1221 GUARNIERI DR NE,Warren,OH,44483,6
 Duran Household,,1230 WILLARD AVE SE,Warren,OH,44484,7
-Duritsa Household,,1380 ARBOR AVE SE APT 601,Warren,OH,44484,6
+Duritsa Household,,1380 ARBOR AVE SE UNIT 601,Warren,OH,44484,6
 Durst Household,,353 GENESEE AVE NE,Warren,OH,44483,9
 Dye Household,,1125 PERKINSWOOD BLVD SE,Warren,OH,44484,9
 Dyer Household,,1417 DREXEL AVE NW,Warren,OH,44485,9
@@ -771,7 +771,7 @@ Ebben Household,,459 KENILWORTH AVE SE,Warren,OH,44483,7
 Eberle Household,,184 HAZELWOOD AVE SE,Warren,OH,44483,10
 Echols Household,,1940 ROGERS AVE SE,Warren,OH,44484,6
 Eckard Household,,1425 STAFFORD DR NE,Warren,OH,44483,8
-Eckroate Household,,1380 ARBOR AVE SE APT 510,Warren,OH,44484,7
+Eckroate Household,,1380 ARBOR AVE SE UNIT 510,Warren,OH,44484,7
 Economos Household,,1835 EDGEWOOD ST NE,Warren,OH,44483,9
 Economos Household,,170 KENMORE AVE SE,Warren,OH,44483,8
 Edmonds Household,,230 WASHINGTON ST NW,Warren,OH,44483,10
@@ -792,7 +792,7 @@ Elliott Household,,1335 FRONT ST SW,Warren,OH,44485,7
 Ellis Household,,2059 GENOA AVE NW,Warren,OH,44483,10
 Ellis Household,,1062 RIVERVIEW ST NW,Warren,OH,44485,6
 Elwood Household,,727 HAZELWOOD AVE SE,Warren,OH,44484,7
-Elzy Household,,3221 LODWICK DR NW APT 3,Warren,OH,44485,8
+Elzy Household,,3221 LODWICK DR NW UNIT 3,Warren,OH,44485,8
 Elzy Household,,936 TRUXTON ST NE,Warren,OH,44483,8
 Emerson Household,,1956 WESTWOOD DR NW,Warren,OH,44485,10
 Engelhardt Household,,328 SCOTT ST NE,Warren,OH,44483,7
@@ -803,18 +803,18 @@ Enyings Household,,1808 BEECHWOOD ST NE,Warren,OH,44483,6
 Ervin Household,,952 STILES ST NW,Warren,OH,44485,8
 Ervin Household,,631 MAPLE ST SW,Warren,OH,44485,6
 Estes Household,,672 PERKINS DR NW,Warren,OH,44483,8
-Estright Household,,305 HARMON AVE NW APT 203,Warren,OH,44483,10
+Estright Household,,305 HARMON AVE NW UNIT 203,Warren,OH,44483,10
 Evans Household,,2925 BEAL ST NW,Warren,OH,44485,9
 Evans Household,,2460 BRIER ST SE,Warren,OH,44484,8
-Evans Household,,1792 CRANBERRY LN NE APT 178,Warren,OH,44483,8
+Evans Household,,1792 CRANBERRY LN NE UNIT 178,Warren,OH,44483,8
 Evans Household,,2427 BEAL ST NW,Warren,OH,44485,8
 Evans Household,,1107 EASTLAND AVE SE,Warren,OH,44484,8
 Evans Household,,622 TOD AVE NW,Warren,OH,44485,8
 Evans Household,,1358 LARCHMONT AVE NE,Warren,OH,44483,6
-Evans Household,,2436 NORTHWEST BLVD NW,Warren,OH,44485,6
+Evans Household,,2436 NW BLVD NW,Warren,OH,44485,6
 Evans Household,,1736 OAKDALE DR NW,Warren,OH,44485,5
 Evans Household,,634 UNION ST SW,Warren,OH,44485,5
-Fabian Household,,700 BUCKEYE ST NW APT 405,Warren,OH,44485,6
+Fabian Household,,700 BUCKEYE ST NW UNIT 405,Warren,OH,44485,6
 Fairchild Household,,451 WHITE CT SW,Warren,OH,44485,8
 Fairchild Household,,1049 KENMORE AVE SE,Warren,OH,44484,6
 Farsetti Household,,626 W PARK DR SW,Warren,OH,44485,7
@@ -822,7 +822,7 @@ Fasulo Household,,133 LINDEN AVE SE,Warren,OH,44483,10
 Faulk Household,,235 PERKINSWOOD BLVD SE,Warren,OH,44483,10
 Faulkner Household,,2798 RANDOLPH ST NW,Warren,OH,44485,7
 Faull Household,,647 TRUMBULL AVE SE,Warren,OH,44484,8
-Faur Household,,169 KENMORE AVE NE APT 107,Warren,OH,44483,9
+Faur Household,,169 KENMORE AVE NE UNIT 107,Warren,OH,44483,9
 Fauvie Household,,1391 MEADOWBROOK AVE SE,Warren,OH,44484,9
 Fechter Household,,1517 WESTWOOD DR NW,Warren,OH,44485,7
 Fell Household,,710 ADELAIDE AVE NE,Warren,OH,44483,10
@@ -861,7 +861,7 @@ Fleischer Household,,1171 SURREY POINT DR SE,Warren,OH,44484,5
 Flenoury Household,,3199 ARIS ST NW,Warren,OH,44485,8
 Flick Household,,722 BELVEDERE AVE NE,Warren,OH,44483,10
 Flight Household,,1026 GARDEN ST NW,Warren,OH,44485,7
-Flint Household,,3820 NORTHWOODS CT NE APT 4,Warren,OH,44483,9
+Flint Household,,3820 NORTHWOODS CT NE UNIT 4,Warren,OH,44483,9
 Flowers Household,,707 PAIGE AVE NE,Warren,OH,44483,7
 Flowers Household,,686 CENTRAL PARKWAY AVE SE,Warren,OH,44484,6
 Floyd Household,,1231 ROGERS AVE SE,Warren,OH,44484,5
@@ -885,12 +885,12 @@ Fox Household,,1809 COVENTRY AVE NE,Warren,OH,44483,10
 Fraction Household,,1115 ATLANTIC ST NE,Warren,OH,44483,8
 Frame Household,,1631 BONNIE BRAE AVE NE,Warren,OH,44483,7
 Francis Household,,4121 GREENMONT DR SE,Warren,OH,44484,6
-Francois Household,,1380 ARBOR AVE SE APT 310,Warren,OH,44484,6
+Francois Household,,1380 ARBOR AVE SE UNIT 310,Warren,OH,44484,6
 Franklin Household,,698 REX BLVD NW,Warren,OH,44483,10
-Franklin Household,,3345 NORTHWEST BLVD NW,Warren,OH,44485,8
+Franklin Household,,3345 NW BLVD NW,Warren,OH,44485,8
 Franklin Household,,3074 ARIS ST NW,Warren,OH,44485,7
-Franklin Household,,2931 RED FOX RUN DR NW APT 688,Warren,OH,44485,7
-Franklin Household,,3121 LODWICK DR NW APT 3,Warren,OH,44485,5
+Franklin Household,,2931 RED FOX RUN DR NW UNIT 688,Warren,OH,44485,7
+Franklin Household,,3121 LODWICK DR NW UNIT 3,Warren,OH,44485,5
 Frankos Household,,336 WAINWOOD DR SE,Warren,OH,44484,5
 Franks Household,,882 EASTLAND AVE SE,Warren,OH,44484,7
 Frantz Household,,2371 LINDA DR NW,Warren,OH,44485,10
@@ -922,7 +922,7 @@ Fulton Household,,3244 RANDOLPH ST NW,Warren,OH,44485,10
 Funtulis Household,,1165 MILLIKIN PL NE,Warren,OH,44483,9
 Gadson Household,,1640 JACKSON ST SW,Warren,OH,44485,10
 Gall Household,,653 OAK KNOLL AVE NE,Warren,OH,44483,10
-Gall Household,,1981 PARKMAN RD NW APT 3,Warren,OH,44485,6
+Gall Household,,1981 PARKMAN RD NW UNIT 3,Warren,OH,44485,6
 Gamble Household,,755 THIRD ST SW,Warren,OH,44483,8
 Games Household,,2420 STEWART DR NW,Warren,OH,44485,9
 Ganard Household,,415 KENMORE AVE SE,Warren,OH,44483,6
@@ -952,7 +952,7 @@ Gibson Browning Household,,447 PENN AVE NW,Warren,OH,44485,7
 Gibson Household,,442 FAIRWAY DR NE,Warren,OH,44483,10
 Gideon Household,,1935 SHERIDAN AVE NE,Warren,OH,44483,7
 Gigliotti Household,,3914 TOD AVE NW,Warren,OH,44485,10
-Gilbert Household,,3743 E MARKET ST APT 206,Warren,OH,44484,8
+Gilbert Household,,3743 E MARKET ST UNIT 206,Warren,OH,44484,8
 Gill Household,,404 WILLOW BROOK DR NE,Warren,OH,44483,10
 Gill Household,,827 HAZELWOOD AVE SE,Warren,OH,44484,9
 Gill Household,,225 LOGAN AVE SE,Warren,OH,44483,8
@@ -970,15 +970,15 @@ Giourgalis Household,,1810 SUNSET DR NE,Warren,OH,44483,6
 Gipson Household,,1753 DENISON AVE NW,Warren,OH,44485,7
 Gisewhite Household,,174 BELVEDERE AVE SE,Warren,OH,44483,7
 Given Household,,2151 NORTHFIELD AVE NW,Warren,OH,44485,5
-Gizzi Household,,1340 MAHONING AVE NW APT 123,Warren,OH,44483,6
-Glaros King Household,,938 NORTH RD SE,Warren,OH,44484,10
+Gizzi Household,,1340 MAHONING AVE NW UNIT 123,Warren,OH,44483,6
+Glaros King Household,,938 N RD SE,Warren,OH,44484,10
 Glaspell Household,,1523 SHERIDAN AVE NE,Warren,OH,44483,7
 Glass Household,,325 OAK KNOLL AVE SE,Warren,OH,44483,7
 Glaze Household,,1501 BIRCH RUN DR NE,Warren,OH,44483,9
 Gleason Household,,2239 STEPHENS AVE NW,Warren,OH,44485,7
 Gleichsner Household,,391 KENMORE AVE NE,Warren,OH,44483,7
 Glenn Household,,183 HOMEWOOD AVE SE,Warren,OH,44483,7
-Glenn Household,,2501 PARKMAN RD NW APT 216,Warren,OH,44485,6
+Glenn Household,,2501 PARKMAN RD NW UNIT 216,Warren,OH,44485,6
 Glover Household,,2044 FERNDALE AVE SW,Warren,OH,44485,7
 Glowacki Household,,1410 SURREY POINT CIR SE,Warren,OH,44484,9
 Goblinger Household,,1305 TRUMBULL AVE SE,Warren,OH,44484,6
@@ -989,7 +989,7 @@ Goldner Household,,507 YORK AVE NW,Warren,OH,44485,10
 Goldsberry Household,,4252 CANDLELIGHT DR SE,Warren,OH,44484,6
 Golen Household,,609 OAK KNOLL AVE NE,Warren,OH,44483,9
 Goliday Household,,3006 REGAL DR NW,Warren,OH,44485,10
-Golidy Household,,1351 EDGEHILL AVE SE APT A,Warren,OH,44484,9
+Golidy Household,,1351 EDGEHILL AVE SE UNIT A,Warren,OH,44484,9
 Good Household,,209 BROADWAY AVE SE,Warren,OH,44484,6
 Goodhart Household,,425 EASTLAND AVE SE,Warren,OH,44483,6
 Goodman Household,,174 N PARK AVE,Warren,OH,44481,8
@@ -998,11 +998,11 @@ Gorby Household,,424 TRUMBULL AVE SE,Warren,OH,44483,9
 Gordon Household,,2608 HEATHER LN NW,Warren,OH,44485,10
 Gordon Household,,819 PAIGE AVE NE,Warren,OH,44483,5
 Gore Household,,1656 SOUTHERN BLVD NW,Warren,OH,44485,9
-Gorrell Household,,1340 MAHONING AVE NW APT 205,Warren,OH,44483,6
+Gorrell Household,,1340 MAHONING AVE NW UNIT 205,Warren,OH,44483,6
 Gorse Household,,2771 DARTMOOR DR NE,Warren,OH,44483,10
 Gorse Household,,2790 DARTMOOR DR NE,Warren,OH,44483,7
 Gorton Household,,3207 WILLIAMSBURG ST NW,Warren,OH,44485,7
-Gosnell Household,,3000 MEADOW LN NE APT 110,Warren,OH,44483,8
+Gosnell Household,,3000 MEADOW LN NE UNIT 110,Warren,OH,44483,8
 Gosnell Household,,442 CENTRAL PARKWAY AVE SE,Warren,OH,44483,7
 Gougler Household,,596 BELVEDERE AVE SE,Warren,OH,44483,10
 Grabosky Household,,1137 ROGERS AVE SE,Warren,OH,44484,8
@@ -1036,7 +1036,7 @@ Griffin Household,,3318 MERRIWEATHER ST NW,Warren,OH,44485,9
 Griffin Household,,2790 BEAL ST NW,Warren,OH,44485,6
 Griffin Household,,1911 DODGE DR NW,Warren,OH,44485,6
 Griffing Household,,4050 TOD AVE NW,Warren,OH,44485,10
-Griffing Household,,306 NORTH ST NW,Warren,OH,44483,7
+Griffing Household,,306 N ST NW,Warren,OH,44483,7
 Griffith Household,,325 MONROE ST NW UPPR,Warren,OH,44483,10
 Grimm Household,,1954 BONNIE BRAE AVE NE,Warren,OH,44483,6
 Groat Household,,2835 REEVES RD NE,Warren,OH,44483,6
@@ -1050,10 +1050,10 @@ Guerriero Household,,1699 OAKDALE DR NW,Warren,OH,44485,6
 Guliano Household,,413 BROADWAY AVE SE,Warren,OH,44484,10
 Gump Household,,449 GENESEE AVE NE,Warren,OH,44483,6
 Gunther Household,,1840 DEERFIELD AVE SW,Warren,OH,44485,8
-Guy Household,,2959 SEDGEWICK ST NE APT 201,Warren,OH,44483,6
-Gyongzois Household,,169 KENMORE AVE NE APT 306,Warren,OH,44483,8
+Guy Household,,2959 SEDGEWICK ST NE UNIT 201,Warren,OH,44483,6
+Gyongzois Household,,169 KENMORE AVE NE UNIT 306,Warren,OH,44483,8
 Gysegem Household,,1078 EASTLAND AVE SE,Warren,OH,44484,9
-Haas Household,,4350 BERKSHIRE DR SE APT 308,Warren,OH,44484,7
+Haas Household,,4350 BERKSHIRE DR SE UNIT 308,Warren,OH,44484,7
 Hackstedde Household,,1856 MAPLEWOOD ST NE,Warren,OH,44483,6
 Hadden Household,,2401 CRANWOOD DR SW,Warren,OH,44485,7
 Hadzigeorge Household,,1911 IRENE AVE NE,Warren,OH,44483,7
@@ -1064,7 +1064,7 @@ Hahn Household,,1654 DENISON AVE NW,Warren,OH,44485,7
 Hall Household,,1530 WESTVIEW DR NE,Warren,OH,44483,10
 Hall Household,,3512 LYNWOOD DR NW,Warren,OH,44485,10
 Hall Household,,202 WASHINGTON ST NW,Warren,OH,44483,8
-Hall Household,,1464 SOUTHWEST BLVD SW,Warren,OH,44485,7
+Hall Household,,1464 SW BLVD SW,Warren,OH,44485,7
 Hall Household,,760 TOD AVE SW,Warren,OH,44485,7
 Hall Household,,2872 CRESCENT DR NE,Warren,OH,44483,7
 Hall Household,,2722 CRESTWOOD DR NW,Warren,OH,44485,6
@@ -1076,7 +1076,7 @@ Hammercheck Household,,240 MARYLAND ST NE,Warren,OH,44483,10
 Hammercheck Household,,169 DOUGLAS ST NW,Warren,OH,44483,9
 Hampton Household,,449 HIGHLAND AVE SW,Warren,OH,44485,7
 Hamrick Household,,362 PARKMAN RD NW,Warren,OH,44485,8
-Hanawalt Household,,182 HIGH ST NE APT 605,Warren,OH,44481,5
+Hanawalt Household,,182 HIGH ST NE UNIT 605,Warren,OH,44481,5
 Hanna Household,,1061 CENTRAL PARKWAY AVE SE,Warren,OH,44484,8
 Hannan Household,,1145 MEADOWBROOK AVE SE,Warren,OH,44484,10
 Hanni Household,,3110 LYNWOOD DR NW,Warren,OH,44485,7
@@ -1086,10 +1086,10 @@ Harcarik Household,,1612 ARTHUR DR NW,Warren,OH,44485,10
 Hardesty Household,,1156 DODGE DR NW,Warren,OH,44485,6
 Hardman Household,,776 REX BLVD NW,Warren,OH,44483,10
 Hardman Household,,2045 CLERMONT AVE NE,Warren,OH,44483,9
-Hardman Household,,675 PERKINSWOOD BLVD SE APT B,Warren,OH,44483,9
-Hardway Household,,360 NORTH RD SE,Warren,OH,44484,9
+Hardman Household,,675 PERKINSWOOD BLVD SE UNIT B,Warren,OH,44483,9
+Hardway Household,,360 N RD SE,Warren,OH,44484,9
 Harford Household,,254 FAIRMOUNT AVE NE,Warren,OH,44483,8
-Hargrove Household,,3000 BURTON ST SE APT 4,Warren,OH,44484,8
+Hargrove Household,,3000 BURTON ST SE UNIT 4,Warren,OH,44484,8
 Harkins Household,,721 BONNIE BRAE AVE SE,Warren,OH,44484,8
 Harned Household,,1463 DEN JEAN DR NE,Warren,OH,44483,5
 Harrah Household,,786 HAZELWOOD AVE SE,Warren,OH,44484,7
@@ -1099,7 +1099,8 @@ Harris Household,,317 PERKINSWOOD BLVD NE,Warren,OH,44483,10
 Harris Household,,554 WILLARD AVE SE,Warren,OH,44483,10
 Harris Household,,1038 HOMEWOOD AVE SE,Warren,OH,44484,9
 Harris Household,,2781 DUNSTAN DR NW,Warren,OH,44485,7
-Harris Household,,2501 PARKMAN RD NW APT 122,Warren,OH,44485,5
+Harris Household,,2501 PARKMAN RD NW UNIT 122,Warren,OH,44485,5
+Harris Household,,2970 PARKMAN RD NW,Warren,OH,44485,5
 Harrison Household,,1405 EDGEWOOD ST NE,Warren,OH,44483,7
 Harrison Household,,1407 ATLANTIC ST NE,Warren,OH,44483,6
 Harsany Household,,2272 STEWART DR NW,Warren,OH,44485,7
@@ -1128,10 +1129,10 @@ Hazlette Household,,168 KENILWORTH AVE NE,Warren,OH,44483,10
 Heakin Household,,599 ADELAIDE AVE SE,Warren,OH,44483,7
 Heald Household,,379 QUARRY LN NE UNIT E,Warren,OH,44483,9
 Heckman Household,,1550 VERNON AVE NW,Warren,OH,44483,7
-Hedlund Household,,707 MAHONING AVE NW APT C,Warren,OH,44483,9
+Hedlund Household,,707 MAHONING AVE NW UNIT C,Warren,OH,44483,9
 Heeter Household,,833 HOLLYWOOD ST NE,Warren,OH,44483,8
 Heeter Household,,656 MAHONING AVE NW,Warren,OH,44483,5
-Heflin Household,,1361 BLAKELY CIR SW APT 801,Warren,OH,44485,6
+Heflin Household,,1361 BLAKELY CIR SW UNIT 801,Warren,OH,44485,6
 Heinzman Household,,2659 E MARKET ST,Warren,OH,44483,8
 Heitzenrater Household,,2887 DARTMOOR DR NE,Warren,OH,44483,7
 Heitzenrater Household,,722 GENESEE AVE NE,Warren,OH,44483,7
@@ -1139,7 +1140,7 @@ Heller Household,,3061 RED FOX RUN DR NW,Warren,OH,44485,9
 Heller Household,,336 THIRD ST SW,Warren,OH,44483,8
 Heller Household,,239 SPRING ST SW,Warren,OH,44485,5
 Henderson Household,,1391 EASTLAND AVE SE,Warren,OH,44484,7
-Henderson Household,,3000 BURTON ST SE APT 30,Warren,OH,44484,7
+Henderson Household,,3000 BURTON ST SE UNIT 30,Warren,OH,44484,7
 Henderson Household,,1460 MONCREST DR NW,Warren,OH,44485,7
 Henline Household,,1580 BONNIE BRAE AVE NE,Warren,OH,44483,9
 Hennen Household,,2627 CRESTWOOD DR NW,Warren,OH,44485,7
@@ -1155,11 +1156,11 @@ Hernon Household,,169 KENMORE AVE NE,Warren,OH,44483,8
 Herron Household,,1507 HOMEWOOD AVE SE,Warren,OH,44484,7
 Herron Household,,2950 CARLTON DR NW,Warren,OH,44485,6
 Hershberger Household,,369 KENILWORTH AVE SE,Warren,OH,44483,8
-Hess Household,,3145 NORTHWEST BLVD NW,Warren,OH,44485,10
+Hess Household,,3145 NW BLVD NW,Warren,OH,44485,10
 Hetmanski Household,,656 WILLARD AVE NE,Warren,OH,44483,5
 Hicks Household,,700 PERKINS DR NW,Warren,OH,44483,8
 Higham Household,,659 PERKINS DR NW,Warren,OH,44483,8
-Hilas Household,,2625 E MARKET ST APT 1,Warren,OH,44483,6
+Hilas Household,,2625 E MARKET ST UNIT 1,Warren,OH,44483,6
 Hildack Household,,737 BONNIE BRAE AVE NE,Warren,OH,44483,8
 Hill Household,,2358 PARKWOOD DR NW,Warren,OH,44485,10
 Hill Household,,2742 MILTON ST SE,Warren,OH,44484,10
@@ -1168,7 +1169,7 @@ Hill Household,,953 HIGHLAND AVE SW,Warren,OH,44485,10
 Hill Household,,151 IOWA AVE NW,Warren,OH,44485,9
 Hill Household,,1313 SURREY POINT DR SE,Warren,OH,44484,8
 Hill Household,,1149 BINGHAM AVE NW,Warren,OH,44485,8
-Hill Household,,1341 BLAKELY CIR SW APT 301,Warren,OH,44485,7
+Hill Household,,1341 BLAKELY CIR SW UNIT 301,Warren,OH,44485,7
 Hill Household,,2356 PALMYRA RD SW,Warren,OH,44481,6
 Hill Household,,1425 GENESEE AVE NE,Warren,OH,44483,6
 Hills Haney Household,,187 KENILWORTH AVE NE,Warren,OH,44483,6
@@ -1180,8 +1181,8 @@ Hipple Household,,3809 GREENMONT DR SE,Warren,OH,44484,6
 Hites Household,,636 W PARK DR SW,Warren,OH,44485,6
 Hivick Household,,1041 TRUMBULL AVE SE,Warren,OH,44484,7
 Hlad Household,,2800 CITADEL DR NE,Warren,OH,44483,7
-Hlad Household,,169 KENMORE AVE NE APT 307,Warren,OH,44483,6
-Hoagland Household,,2325 PLAZA AVE NE APT 4,Warren,OH,44483,10
+Hlad Household,,169 KENMORE AVE NE UNIT 307,Warren,OH,44483,6
+Hoagland Household,,2325 PLAZA AVE NE UNIT 4,Warren,OH,44483,10
 Hockenberry Household,,2132 CENTRAL PARKWAY AVE SE,Warren,OH,44484,5
 Hockensmith Household,,313 CENTRAL PARKWAY AVE SE,Warren,OH,44483,8
 Hockensmith Household,,1255 GENESEE AVE NE,Warren,OH,44483,8
@@ -1201,7 +1202,7 @@ Honeywood Household,,2137 JACKSON ST SW,Warren,OH,44485,8
 Honeywood Household,,2533 MILTON ST SE,Warren,OH,44484,7
 Honsinger Household,,1310 SURREY POINT DR SE,Warren,OH,44484,7
 Hood Household,,2811 DARTMOOR DR NE,Warren,OH,44483,6
-Hooks Household,,1549 WEST AVE NW,Warren,OH,44483,7
+Hooks Household,,1549 W AVE NW,Warren,OH,44483,7
 Hooks Household,,125 GOLF DR NE,Warren,OH,44483,6
 Hoolihan Household,,1608 WESTVIEW DR NE,Warren,OH,44483,5
 Hooper Household,,2251 PARKWOOD DR NW,Warren,OH,44485,8
@@ -1210,7 +1211,7 @@ Hoover Household,,1303 SURREY POINT DR SE,Warren,OH,44484,8
 Hoppel Household,,256 OAK KNOLL AVE NE,Warren,OH,44483,9
 Horger Household,,507 FAIRWAY DR NE,Warren,OH,44483,6
 Horkey Household,,711 WOODBINE AVE SE,Warren,OH,44484,9
-Horner Household,,1377 MAHONING AVE NW APT 203D,Warren,OH,44483,9
+Horner Household,,1377 MAHONING AVE NW UNIT 203D,Warren,OH,44483,9
 Hornung Household,,185 BELVEDERE AVE SE,Warren,OH,44483,9
 Horrell Household,,1340 MAHONING AVE NW UNIT 112,Warren,OH,44483,5
 Horvath Household,,2700 ATLANTIC ST NE,Warren,OH,44483,7
@@ -1218,12 +1219,12 @@ Hoso Household,,342 OAK KNOLL AVE NE,Warren,OH,44483,10
 Hoso Household,,2155 E MARKET ST,Warren,OH,44483,9
 Hoso Household,,3800 NORTHWOODS CT NE UNIT 3,Warren,OH,44483,9
 Hoso Household,,282 BUTLER RD NE,Warren,OH,44483,8
-Houston Household,,1751 WEST AVE NW,Warren,OH,44483,8
+Houston Household,,1751 W AVE NW,Warren,OH,44483,8
 Hovanic Household,,763 REX BLVD NW,Warren,OH,44483,8
 Hover Household,,1353 BUENA VISTA AVE NE,Warren,OH,44483,6
 Howard Household,,2658 BURTON ST SE,Warren,OH,44484,10
 Howard Household,,2920 CLEARWATER ST NW,Warren,OH,44485,10
-Howard Household,,2929 NORTHWEST BLVD NW,Warren,OH,44485,10
+Howard Household,,2929 NW BLVD NW,Warren,OH,44485,10
 Howard Household,,2565 TOD AVE NW,Warren,OH,44485,9
 Howard Household,,3271 RED FOX RUN DR NW,Warren,OH,44485,9
 Howard Household,,3394 RED FOX RUN DR NW,Warren,OH,44485,9
@@ -1247,7 +1248,7 @@ Hughes Household,,2285 TOD AVE NW,Warren,OH,44485,10
 Hughes Household,,720 REX BLVD NW,Warren,OH,44483,8
 Hughes Household,,1627 WESTVIEW DR NE,Warren,OH,44483,8
 Hughley Household,,646 OHIO AVE NW,Warren,OH,44485,10
-Hughley Household,,1766 SOUTHWEST BLVD SW,Warren,OH,44485,8
+Hughley Household,,1766 SW BLVD SW,Warren,OH,44485,8
 Hughley Household,,1303 MAIN AVE SW,Warren,OH,44483,7
 Hugley Household,,1305 WESTWOOD DR NW,Warren,OH,44485,10
 Hugley Household,,945 HEMLOCK AVE SW,Warren,OH,44485,8
@@ -1272,7 +1273,7 @@ Ivy Household,,1640 COVENTRY AVE NE,Warren,OH,44483,6
 Jackson Goudeau Household,,2030 ARBOR AVE SE,Warren,OH,44484,8
 Jackson Household,,2791 CRESTWOOD DR NW,Warren,OH,44485,10
 Jackson Household,,351 WAINWOOD DR SE,Warren,OH,44484,10
-Jackson Household,,4420 YOUNGSTOWN RD SE APT 106,Warren,OH,44484,10
+Jackson Household,,4420 YOUNGSTOWN RD SE UNIT 106,Warren,OH,44484,10
 Jackson Household,,1080 KENILWORTH AVE SE,Warren,OH,44484,8
 Jackson Household,,354 THIRD ST SW,Warren,OH,44483,7
 Jackson Household,,194 BELMONT AVE NE,Warren,OH,44483,6
@@ -1291,6 +1292,7 @@ Jeffries Household,,704 THIRD ST SW,Warren,OH,44483,9
 Jenkins Household,,648 ROOSEVELT ST NW,Warren,OH,44483,10
 Jenkins Household,,434 DOUGLAS ST NE,Warren,OH,44483,6
 Jenkins Household,,3851 NORTHWOODS CT NE UNIT 4,Warren,OH,44483,6
+Jenkins Household,,489 FAIRWAY DR NE,Warren,OH,44483,5
 Jennings Household,,1536 ATLANTIC ST NE,Warren,OH,44483,10
 Jennings Household,,1021 ORLO ST NW,Warren,OH,44485,10
 Jennings Household,,989 DANA ST NE,Warren,OH,44483,7
@@ -1311,10 +1313,10 @@ Johnson Household,,2414 PALMYRA RD SW,Warren,OH,44481,7
 Johnson Household,,730 WILLARD AVE NE,Warren,OH,44483,7
 Johnson Household,,2042 COIT DR NW,Warren,OH,44485,7
 Johnson Household,,2931 RANDOLPH ST NW,Warren,OH,44485,7
-Johnson Household,,4420 YOUNGSTOWN RD SE APT 201,Warren,OH,44484,7
-Johnson Household,,1340 MAHONING AVE NW APT 206,Warren,OH,44483,6
+Johnson Household,,4420 YOUNGSTOWN RD SE UNIT 201,Warren,OH,44484,7
+Johnson Household,,1340 MAHONING AVE NW UNIT 206,Warren,OH,44483,6
 Johnson Household,,2337 VAN WYE ST SE,Warren,OH,44484,6
-Johnson Household,,2501 PARKMAN RD NW APT 215,Warren,OH,44485,6
+Johnson Household,,2501 PARKMAN RD NW UNIT 215,Warren,OH,44485,6
 Johnson Household,,206 IDDINGS AVE SE,Warren,OH,44483,6
 Johnson Marsh Household,,587 TOD AVE SW,Warren,OH,44485,7
 Johnston Household,,1436 DREXEL AVE NW,Warren,OH,44485,6
@@ -1328,7 +1330,7 @@ Jones Household,,2843 LINDA DR NW,Warren,OH,44485,8
 Jones Household,,2049 WILLARD AVE SE,Warren,OH,44484,7
 Jones Household,,3051 HALSEY DR NE,Warren,OH,44483,7
 Jones Household,,540 FOREST ST NE,Warren,OH,44483,7
-Jones Household,,169 KENMORE AVE NE APT 316,Warren,OH,44483,7
+Jones Household,,169 KENMORE AVE NE UNIT 316,Warren,OH,44483,7
 Jones Household,,197 LOGAN AVE SE,Warren,OH,44483,7
 Jones Household,,1655 CRANBERRY LN NE,Warren,OH,44483,7
 Jones Household,,2169 BRIER ST SE,Warren,OH,44484,6
@@ -1341,7 +1343,7 @@ Julian Household,,1210 HARVARD DR SE,Warren,OH,44484,9
 Julian Household,,2025 FERNDALE AVE SW,Warren,OH,44485,7
 Jurenovich Household,,433 COUNTRY CLUB DR NE,Warren,OH,44484,10
 Justice Household,,1454 MAXWELL AVE NW,Warren,OH,44485,7
-Kabinier Household,,2473 NORTH RD NE,Warren,OH,44483,5
+Kabinier Household,,2473 N RD NE,Warren,OH,44483,5
 Kacir Household,,2272 PARKWOOD DR NW,Warren,OH,44485,10
 Kafantaris Household,,720 N PARK AVE,Warren,OH,44483,8
 Kale Household,,1871 ESTABROOK AVE NW,Warren,OH,44485,10
@@ -1356,7 +1358,7 @@ Karavolos Household,,750 ROSELAWN AVE NE,Warren,OH,44483,7
 Katafiasz Household,,2830 E MARKET ST,Warren,OH,44483,5
 Katzenberger Household,,667 PERKINS DR NW,Warren,OH,44483,10
 Kaye Household,,407 OAK KNOLL AVE NE,Warren,OH,44483,7
-Kaye Household,,2965 CRESCENT DR NE APT 2,Warren,OH,44483,6
+Kaye Household,,2965 CRESCENT DR NE UNIT 2,Warren,OH,44483,6
 Keating Household,,206 CENTRAL PARKWAY AVE SE,Warren,OH,44483,8
 Keegan Household,,820 ADELAIDE AVE NE,Warren,OH,44483,7
 Keene James Household,,951 MAIN AVE SW,Warren,OH,44483,5
@@ -1388,7 +1390,7 @@ Kester Household,,3112 ARIS ST NW,Warren,OH,44485,10
 Keys Household,,662 MELWOOD DR NE,Warren,OH,44483,10
 Khoury Household,,545 FAIRWAY DR NE,Warren,OH,44483,7
 Killen Household,,330 MARWOOD AVE SE,Warren,OH,44484,5
-Kilpatrick Household,,1901 SOUTHWEST BLVD SW,Warren,OH,44485,6
+Kilpatrick Household,,1901 SW BLVD SW,Warren,OH,44485,6
 Kindelberger Household,,794 ADELAIDE AVE NE,Warren,OH,44483,10
 Kindle Household,,1750 IRENE AVE NE,Warren,OH,44483,9
 King Household,,619 PERKINS DR NW,Warren,OH,44483,10
@@ -1428,7 +1430,7 @@ Komray Miller Household,,3381 LYNWOOD DR NW,Warren,OH,44485,6
 Kondolios Household,,776 BELVEDERE AVE NE,Warren,OH,44483,5
 Konitsney Household,,2122 BEECHWOOD ST NE,Warren,OH,44483,5
 Kook Household,,1565 ATLANTIC ST NE,Warren,OH,44483,5
-Kopiak Household,,3326 NORTHWEST BLVD NW,Warren,OH,44485,8
+Kopiak Household,,3326 NW BLVD NW,Warren,OH,44485,8
 Kopp Household,,3248 SOLAR DR NW,Warren,OH,44485,10
 Kosela Household,,598 ADELAIDE AVE SE,Warren,OH,44483,6
 Kotopka Household,,325 TOD AVE SW,Warren,OH,44485,10
@@ -1495,14 +1497,14 @@ Lawless Household,,360 FOSTER DR NE,Warren,OH,44483,6
 Lawson Household,,823 MAPLE ST SW,Warren,OH,44485,9
 Layshock Household,,474 TRUMBULL AVE SE,Warren,OH,44483,10
 Layton Household,,212 HIGHLAND AVE SW,Warren,OH,44485,9
-Lealand Household,,1496 NORTH RD SE,Warren,OH,44484,9
+Lealand Household,,1496 N RD SE,Warren,OH,44484,9
 Leasure Household,,417 PERKINSWOOD BLVD NE,Warren,OH,44483,9
 Lecloux Household,,1605 SHERIDAN AVE NE,Warren,OH,44483,7
-Lee Household,,379 QUARRY LN NE APT B,Warren,OH,44483,9
+Lee Household,,379 QUARRY LN NE UNIT B,Warren,OH,44483,9
 Lee Household,,352 CENTRAL PARKWAY AVE SE,Warren,OH,44483,9
 Lee Household,,990 COMMERCE AVE NW,Warren,OH,44485,7
 Lee Household,,2396 PALMYRA RD SW,Warren,OH,44481,7
-Lee Household,,2300 PLAZA AVE NE APT 522,Warren,OH,44483,6
+Lee Household,,2300 PLAZA AVE NE UNIT 522,Warren,OH,44483,6
 Leiby Household,,657 WILLARD AVE NE,Warren,OH,44483,7
 Leigh Household,,2148 BEECHWOOD ST NE,Warren,OH,44483,6
 Leihgeber Household,,1860 SOUTHERN BLVD NW,Warren,OH,44485,8
@@ -1525,7 +1527,7 @@ Lewis Household,,2434 COIT DR NW,Warren,OH,44485,7
 Liberatore Household,,1107 CENTRAL PARKWAY AVE SE,Warren,OH,44484,9
 Licavoli Household,,1178 SARKIES DR NE,Warren,OH,44483,6
 Liccardi Household,,2470 PALMYRA RD SW,Warren,OH,44481,6
-Lichtenstein Household,,283 NORTH RD NE,Warren,OH,44483,8
+Lichtenstein Household,,283 N RD NE,Warren,OH,44483,8
 Liebal Household,,1095 PERKINSWOOD BLVD SE,Warren,OH,44484,9
 Lilly Household,,3261 CRESCENT DR NE,Warren,OH,44483,9
 Limber Household,,1008 RIVERVIEW ST NW,Warren,OH,44485,9
@@ -1571,7 +1573,6 @@ Lyda Household,,166 OAK KNOLL AVE NE,Warren,OH,44483,7
 Lyons Household,,396 IDDINGS AVE SE,Warren,OH,44483,6
 Mach Household,,3176 ARIS ST NW,Warren,OH,44485,10
 Macina Household,,234 TRUMBULL AVE NE,Warren,OH,44483,7
-Macpherson Household,,331 CENTRAL PARKWAY AVE SE,Warren,OH,44483,8
 Madden Household,,4057 CHEVELLE DR SE,Warren,OH,44484,9
 Madeline Household,,881 EASTLAND AVE SE,Warren,OH,44484,7
 Maffei Household,,1724 BEECHWOOD ST NE,Warren,OH,44483,9
@@ -1586,7 +1587,7 @@ Makridis Household,,1509 ELM RD NE,Warren,OH,44483,9
 Malacky Household,,362 FAIRWAY DR NE,Warren,OH,44483,10
 Malailua Household,,1053 PAIGE AVE NE,Warren,OH,44483,8
 Malailua Household,,1043 PAIGE AVE NE,Warren,OH,44483,6
-Malatesta Household,,3000 BURTON ST SE APT 6,Warren,OH,44484,10
+Malatesta Household,,3000 BURTON ST SE UNIT 6,Warren,OH,44484,10
 Mallory Household,,3312 RED FOX RUN DR NW,Warren,OH,44485,9
 Mallory Household,,379 QUARRY LN NE UNIT C,Warren,OH,44483,8
 Malloy Household,,1334 BRADFORD ST NW,Warren,OH,44485,6
@@ -1598,10 +1599,10 @@ Mangino Household,,1302 SURREY POINT DR SE,Warren,OH,44484,7
 Manley Household,,805 KENMORE AVE SE,Warren,OH,44484,10
 Manley Household,,394 ADELAIDE AVE SE,Warren,OH,44483,6
 Manofsky Household,,1155 PAIGE AVE NE,Warren,OH,44483,10
-Manson Household,,1415 BLAKELY CIR SW APT 706,Warren,OH,44485,9
+Manson Household,,1415 BLAKELY CIR SW UNIT 706,Warren,OH,44485,9
 Mantos Household,,4011 CHEVELLE DR SE,Warren,OH,44484,8
 Marcello Household,,901 MELWOOD DR NE,Warren,OH,44483,8
-March Household,,700 BUCKEYE ST NW APT 502B,Warren,OH,44485,7
+March Household,,700 BUCKEYE ST NW UNIT 502B,Warren,OH,44485,7
 Marchese Household,,97 COUNTRY CLUB DR SE,Warren,OH,44484,8
 Marchese Household,,243 CHARLES AVE NE,Warren,OH,44483,6
 Marchio Household,,1523 DEN JEAN DR NE,Warren,OH,44483,7
@@ -1615,7 +1616,7 @@ Markle Household,,861 GARDEN ST NW,Warren,OH,44485,10
 Markle Household,,146 NEVADA AVE SW,Warren,OH,44485,7
 Markovich Household,,938 FRANCIS AVE SE,Warren,OH,44484,6
 Marks Household,,3223 PEERLESS AVE SW,Warren,OH,44485,5
-Maroulis Household,,1380 ARBOR AVE SE APT 308,Warren,OH,44484,10
+Maroulis Household,,1380 ARBOR AVE SE UNIT 308,Warren,OH,44484,10
 Marousis Household,,363 ADELAIDE AVE NE,Warren,OH,44483,9
 Marr Household,,391 FAIRMOUNT AVE NE,Warren,OH,44483,5
 Marrie Household,,1400 EDGEHILL AVE SE,Warren,OH,44484,6
@@ -1625,7 +1626,7 @@ Marsh Household,,1148 EDGEWOOD ST NE,Warren,OH,44483,8
 Marsh Household,,203 ALBERT ST NE,Warren,OH,44483,8
 Marsh Household,,1087 RAYMOND ST NW,Warren,OH,44485,7
 Marsh Household,,215 ALBERT ST NE,Warren,OH,44483,7
-Marsh Household,,1253 SOUTH ST SE,Warren,OH,44483,5
+Marsh Household,,1253 S ST SE,Warren,OH,44483,5
 Marshalek Household,,386 PERKINSWOOD BLVD SE,Warren,OH,44483,8
 Marshall Household,,907 TRUMBULL AVE SE,Warren,OH,44484,7
 Marstellar Household,,379 HAZELWOOD AVE SE,Warren,OH,44483,7
@@ -1645,14 +1646,14 @@ Martof Household,,2174 SARKIES DR NE,Warren,OH,44483,6
 Marzulla Household,,1405 LARCHMONT AVE NE,Warren,OH,44483,9
 Masaitis Household,,1878 NOCTURNE ST NE,Warren,OH,44483,10
 Mascio Household,,2826 LEXINGTON AVE NW,Warren,OH,44485,9
-Mason Household,,1380 ARBOR AVE SE APT 402,Warren,OH,44484,10
+Mason Household,,1380 ARBOR AVE SE UNIT 402,Warren,OH,44484,10
 Mason Household,,605 ORIOLE PL SW,Warren,OH,44485,10
 Mason Household,,2823 SEDGEWICK ST NE,Warren,OH,44483,8
-Mason Household,,1913 SOUTHWEST BLVD SW,Warren,OH,44485,8
+Mason Household,,1913 SW BLVD SW,Warren,OH,44485,8
 Mason Moore Household,,2198 DRAPER AVE SE,Warren,OH,44484,9
 Massacci Household,,347 ADELAIDE AVE SE,Warren,OH,44483,5
-Massucci Household,,338 NORTH RD NE,Warren,OH,44483,9
-Massucci Household,,358 NORTH RD NE,Warren,OH,44483,6
+Massucci Household,,338 N RD NE,Warren,OH,44483,9
+Massucci Household,,358 N RD NE,Warren,OH,44483,6
 Mathews Household,,1507 LOVERS LN NW,Warren,OH,44485,9
 Matig Household,,3290 ATLANTIC ST NE,Warren,OH,44483,9
 Matlock Household,,1756 N PARK AVE,Warren,OH,44483,10
@@ -1663,12 +1664,12 @@ Maughan Household,,2067 GLENN DR NE,Warren,OH,44483,8
 Maust Household,,1469 WOODLAND AVE NE,Warren,OH,44483,9
 Mavrogianis Household,,860 WILDWOOD DR NE,Warren,OH,44483,9
 May Household,,2192 BRIER ST SE,Warren,OH,44484,8
-May Household,,2871 NORTHWEST BLVD NW,Warren,OH,44485,5
+May Household,,2871 NW BLVD NW,Warren,OH,44485,5
 Maybou Household,,1925 SHERIDAN AVE NE,Warren,OH,44483,8
 Mayeros Household,,224 BELVEDERE AVE SE,Warren,OH,44483,7
 Maynor Household,,1746 BEECHWOOD ST NE,Warren,OH,44483,6
 Mayor Household,,2368 CRANWOOD DR SW,Warren,OH,44485,9
-Mays Household,,3820 NORTHWOODS CT NE APT 6,Warren,OH,44483,9
+Mays Household,,3820 NORTHWOODS CT NE UNIT 6,Warren,OH,44483,9
 Mazey Household,,149 BROADWAY AVE SE,Warren,OH,44484,7
 Mazzella Household,,1021 EASTLAND AVE SE,Warren,OH,44484,10
 Mcbane Household,,211 FAIRMOUNT AVE NE,Warren,OH,44483,7
@@ -1682,7 +1683,7 @@ Mccarty Household,,2421 CENTRAL PARKWAY AVE SE,Warren,OH,44484,9
 Mccarty Household,,1636 LEXINGTON AVE NW,Warren,OH,44485,7
 Mccarty Household,,933 MARTHA ST NE,Warren,OH,44483,6
 Mccaskey Household,,766 HAZELWOOD AVE SE,Warren,OH,44484,9
-Mccauley Household,,700 BUCKEYE ST NW APT 402,Warren,OH,44485,8
+Mccauley Household,,700 BUCKEYE ST NW UNIT 402,Warren,OH,44485,8
 Mccleary Household,,306 CENTRAL PARKWAY AVE SE,Warren,OH,44483,10
 Mcclellan Household,,359 WILLARD AVE NE,Warren,OH,44483,8
 Mcclintock Household,,1903 LEXINGTON AVE NW,Warren,OH,44485,8
@@ -1705,7 +1706,7 @@ Mccreanor Household,,177 ADELAIDE AVE SE,Warren,OH,44483,10
 Mcdaniels Household,,1040 WOODBINE AVE SE,Warren,OH,44484,9
 Mcdonall Household,,2406 BRIER ST SE,Warren,OH,44484,9
 Mcelroy Household,,610 BROADWAY AVE SE,Warren,OH,44484,10
-Mcelroy Household,,3362 NORTHWEST BLVD NW,Warren,OH,44485,6
+Mcelroy Household,,3362 NW BLVD NW,Warren,OH,44485,6
 Mcelwee Household,,1508 BEECHWOOD ST NE,Warren,OH,44483,6
 Mcfadden Household,,637 THIRD ST SW,Warren,OH,44483,10
 Mcfarland Household,,958 THISTLE PL SE,Warren,OH,44484,8
@@ -1716,7 +1717,7 @@ Mcgee Household,,4734 ENGLESSON DR NW,Warren,OH,44485,8
 Mcgee Household,,1525 HOLLYWOOD ST NE,Warren,OH,44483,8
 Mcgee Household,,1204 WILLOW BROOK DR NE,Warren,OH,44483,7
 Mcghee Household,,3205 CLEARWATER ST NW,Warren,OH,44485,10
-Mcghee Household,,108 N PARK AVE APT 2,Warren,OH,44481,8
+Mcghee Household,,108 N PARK AVE UNIT 2,Warren,OH,44481,8
 Mcghee Household,,656 OHIO AVE NW,Warren,OH,44485,7
 Mcginley Household,,1804 EDGEWOOD ST NE,Warren,OH,44483,10
 Mcgovern Household,,126 ROYAL TROON DR SE,Warren,OH,44484,8
@@ -1743,7 +1744,7 @@ Mcmullen Household,,1786 NORTHFIELD AVE NW,Warren,OH,44485,10
 Mcneal Household,,3267 RED FOX RUN DR NW,Warren,OH,44485,9
 Mcneil Household,,3840 NORTHWOODS CT NE UNIT 1,Warren,OH,44483,9
 Mcquaide Household,,2034 ARTHUR DR NW,Warren,OH,44485,9
-Mcveigh Household,,3745 E MARKET ST APT 109,Warren,OH,44484,6
+Mcveigh Household,,3745 E MARKET ST UNIT 109,Warren,OH,44484,6
 Mcvettie Household,,1294 HOLLYWOOD ST NE,Warren,OH,44483,6
 Mcwilliams Household,,2719 MILTON ST SE,Warren,OH,44484,8
 Mead Household,,753 BELVEDERE AVE SE,Warren,OH,44484,7
@@ -1782,10 +1783,10 @@ Miller Household,,1107 ORLO ST NW,Warren,OH,44485,8
 Miller Household,,1037 SOUTHERN BLVD NW,Warren,OH,44485,8
 Miller Household,,1807 SHERIDAN AVE NE,Warren,OH,44483,7
 Miller Household,,1035 BROADWAY AVE SE,Warren,OH,44484,6
-Miller Household,,2426 NORTHWEST BLVD NW,Warren,OH,44485,6
+Miller Household,,2426 NW BLVD NW,Warren,OH,44485,6
 Millik Household,,179 WILLARD AVE NE,Warren,OH,44483,9
 Milliron Household,,1096 RAYMOND ST NW,Warren,OH,44485,10
-Milliron Household,,1792 CRANBERRY LN NE APT 175,Warren,OH,44483,8
+Milliron Household,,1792 CRANBERRY LN NE UNIT 175,Warren,OH,44483,8
 Milyak Household,,338 WASHINGTON ST NE,Warren,OH,44483,10
 Mines Household,,2655 CRESTWOOD DR NW,Warren,OH,44485,10
 Minotti Mcbride Household,,237 TRUMBULL AVE SE,Warren,OH,44483,6
@@ -1795,10 +1796,10 @@ Mitchell Household,,903 FRONT ST SW,Warren,OH,44485,10
 Mitchell Household,,2978 BEAL ST NW,Warren,OH,44485,7
 Mocella Household,,3035 RED FOX RUN DR NW,Warren,OH,44485,8
 Moffett Household,,1373 BEECHCREST ST NW,Warren,OH,44485,8
-Mognet Household,,3291 LODWICK DR NW APT 3,Warren,OH,44485,7
+Mognet Household,,3291 LODWICK DR NW UNIT 3,Warren,OH,44485,7
 Moisio Household,,2627 HEATHER LN NW,Warren,OH,44485,8
 Mokros Household,,219 COUNTRY CLUB DR NE,Warren,OH,44484,6
-Molden Household,,3338 NORTHWEST BLVD NW,Warren,OH,44485,6
+Molden Household,,3338 NW BLVD NW,Warren,OH,44485,6
 Molek Household,,756 HAZELWOOD AVE SE,Warren,OH,44484,8
 Monmirth Household,,1004 WOODLAND AVE NE,Warren,OH,44483,8
 Monrean Household,,1063 ROSEWAY AVE SE,Warren,OH,44484,6
@@ -1810,7 +1811,7 @@ Montez Household,,2936 BEAL ST NW,Warren,OH,44485,10
 Moody Household,,344 MEADOWBROOK AVE SE,Warren,OH,44483,10
 Moody Household,,1703 WESTVIEW DR NE,Warren,OH,44483,10
 Moody Household,,2888 CITADEL DR NE,Warren,OH,44483,7
-Moore Eaddy Household,,1860 MAHONING AVE NW APT 101,Warren,OH,44483,10
+Moore Eaddy Household,,1860 MAHONING AVE NW UNIT 101,Warren,OH,44483,10
 Moore Household,,812 COMSTOCK ST NW,Warren,OH,44483,10
 Moore Household,,1031 PAIGE AVE NE,Warren,OH,44483,10
 Moore Household,,3220 MERRIWEATHER ST NW,Warren,OH,44485,10
@@ -1828,11 +1829,12 @@ Moore Household,,469 HIGHLAND AVE SW,Warren,OH,44485,8
 Moore Household,,808 ROSELAWN AVE NE,Warren,OH,44483,8
 Moore Household,,1149 TOD AVE SW,Warren,OH,44485,6
 Moore Household,,1122 SOUTHERN BLVD NW,Warren,OH,44485,6
+Moore Household,,714 LENER AVE SW,Warren,OH,44485,5
 Moran Household,,676 PERKINS DR NW,Warren,OH,44483,7
 Moran Household,,1755 EDGEWOOD ST NE,Warren,OH,44483,7
 Moran Household,,514 PERKINSWOOD BLVD NE,Warren,OH,44483,6
 Morelli Household,,418 MARWOOD AVE SE,Warren,OH,44484,10
-Morello Household,,325 FOSTER DR NE APT 2,Warren,OH,44483,7
+Morello Household,,325 FOSTER DR NE UNIT 2,Warren,OH,44483,7
 Morgan Household,,933 HEMLOCK AVE SW,Warren,OH,44485,10
 Morgan Household,,188 IVANHOE ST NE,Warren,OH,44483,9
 Morgan Household,,740 SECOND ST SW,Warren,OH,44483,9
@@ -1847,18 +1849,18 @@ Morrell Household,,4275 TOD AVE NW,Warren,OH,44485,6
 Morris Household,,200 COUNTRY CLUB DR SE,Warren,OH,44484,9
 Morris Household,,2451 MONTGOMERY AVE NW,Warren,OH,44485,8
 Morris Household,,1710 WESTVIEW DR NE,Warren,OH,44483,5
-Morrow Household,,3311 LODWICK DR NW APT 2,Warren,OH,44485,10
+Morrow Household,,3311 LODWICK DR NW UNIT 2,Warren,OH,44485,10
 Morrow Household,,1423 SHERIDAN AVE NE,Warren,OH,44483,8
 Morton Household,,823 PACKARD ST NW,Warren,OH,44483,6
 Mosko Household,,1095 TRUMBULL AVE SE,Warren,OH,44484,9
 Moss Household,,950 RIVERVIEW ST NW,Warren,OH,44485,8
-Mosyjowski Household,,1200 NORTH RD NE APT 11,Warren,OH,44483,7
+Mosyjowski Household,,1200 N RD NE UNIT 11,Warren,OH,44483,7
 Motley Household,,1620 TOD AVE NW,Warren,OH,44485,10
 Moton Household,,2083 STEWART DR NW,Warren,OH,44485,5
 Mroczek Household,,2374 YOUNGSTOWN RD SE,Warren,OH,44484,10
 Muccio Household,,600 MELWOOD DR NE,Warren,OH,44483,9
 Muhammad Household,,732 MAPLE ST SW,Warren,OH,44485,8
-Muir Household,,580 PERKINS DR NW APT 2A,Warren,OH,44483,8
+Muir Household,,580 PERKINS DR NW UNIT 2A,Warren,OH,44483,8
 Mullane Household,,3782 E MARKET ST,Warren,OH,44484,5
 Mullenax Household,,4497 TOD AVE NW,Warren,OH,44485,5
 Mundell Household,,1564 EDGEWOOD ST NE,Warren,OH,44483,6
@@ -1883,7 +1885,7 @@ Namish Household,,2003 WILLOW BROOK DR NE,Warren,OH,44483,6
 Naples Household,,410 KENMORE AVE NE,Warren,OH,44483,10
 Napolet Household,,3861 NORTHWOODS CT NE UNIT 2,Warren,OH,44483,9
 Nardo Household,,325 MEADOWBROOK AVE SE,Warren,OH,44483,10
-Nash Household,,307 BONNIE BRAE AVE SE APT A,Warren,OH,44484,8
+Nash Household,,307 BONNIE BRAE AVE SE UNIT A,Warren,OH,44484,8
 Natale Household,,405 CENTRAL PARKWAY AVE SE,Warren,OH,44483,10
 Natale Household,,960 MELWOOD DR NE,Warren,OH,44483,9
 Natale Household,,2220 TOD AVE NW,Warren,OH,44485,6
@@ -1899,7 +1901,7 @@ Nelson Household,,387 BELVEDERE AVE SE,Warren,OH,44483,5
 Newberry Household,,1177 SURREY POINT DR SE,Warren,OH,44484,6
 Newcomb Household,,2378 OAKDALE DR NW,Warren,OH,44485,7
 Newcomb Household,,1884 IRENE AVE NE,Warren,OH,44483,6
-Newell Household,,1381 MAHONING AVE NW APT 104A,Warren,OH,44483,5
+Newell Household,,1381 MAHONING AVE NW UNIT 104A,Warren,OH,44483,5
 Newlove Household,,446 KENILWORTH AVE SE,Warren,OH,44483,8
 Newsome Household,,1857 CLERMONT AVE NE,Warren,OH,44483,9
 Nichols Household,,2800 CARLTON DR NW,Warren,OH,44485,9
@@ -1911,7 +1913,7 @@ Nissen Household,,1186 MILLIKIN PL NE,Warren,OH,44483,5
 Noark Household,,1673 WESTWOOD DR NW,Warren,OH,44485,5
 Nolan Household,,1204 TAYLOR ST NW,Warren,OH,44485,5
 Noland Household,,1128 GENESEE AVE NE,Warren,OH,44483,10
-Norton Household,,3000 MEADOW LN NE APT 304,Warren,OH,44483,5
+Norton Household,,3000 MEADOW LN NE UNIT 304,Warren,OH,44483,5
 Norwood Household,,2035 ATLANTIC ST NE,Warren,OH,44483,10
 Notar Household,,646 TRUMBULL AVE SE,Warren,OH,44484,6
 Nottingham Household,,227 PARKMAN RD NW,Warren,OH,44485,9
@@ -1919,7 +1921,7 @@ Novak Household,,677 MEADOWBROOK AVE SE,Warren,OH,44484,10
 Novak Household,,984 GLENWOOD ST NE,Warren,OH,44483,9
 Novorsky Household,,3157 OVERLOOK DR NE,Warren,OH,44483,10
 Novotny Household,,1120 WOODBINE AVE SE,Warren,OH,44484,7
-Nussle Household,,1327 NORTH RD NE,Warren,OH,44483,7
+Nussle Household,,1327 N RD NE,Warren,OH,44483,7
 Nuzzi Household,,4139 GREENMONT DR SE,Warren,OH,44484,10
 Nuzzi Household,,324 BUTLER RD NE,Warren,OH,44483,6
 Nyako Household,,2134 MARY DR NE,Warren,OH,44483,6
@@ -1949,8 +1951,8 @@ Oller Household,,978 MAIN AVE SW,Warren,OH,44483,10
 Olsen Household,,2130 GRISSOM DR NE,Warren,OH,44483,7
 Olszewski Household,,311 GOLF DR NE,Warren,OH,44483,8
 Onatz Household,,1160 ROGERS AVE SE,Warren,OH,44484,7
-Ondik Household,,1924 ELM RD NE APT 3,Warren,OH,44483,10
-Oney Household,,169 KENMORE AVE NE APT 112,Warren,OH,44483,8
+Ondik Household,,1924 ELM RD NE UNIT 3,Warren,OH,44483,10
+Oney Household,,169 KENMORE AVE NE UNIT 112,Warren,OH,44483,8
 Orell Household,,577 HAZELWOOD AVE SE,Warren,OH,44483,9
 Orfanos Household,,840 PERKINSWOOD BLVD NE,Warren,OH,44483,9
 Orr Household,,1794 IRENE AVE NE,Warren,OH,44483,9
@@ -1958,12 +1960,12 @@ Orr Household,,2331 LINDA DR NW,Warren,OH,44485,7
 Orslene Household,,1817 IRENE AVE NE,Warren,OH,44483,10
 Orwig Household,,405 MEADOWBROOK AVE SE,Warren,OH,44483,8
 Orwig Household,,966 PERSHING ST SW,Warren,OH,44485,6
-Osborne Household,,353 PARKMAN RD NW APT B,Warren,OH,44485,10
+Osborne Household,,353 PARKMAN RD NW UNIT B,Warren,OH,44485,10
 Osborne Household,,111 ROYAL TROON DR SE,Warren,OH,44484,7
 Osborne Household,,2659 BRIER ST SE,Warren,OH,44484,5
 Ouzounian Household,,3171 FOSTER DR NE,Warren,OH,44483,7
 Owen Household,,108 ROYAL TROON DR SE,Warren,OH,44484,10
-Owen Household,,287 NORTH RD NE,Warren,OH,44483,6
+Owen Household,,287 N RD NE,Warren,OH,44483,6
 Owens Household,,403 SECOND ST SW,Warren,OH,44483,10
 Owens Household,,2372 PALMYRA RD SW,Warren,OH,44481,10
 Owens Household,,861 PERKINSWOOD BLVD NE,Warren,OH,44483,9
@@ -2001,11 +2003,11 @@ Paridon Household,,1803 WOODLAND AVE NE,Warren,OH,44483,10
 Park Household,,807 PERKINSWOOD BLVD NE,Warren,OH,44483,10
 Parker Household,,2436 MILTON ST SE,Warren,OH,44484,10
 Parker Household,,2587 TOD AVE NW,Warren,OH,44485,9
-Parker Household,,3118 NORTHWEST BLVD NW,Warren,OH,44485,8
+Parker Household,,3118 NW BLVD NW,Warren,OH,44485,8
 Parker Household,,2361 COIT DR NW,Warren,OH,44485,8
 Parker Household,,608 KENMORE AVE NE,Warren,OH,44483,7
 Parker Household,,1931 STEWART DR NW,Warren,OH,44485,5
-Parkey Household,,872 YORK AVE SW APT 4,Warren,OH,44485,9
+Parkey Household,,872 YORK AVE SW UNIT 4,Warren,OH,44485,9
 Parkey Household,,3229 ELMHILL DR NW,Warren,OH,44485,8
 Parkhurst Household,,3021 RED FOX RUN DR NW,Warren,OH,44485,7
 Parks Household,,1956 S FEEDERLE DR SE,Warren,OH,44484,7
@@ -2045,10 +2047,10 @@ Penman Household,,559 PERKINSWOOD BLVD NE,Warren,OH,44483,9
 Penn Household,,451 ROSELAWN AVE NE,Warren,OH,44483,10
 Pennell Household,,1449 EASTLAND AVE SE,Warren,OH,44484,10
 Pennington Household,,528 THIRD ST SW,Warren,OH,44483,9
-Pennock Household,,182 HIGH ST NW APT 211,Warren,OH,44481,6
+Pennock Household,,182 HIGH ST NE UNIT 211,Warren,OH,44481,6
 Perez Household,,2879 E MARKET ST,Warren,OH,44483,7
 Perfette Household,,2909 CARLTON DR NW,Warren,OH,44485,9
-Perich Household,,2965 CRESCENT DR NE APT 3,Warren,OH,44483,5
+Perich Household,,2965 CRESCENT DR NE UNIT 3,Warren,OH,44483,5
 Perigo Household,,1527 GRANDVIEW ST SE,Warren,OH,44484,10
 Perrin Household,,1154 RAYMOND ST NW,Warren,OH,44485,6
 Perrine Household,,856 TOD AVE NW,Warren,OH,44485,10
@@ -2075,13 +2077,13 @@ Phillips Household,,1147 SOUTHERN BLVD NW,Warren,OH,44485,8
 Phillips Household,,750 GENESEE AVE NE,Warren,OH,44483,8
 Phillips Household,,1016 GENESEE AVE NE,Warren,OH,44483,8
 Phillips Household,,609 PERKINS DR NW,Warren,OH,44483,8
-Phillips Household,,169 KENMORE AVE NE APT 212,Warren,OH,44483,7
+Phillips Household,,169 KENMORE AVE NE UNIT 212,Warren,OH,44483,7
 Phillips Household,,910 LANDSDOWNE AVE NW,Warren,OH,44485,7
-Phillips Household,,2455 NORTHWEST BLVD NW,Warren,OH,44485,7
+Phillips Household,,2455 NW BLVD NW,Warren,OH,44485,7
 Phillips Household,,616 KENMORE AVE SE,Warren,OH,44483,6
 Phillips Household,,621 COUNTRY CLUB DR NE,Warren,OH,44484,6
 Phillips Household,,3105 TOD AVE NW,Warren,OH,44485,6
-Phillips Household,,275 NORTH RD NE,Warren,OH,44483,5
+Phillips Household,,275 N RD NE,Warren,OH,44483,5
 Phinisee Household,,1106 ORLO ST NW,Warren,OH,44485,8
 Pierce Household,,1103 WILLOW BROOK DR NE,Warren,OH,44483,7
 Pilgrim Household,,306 BONNIE BRAE AVE NE,Warren,OH,44483,10
@@ -2106,7 +2108,7 @@ Ploumbis Household,,2505 E MARKET ST,Warren,OH,44483,6
 Polenick Household,,683 OAK KNOLL AVE NE,Warren,OH,44483,9
 Poling Household,,1236 KENMORE AVE SE,Warren,OH,44484,9
 Pollard Household,,2688 CRESTWOOD DR NW,Warren,OH,44485,9
-Pollard Household,,1377 MAHONING AVE NW APT 204,Warren,OH,44483,8
+Pollard Household,,1377 MAHONING AVE NW UNIT 204,Warren,OH,44483,8
 Polomsky Household,,707 ROOSEVELT ST NW,Warren,OH,44483,10
 Polomsky Household,,139 VERMONT AVE NW,Warren,OH,44485,7
 Polychronis Household,,242 KENMORE AVE NE,Warren,OH,44483,9
@@ -2116,7 +2118,7 @@ Poole Household,,1544 VERNON AVE NW,Warren,OH,44483,5
 Popa Household,,179 BONNIE BRAE AVE NE,Warren,OH,44483,8
 Popadak Household,,443 BONNIE BRAE AVE NE,Warren,OH,44483,7
 Porter Household,,2727 BRIER ST SE,Warren,OH,44484,10
-Porterfield Household,,1689 WEST AVE NW,Warren,OH,44483,7
+Porterfield Household,,1689 W AVE NW,Warren,OH,44483,7
 Potter Household,,3820 NORTHWOODS CT NE UNIT 3,Warren,OH,44483,7
 Powell Household,,4170 TOD AVE NW,Warren,OH,44485,6
 Powers Household,,394 WILLARD AVE SE,Warren,OH,44483,8
@@ -2132,7 +2134,7 @@ Primm Household,,2225 LEXINGTON AVE NW,Warren,OH,44485,5
 Prince Household,,1101 WILLOW BROOK DR NE,Warren,OH,44483,8
 Prince Household,,2153 LEXINGTON AVE NW,Warren,OH,44485,7
 Principi Household,,1565 TOD AVE NW,Warren,OH,44485,10
-Prinz Household,,169 KENMORE AVE NE APT 216,Warren,OH,44483,6
+Prinz Household,,169 KENMORE AVE NE UNIT 216,Warren,OH,44483,6
 Priore Household,,318 BELVEDERE AVE SE,Warren,OH,44483,6
 Profera Household,,2456 MONTGOMERY AVE NW,Warren,OH,44485,10
 Prokop Household,,641 FAIRWAY DR NE,Warren,OH,44483,5
@@ -2159,7 +2161,7 @@ Quinlan Household,,346 WILLARD AVE SE,Warren,OH,44483,9
 Quinn Household,,1254 WILLARD AVE SE,Warren,OH,44484,10
 Raccio Household,,3233 E MARKET ST,Warren,OH,44484,6
 Rader Household,,585 KENMORE AVE NE,Warren,OH,44483,8
-Rader Household,,1380 ARBOR AVE SE APT 806,Warren,OH,44484,7
+Rader Household,,1380 ARBOR AVE SE UNIT 806,Warren,OH,44484,7
 Radich Household,,125 ROYAL TROON DR SE,Warren,OH,44484,10
 Radich Household,,1119 GUARNIERI DR NE,Warren,OH,44483,8
 Radza Household,,1366 NORWOOD ST NW,Warren,OH,44485,10
@@ -2205,7 +2207,7 @@ Renner Household,,1278 SARKIES DR NE,Warren,OH,44483,6
 Ressler Household,,2445 JACKSON ST SW,Warren,OH,44485,6
 Reynolds Household,,1000 TOD AVE SW,Warren,OH,44485,10
 Rhine Household,,2369 STEWART DR NW,Warren,OH,44485,6
-Riccelli Household,,3000 BURTON ST SE APT 38,Warren,OH,44484,6
+Riccelli Household,,3000 BURTON ST SE UNIT 38,Warren,OH,44484,6
 Rice Household,,1926 WICK ST SE,Warren,OH,44484,9
 Richard Household,,1496 ATLANTIC ST NE,Warren,OH,44483,6
 Richards Household,,450 IOWA AVE NW,Warren,OH,44485,6
@@ -2214,7 +2216,7 @@ Richardson Household,,654 FAIRWAY DR NE,Warren,OH,44483,10
 Richardson Household,,1235 GENESEE AVE NE,Warren,OH,44483,5
 Richburg Household,,2834 CRESTWOOD DR NW,Warren,OH,44485,7
 Ricks Household,,2750 LINDA DR NW,Warren,OH,44485,8
-Ricks Household,,3291 LODWICK DR NW APT 2,Warren,OH,44485,7
+Ricks Household,,3291 LODWICK DR NW UNIT 2,Warren,OH,44485,7
 Ries Household,,3117 CRESCENT DR NE,Warren,OH,44483,6
 Rieser Household,,334 ADELAIDE AVE SE,Warren,OH,44483,10
 Riffe Household,,320 CENTRAL PARKWAY AVE SE,Warren,OH,44483,9
@@ -2238,10 +2240,10 @@ Rizkallah Household,,2612 REEVES RD NE,Warren,OH,44483,10
 Roach Household,,1165 ADELAIDE AVE SE,Warren,OH,44484,6
 Roberts Household,,1640 ARTHUR DR NW,Warren,OH,44485,10
 Roberts Household,,2410 STEWART DR NW,Warren,OH,44485,10
-Roberts Household,,832 NORTH RD SE,Warren,OH,44484,7
+Roberts Household,,832 N RD SE,Warren,OH,44484,7
 Roberts Household,,1621 KERI DR SW UNIT 1608,Warren,OH,44485,6
 Roberts Household,,1676 OAKDALE DR NW,Warren,OH,44485,6
-Robinette Household,,2300 PLAZA AVE NE APT 211,Warren,OH,44483,9
+Robinette Household,,2300 PLAZA AVE NE UNIT 211,Warren,OH,44483,9
 Robinson Household,,916 FIFTH ST SW,Warren,OH,44485,10
 Robinson Household,,2239 BRIER ST SE,Warren,OH,44484,10
 Robinson Household,,1348 HAZELWOOD AVE SE,Warren,OH,44484,10
@@ -2249,7 +2251,7 @@ Robinson Household,,556 KENMORE AVE SE,Warren,OH,44483,9
 Robinson Household,,1562 FRANCIS AVE SE,Warren,OH,44484,9
 Robinson Household,,2446 MILTON ST SE,Warren,OH,44484,9
 Robinson Household,,3302 CLEARWATER ST NW,Warren,OH,44485,7
-Robinson Household,,1308 ARBOR AVE SE APT 509,Warren,OH,44484,7
+Robinson Household,,1308 ARBOR AVE SE UNIT 509,Warren,OH,44484,7
 Robinson Household,,1382 OAKDALE DR NW,Warren,OH,44485,7
 Robinson Household,,2247 MILTON ST SE,Warren,OH,44484,6
 Robinson Household,,2233 DRAPER AVE SE,Warren,OH,44484,6
@@ -2279,9 +2281,9 @@ Rose Household,,1789 MAPLEWOOD ST NE,Warren,OH,44483,10
 Rose Household,,2222 ESTABROOK AVE NW,Warren,OH,44485,9
 Rosenthal Household,,253 LOWELL AVE NE,Warren,OH,44483,6
 Rosier Household,,368 HAZELWOOD AVE SE,Warren,OH,44483,9
-Rosile Household,,2300 PLAZA AVE NE APT 609,Warren,OH,44483,7
+Rosile Household,,2300 PLAZA AVE NE UNIT 609,Warren,OH,44483,7
 Ross Household,,2895 E MARKET ST,Warren,OH,44483,9
-Ross Household,,169 KENMORE AVE NE APT 106,Warren,OH,44483,9
+Ross Household,,169 KENMORE AVE NE UNIT 106,Warren,OH,44483,9
 Rossi Household,,3056 OVERLOOK DR NE,Warren,OH,44483,10
 Rossi Household,,250 COUNTRY CLUB LN NE,Warren,OH,44484,10
 Rossi Household,,701 FAIRWAY DR NE,Warren,OH,44483,10
@@ -2289,7 +2291,7 @@ Rossi Household,,740 FAIRWAY DR NE,Warren,OH,44483,8
 Rossi Household,,1416 MAHONING AVE NW,Warren,OH,44483,8
 Rossi Household,,3395 GREENFIELD ST NW,Warren,OH,44485,7
 Rossi Household,,365 FOSTER DR NE,Warren,OH,44483,7
-Roush Household,,3020 DUNSTAN DR NW APT 1,Warren,OH,44485,5
+Roush Household,,3020 DUNSTAN DR NW UNIT 1,Warren,OH,44485,5
 Rowan Household,,1359 KENSINGTON ST NW,Warren,OH,44485,7
 Rowland Household,,185 OAK KNOLL AVE NE,Warren,OH,44483,9
 Rowland Household,,3882 WELCKER DR NE,Warren,OH,44483,8
@@ -2321,7 +2323,7 @@ Rymer Household,,1804 VICTORIA ST SW,Warren,OH,44485,7
 Ryznar Household,,590 WILLARD AVE NE,Warren,OH,44483,9
 Sabella Household,,1300 TRUMBULL AVE SE,Warren,OH,44484,10
 Saker Household,,235 KENILWORTH AVE NE,Warren,OH,44483,9
-Salcone Household,,390 QUARRY LN NE APT B,Warren,OH,44483,7
+Salcone Household,,390 QUARRY LN NE UNIT B,Warren,OH,44483,7
 Salter Household,,2408 WILLOW DR SW,Warren,OH,44485,10
 Saluga Household,,439 GENESEE AVE NE,Warren,OH,44483,8
 Salvato Household,,835 REX BLVD NW,Warren,OH,44483,9
@@ -2335,7 +2337,7 @@ Sanfrey Household,,1514 HOLLYWOOD ST NE,Warren,OH,44483,8
 Sankey Household,,846 CENTRAL PARKWAY AVE SE,Warren,OH,44484,7
 Sankey Household,,354 OAK KNOLL AVE SE,Warren,OH,44483,6
 Santagata Household,,976 BELVEDERE AVE SE,Warren,OH,44484,8
-Santangelo Household,,169 KENMORE AVE NE APT 208,Warren,OH,44483,6
+Santangelo Household,,169 KENMORE AVE NE UNIT 208,Warren,OH,44483,6
 Santha Household,,1705 PARKMAN RD NW,Warren,OH,44485,5
 Santiago Household,,2243 TOD AVE NW,Warren,OH,44485,7
 Santone Household,,3049 CARLTON DR NW,Warren,OH,44485,10
@@ -2358,7 +2360,7 @@ Scheiber Household,,266 COUNTRY CLUB DR NE,Warren,OH,44484,9
 Scheidly Household,,1465 SOUTHERN BLVD NW,Warren,OH,44485,5
 Scheitrumpf Household,,1434 SURREY POINT CIR SE,Warren,OH,44484,5
 Schenk Household,,2105 CENTRAL PARKWAY AVE SE,Warren,OH,44484,7
-Schlecht Household,,305 HARMON AVE NW APT 1,Warren,OH,44483,6
+Schlecht Household,,305 HARMON AVE NW UNIT 1,Warren,OH,44483,6
 Schoch Household,,1911 ESTABROOK AVE NW,Warren,OH,44485,9
 Schoch Household,,506 GENESEE AVE NE,Warren,OH,44483,7
 Scholten Household,,1016 PERKINSWOOD BLVD SE,Warren,OH,44484,5
@@ -2367,8 +2369,8 @@ Schrock Household,,2314 CENTRAL PARKWAY AVE SE,Warren,OH,44484,7
 Schubert Household,,384 MARWOOD AVE SE,Warren,OH,44484,8
 Schuller Household,,2074 WOODLAND AVE NE,Warren,OH,44483,8
 Schumacher Household,,3101 CRESCENT DR NE,Warren,OH,44483,6
-Schwab Household,,3830 NORTHWOODS CT NE APT 3,Warren,OH,44483,9
-Schwartz Household,,3000 MEADOW LN NE APT 212,Warren,OH,44483,9
+Schwab Household,,3830 NORTHWOODS CT NE UNIT 3,Warren,OH,44483,9
+Schwartz Household,,3000 MEADOW LN NE UNIT 212,Warren,OH,44483,9
 Scott Household,,605 WILLARD AVE NE,Warren,OH,44483,10
 Scott Household,,630 PERKINSWOOD BLVD SE,Warren,OH,44483,10
 Scott Household,,1520 LORI DR SW UNIT 1402,Warren,OH,44485,9
@@ -2384,7 +2386,7 @@ Sebben Household,,2839 WOODLAND AVE NE,Warren,OH,44483,6
 Sebbio Household,,2796 MONTGOMERY AVE NW,Warren,OH,44485,9
 Sebest Household,,3871 LONGHILL DR SE,Warren,OH,44484,7
 Sebring Household,,2082 HOLLYWOOD ST NE,Warren,OH,44483,10
-Secrist Household,,2361 PLAZA AVE NE APT D,Warren,OH,44483,6
+Secrist Household,,2361 PLAZA AVE NE UNIT D,Warren,OH,44483,6
 Sedlak Household,,719 ROSELAWN AVE NE,Warren,OH,44483,7
 Seese Household,,1077 MEADOWBROOK AVE SE,Warren,OH,44484,9
 Segall Household,,4464 WILLOW CREEK DR SE,Warren,OH,44484,7
@@ -2405,7 +2407,7 @@ Seman Household,,376 WAINWOOD DR SE,Warren,OH,44484,5
 Sember Household,,2381 MONTGOMERY AVE NW,Warren,OH,44485,10
 Semon Household,,1117 HAZELWOOD AVE SE,Warren,OH,44484,9
 Semple Household,,338 FAIRMOUNT AVE NE,Warren,OH,44483,10
-Senerchia Household,,3171 LODWICK DR NW APT 1,Warren,OH,44485,6
+Senerchia Household,,3171 LODWICK DR NW UNIT 1,Warren,OH,44485,6
 Seper Household,,1656 WESTWOOD DR NW,Warren,OH,44485,6
 Sernulka Household,,1868 BEECHWOOD ST NE,Warren,OH,44483,10
 Sevastos Household,,2925 FOSTER DR NE,Warren,OH,44483,7
@@ -2425,13 +2427,13 @@ Shaver Household,,1968 DODGE DR NW,Warren,OH,44485,7
 Shavers Household,,1378 BELVEDERE AVE SE,Warren,OH,44484,10
 Shehane Household,,710 KENMORE AVE NE,Warren,OH,44483,9
 Shellito Household,,1771 SUNSET DR NE,Warren,OH,44483,10
-Shelton Household,,3255 LODWICK DR NW APT 6,Warren,OH,44485,7
+Shelton Household,,3255 LODWICK DR NW UNIT 6,Warren,OH,44485,7
 Sheppard Household,,2544 WOODLAND AVE NE,Warren,OH,44483,10
 Sherbourne Household,,222 WILLARD AVE NE,Warren,OH,44483,8
 Shillingburg Household,,2339 MONTGOMERY AVE NW,Warren,OH,44485,9
 Shimborske Household,,1438 SURREY POINT CIR SE,Warren,OH,44484,6
-Shimko Household,,3000 MEADOW LN NE APT 209,Warren,OH,44483,9
-Shinn Household,,425 SOUTHERN BLVD NW APT 312,Warren,OH,44485,7
+Shimko Household,,3000 MEADOW LN NE UNIT 209,Warren,OH,44483,9
+Shinn Household,,425 SOUTHERN BLVD NW UNIT 312,Warren,OH,44485,7
 Shinosky Household,,1796 LARCHMONT AVE NE,Warren,OH,44483,9
 Shobel Household,,1746 BONNIE BRAE AVE NE,Warren,OH,44483,5
 Shrodek Household,,917 CENTRAL PARKWAY AVE SE,Warren,OH,44484,10
@@ -2491,7 +2493,7 @@ Smith Household,,1177 HAZELWOOD AVE SE,Warren,OH,44484,6
 Smith Household,,1415 BLAKELY CIR SW UNIT 701,Warren,OH,44485,6
 Smith Household,,810 THIRD ST SW,Warren,OH,44483,6
 Smith Household,,616 GENESEE AVE NE,Warren,OH,44483,6
-Smith Household,,4350 BERKSHIRE DR SE APT 104,Warren,OH,44484,5
+Smith Household,,4350 BERKSHIRE DR SE UNIT 104,Warren,OH,44484,5
 Smith Household,,1159 TRUMBULL AVE SE,Warren,OH,44484,5
 Smith Household,,538 KENILWORTH AVE SE,Warren,OH,44483,5
 Smolak Household,,1018 HARVARD DR SE,Warren,OH,44484,9
@@ -2504,7 +2506,7 @@ Soboslay Household,,240 WAINWOOD DR SE,Warren,OH,44484,6
 Soffos Household,,225 GARFIELD DR NE,Warren,OH,44483,10
 Soini Household,,389 QUARRY LN NE UNIT C,Warren,OH,44483,6
 Sok Household,,1479 BEECHWOOD ST NE,Warren,OH,44483,9
-Sokie Household,,169 KENMORE AVE NE APT 213,Warren,OH,44483,8
+Sokie Household,,169 KENMORE AVE NE UNIT 213,Warren,OH,44483,8
 Soletro Household,,216 CENTRAL PARKWAY AVE SE,Warren,OH,44483,6
 Spahr Household,,2804 CRESTWOOD DR NW,Warren,OH,44485,10
 Spain Household,,384 GENESEE AVE NE,Warren,OH,44483,10
@@ -2516,25 +2518,25 @@ Spanos Household,,255 MARWOOD AVE SE,Warren,OH,44484,6
 Sparacino Household,,374 TRUMBULL AVE SE,Warren,OH,44483,10
 Sparks Household,,1540 WESTWOOD DR NW,Warren,OH,44485,10
 Sparks Household,,597 ATLANTIC ST NE,Warren,OH,44483,9
-Sparks Household,,3133 NORTHWEST BLVD NW,Warren,OH,44485,9
+Sparks Household,,3133 NW BLVD NW,Warren,OH,44485,9
 Sparks Household,,2276 DRAPER AVE SE,Warren,OH,44484,8
 Sparks Household,,2262 DRAPER AVE SE,Warren,OH,44484,6
 Spear Household,,1444 NORWOOD ST NW,Warren,OH,44485,6
 Spelich Household,,2208 ATLANTIC ST NE,Warren,OH,44483,9
 Spencer Household,,1179 MEADOWBROOK AVE SE,Warren,OH,44484,10
 Spencer Household,,1020 HOMEWOOD AVE SE,Warren,OH,44484,10
-Spencer Household,,3000 BURTON ST SE APT A3,Warren,OH,44484,7
-Spencer Household,,425 SOUTHERN BLVD NW APT 311,Warren,OH,44485,7
+Spencer Household,,3000 BURTON ST SE UNIT A3,Warren,OH,44484,7
+Spencer Household,,425 SOUTHERN BLVD NW UNIT 311,Warren,OH,44485,7
 Spencer Household,,904 COMSTOCK ST NW,Warren,OH,44483,6
-Spencer Household,,1445 SOUTHWEST BLVD SW,Warren,OH,44485,5
+Spencer Household,,1445 SW BLVD SW,Warren,OH,44485,5
 Spicer Household,,2726 YOUNGSTOWN RD SE,Warren,OH,44484,10
 Sprague Household,,1074 TOD AVE NW,Warren,OH,44485,6
 Sprecacenere Household,,1122 HIGH ST NE,Warren,OH,44483,6
 Spriggs Household,,968 HIGHLAND AVE SW,Warren,OH,44485,6
 Stabile Household,,1299 PERKINSWOOD BLVD SE,Warren,OH,44484,6
 Stahl Household,,400 PERKINSWOOD BLVD SE,Warren,OH,44483,10
-Stanislaw Household,,1721 WEST AVE NW,Warren,OH,44483,6
-Stanley Household,,1375 MAHONING AVE NW APT 206,Warren,OH,44483,7
+Stanislaw Household,,1721 W AVE NW,Warren,OH,44483,6
+Stanley Household,,1375 MAHONING AVE NW UNIT 206,Warren,OH,44483,7
 Stano Household,,1358 PERKINSWOOD BLVD SE,Warren,OH,44484,8
 Stano Household,,507 BELVEDERE AVE SE,Warren,OH,44483,6
 Stantial Household,,2131 NORTHFIELD AVE NW,Warren,OH,44485,10
@@ -2571,14 +2573,14 @@ Stevens Household,,247 ADELAIDE AVE SE,Warren,OH,44483,6
 Stevenson Household,,2393 COIT DR NW,Warren,OH,44485,9
 Stevenson Household,,2219 DRAPER AVE SE,Warren,OH,44484,6
 Stevey Household,,1061 WOODBINE AVE SE,Warren,OH,44484,7
-Stevey Household,,700 BUCKEYE ST NW APT 806,Warren,OH,44485,5
+Stevey Household,,700 BUCKEYE ST NW UNIT 806,Warren,OH,44485,5
 Stewart Household,,1027 FRANCIS AVE SE,Warren,OH,44484,10
 Stewart Household,,3240 LYNWOOD DR NW,Warren,OH,44485,9
 Stiavnicky Household,,1122 ELM RD NE,Warren,OH,44483,9
 Stiffler Household,,1012 BRYAN PL NW,Warren,OH,44485,10
 Stiles Household,,636 BONNIE BRAE AVE NE,Warren,OH,44483,6
 Stimpert Household,,1194 HARVARD DR SE,Warren,OH,44484,8
-Stjohn Household,,390 QUARRY LN NE APT E,Warren,OH,44483,6
+Stjohn Household,,390 QUARRY LN NE UNIT E,Warren,OH,44483,6
 Stosky Household,,1130 MEADOWBROOK AVE SE,Warren,OH,44484,6
 Stouffer Household,,499 HOMEWOOD AVE SE,Warren,OH,44483,9
 Strader Household,,2940 REEVES RD NE,Warren,OH,44483,7
@@ -2606,7 +2608,7 @@ Sylvia Household,,2245 ESTABROOK AVE NW,Warren,OH,44485,6
 Szegedi Household,,2166 GRISSOM DR NE,Warren,OH,44483,7
 Szykulski Household,,345 OAK KNOLL AVE SE,Warren,OH,44483,7
 Tabor Household,,942 FIFTH ST SW,Warren,OH,44485,9
-Tachovaka Household,,421 NORTH ST NW,Warren,OH,44483,8
+Tachovaka Household,,421 N ST NW,Warren,OH,44483,8
 Tackett Household,,4030 TOD AVE NW,Warren,OH,44485,7
 Takach Household,,390 ELVINA ST,Leavittsburg,OH,44430,9
 Talbert Household,,1390 BLAKELY CIR SW UNIT 906,Warren,OH,44485,9
@@ -2614,7 +2616,7 @@ Talstein Household,,706 TRUMBULL AVE SE,Warren,OH,44484,9
 Talstein Household,,1157 FRANCIS AVE SE,Warren,OH,44484,7
 Tambures Household,,1173 MCKINLEY ST NE,Warren,OH,44483,7
 Tammaro Household,,535 BONNIE BRAE AVE NE,Warren,OH,44483,10
-Tanase Household,,2345 PLAZA AVE NE APT 108,Warren,OH,44483,7
+Tanase Household,,2345 PLAZA AVE NE UNIT 108,Warren,OH,44483,7
 Taneri Household,,1846 SHERIDAN AVE NE,Warren,OH,44483,9
 Taylor Household,,366 PERKINSWOOD BLVD SE,Warren,OH,44483,10
 Taylor Household,,3457 OLIAN AVE NW,Warren,OH,44485,10
@@ -2630,7 +2632,7 @@ Taylor Household,,390 CENTRAL PARKWAY AVE SE,Warren,OH,44483,8
 Taylor Household,,447 COUNTRY CLUB DR NE,Warren,OH,44484,7
 Taylor Household,,1521 LONGFELLOW CT NE,Warren,OH,44483,6
 Taylor Household,,534 ROOSEVELT ST NW,Warren,OH,44483,5
-Tedrow Household,,3000 BURTON ST SE APT 14,Warren,OH,44484,9
+Tedrow Household,,3000 BURTON ST SE UNIT 14,Warren,OH,44484,9
 Teeple Household,,1230 WARD ST NW,Warren,OH,44485,8
 Telstad Household,,1705 CRANBERRY LN NE,Warren,OH,44483,9
 Tempesta Household,,154 ROYAL TROON DR SE,Warren,OH,44484,9
@@ -2669,7 +2671,7 @@ Thorpe Household,,1837 SHERIDAN AVE NE,Warren,OH,44483,8
 Thumm Household,,406 OAK KNOLL AVE NE,Warren,OH,44483,7
 Thumm Household,,392 OAK KNOLL AVE NE,Warren,OH,44483,6
 Ticoras Household,,1175 HIGH ST NE,Warren,OH,44483,10
-Timko Household,,182 HIGH ST NE APT 607,Warren,OH,44481,7
+Timko Household,,182 HIGH ST NE UNIT 607,Warren,OH,44481,7
 Timmins Household,,619 PERKINSWOOD BLVD NE,Warren,OH,44483,10
 Tinge Household,,155 HAZELWOOD AVE SE,Warren,OH,44483,10
 Tingler Household,,880 SWALLOW ST SW,Warren,OH,44485,6
@@ -2680,7 +2682,7 @@ Titi Household,,709 ROSELAWN AVE NE,Warren,OH,44483,10
 Todd Household,,360 TRUMBULL AVE SE,Warren,OH,44483,7
 Toles Allgood Household,,1140 CENTRAL PARKWAY AVE SE,Warren,OH,44484,8
 Toles Household,,1256 ARTHUR DR NW,Warren,OH,44485,10
-Toles Household,,1380 ARBOR AVE SE APT 801,Warren,OH,44484,10
+Toles Household,,1380 ARBOR AVE SE UNIT 801,Warren,OH,44484,10
 Toles Household,,2668 BRIER ST SE,Warren,OH,44484,9
 Tomasko Household,,1311 SURREY POINT DR SE,Warren,OH,44484,7
 Tomsich Household,,647 KENMORE AVE NE,Warren,OH,44483,9
@@ -2693,7 +2695,7 @@ Totten Household,,1773 COVENTRY AVE NE,Warren,OH,44483,5
 Townsend Household,,1525 ARTHUR DR NW,Warren,OH,44485,8
 Tremsyn Household,,366 MAHONING AVE NW,Warren,OH,44483,8
 Trescott Household,,3161 LINDA DR NW,Warren,OH,44485,7
-Trimble Household,,1732 CRANBERRY LN NE APT 163,Warren,OH,44483,10
+Trimble Household,,1732 CRANBERRY LN NE UNIT 163,Warren,OH,44483,10
 Trimble Household,,1401 DODGE DR NW,Warren,OH,44485,10
 Trimble Household,,1336 UNION ST SW,Warren,OH,44485,5
 Trimbur Household,,2651 WOODLAND AVE NE,Warren,OH,44483,8
@@ -2706,13 +2708,13 @@ Tsilimos Household,,1436 GENESEE AVE NE,Warren,OH,44483,8
 Tucholske Household,,1426 UNION ST SW,Warren,OH,44485,7
 Tucker Household,,1066 SOUTHERN BLVD NW,Warren,OH,44485,5
 Turek Household,,3288 LYNWOOD DR NW,Warren,OH,44485,10
-Turnbaugh Household,,2501 PARKMAN RD NW APT 219,Warren,OH,44485,8
+Turnbaugh Household,,2501 PARKMAN RD NW UNIT 219,Warren,OH,44485,8
 Turnbaugh Household,,832 PARKMAN RD NW,Warren,OH,44485,7
 Turner Household,,1975 VAN WYE ST SE,Warren,OH,44484,10
 Turner Household,,2205 PARKWOOD DR NW,Warren,OH,44485,9
 Turner Household,,2881 CARLTON DR NW,Warren,OH,44485,7
 Turner Household,,2318 LINDA DR NW,Warren,OH,44485,7
-Turner Household,,1801 CRANBERRY LN NE APT 238,Warren,OH,44483,5
+Turner Household,,1801 CRANBERRY LN NE UNIT 238,Warren,OH,44483,5
 Tutoki Household,,237 MEADOWBROOK AVE SE,Warren,OH,44483,7
 Tyree Household,,755 ADELAIDE AVE NE,Warren,OH,44483,8
 Ujczo Household,,146 OAK KNOLL AVE SE,Warren,OH,44483,9
@@ -2736,9 +2738,9 @@ Vanwinkle Household,,856 PERKINSWOOD BLVD NE,Warren,OH,44483,10
 Varga Household,,3071 HALSEY DR NE,Warren,OH,44483,8
 Varley Household,,196 BONNIE BRAE AVE NE,Warren,OH,44483,10
 Varner Household,,2046 CLERMONT AVE NE,Warren,OH,44483,8
-Varner Household,,1709 CRANBERRY LN NE APT 154,Warren,OH,44483,8
+Varner Household,,1709 CRANBERRY LN NE UNIT 154,Warren,OH,44483,8
 Vasbinder Household,,1780 STONEHENGE AVE NE,Warren,OH,44483,7
-Vasel Household,,2975 SEDGEWICK ST NE APT 196,Warren,OH,44483,10
+Vasel Household,,2975 SEDGEWICK ST NE UNIT 196,Warren,OH,44483,10
 Vaughn Household,,140 ROYAL TROON DR SE,Warren,OH,44484,10
 Vaughn Household,,276 LOWELL AVE NE,Warren,OH,44483,6
 Vaughn Ware Household,,2880 WILLIAMSBURG ST NW,Warren,OH,44485,7
@@ -2784,17 +2786,17 @@ Walker Household,,427 HOMEWOOD AVE SE,Warren,OH,44483,7
 Walker Household,,2808 MILTON ST SE,Warren,OH,44484,7
 Walker Household,,850 GLENWOOD ST NE,Warren,OH,44483,6
 Walker Household,,769 MEADOWBROOK AVE SE,Warren,OH,44484,5
-Walker Household,,1620 KERI DR SW APT 1508,Warren,OH,44485,5
+Walker Household,,1620 KERI DR SW UNIT 1508,Warren,OH,44485,5
 Wallace Household,,1024 HARRISON ST NE,Warren,OH,44483,6
 Wallace Smith Household,,1867 NOCTURNE ST NE,Warren,OH,44483,9
 Waltko Household,,2066 VERNON AVE NW,Warren,OH,44483,5
 Walton Household,,1457 BIRCH RUN DR NE,Warren,OH,44483,9
 Wanosik Household,,2431 LINDA DR NW,Warren,OH,44485,7
-Ward Chin Household,,796 EAST AVE SE,Warren,OH,44484,8
+Ward Chin Household,,796 E AVE SE,Warren,OH,44484,8
 Ware Household,,2442 CRANWOOD DR SW,Warren,OH,44485,10
-Ware Household,,2501 PARKMAN RD NW APT 124,Warren,OH,44485,10
+Ware Household,,2501 PARKMAN RD NW UNIT 124,Warren,OH,44485,10
 Ware Household,,2866 CARLTON DR NW,Warren,OH,44485,8
-Ware Household,,3227 NORTHWEST BLVD NW,Warren,OH,44485,5
+Ware Household,,3227 NW BLVD NW,Warren,OH,44485,5
 Warfield Household,,228 FEDERAL ST NW,Warren,OH,44483,9
 Warfield Household,,2201 STEPHENS AVE NW,Warren,OH,44485,7
 Wargo Household,,1568 LARCHMONT AVE NE,Warren,OH,44483,6
@@ -2832,19 +2834,19 @@ Weller Household,,3071 CARLTON DR NW,Warren,OH,44485,6
 Wells Household,,1820 NOCTURNE ST NE,Warren,OH,44483,10
 Wells Household,,1449 OGDEN AVE NW,Warren,OH,44483,9
 Wells Household,,708 DELAWARE AVE SW,Warren,OH,44485,9
-Wells Household,,307 ROOSEVELT ST NW APT A,Warren,OH,44483,9
+Wells Household,,307 ROOSEVELT ST NW UNIT A,Warren,OH,44483,9
 Wells Household,,307 ROOSEVELT ST NW,Warren,OH,44483,7
 Wells Household,,534 BELVEDERE AVE NE,Warren,OH,44483,6
 Wells Household,,3105 WILLIAMSBURG ST NW,Warren,OH,44485,5
-Wells Pruitt Household,,1910 SOUTHERN BLVD NW APT 50,Warren,OH,44485,7
+Wells Pruitt Household,,1910 SOUTHERN BLVD NW UNIT 50,Warren,OH,44485,7
 Wensel Household,,1867 CLERMONT AVE NE,Warren,OH,44483,9
 Werner Household,,418 KENILWORTH AVE SE,Warren,OH,44483,7
 Wertz Household,,2015 CLERMONT AVE NE,Warren,OH,44483,5
 Wesley Household,,333 WAINWOOD DR SE,Warren,OH,44484,10
-West Household,,2135 NORTHWEST BLVD NW,Warren,OH,44485,10
+West Household,,2135 NW BLVD NW,Warren,OH,44485,10
 West Household,,380 FAIRWAY DR NE,Warren,OH,44483,8
 West Household,,1635 HAMILTON ST SW,Warren,OH,44485,6
-West Household,,182 HIGH ST NE APT 606,Warren,OH,44481,6
+West Household,,182 HIGH ST NE UNIT 606,Warren,OH,44481,6
 Westhead Household,,378 WOODBINE AVE SE,Warren,OH,44483,9
 Wetstein Household,,3243 E MARKET ST,Warren,OH,44484,10
 Whatley Household,,1623 DEERFIELD AVE SW,Warren,OH,44485,10
@@ -2863,7 +2865,7 @@ Wike Household,,691 FAIRWAY DR NE,Warren,OH,44483,10
 Wilcox Household,,1160 MCKINLEY ST NE,Warren,OH,44483,10
 Wilde Household,,920 OAK KNOLL AVE SE,Warren,OH,44484,7
 Wilder Household,,875 CENTRAL PARKWAY AVE SE,Warren,OH,44484,7
-Wildman Household,,1200 NORTH RD NE APT 9,Warren,OH,44483,8
+Wildman Household,,1200 N RD NE UNIT 9,Warren,OH,44483,8
 Wilhelm Household,,307 HAZELWOOD AVE SE,Warren,OH,44483,7
 Wilkins Household,,3220 RED FOX RUN DR NW,Warren,OH,44485,10
 Wilkins Household,,1407 EASTLAND AVE SE,Warren,OH,44484,6
@@ -2874,13 +2876,13 @@ Williams Hill Household,,2227 MILTON ST SE,Warren,OH,44484,10
 Williams Household,,4090 CHEVELLE DR SE,Warren,OH,44484,10
 Williams Household,,419 GENESEE AVE NE,Warren,OH,44483,10
 Williams Household,,2475 BEAL ST NW,Warren,OH,44485,10
-Williams Household,,2300 PLAZA AVE NE APT 410,Warren,OH,44483,10
+Williams Household,,2300 PLAZA AVE NE UNIT 410,Warren,OH,44483,10
 Williams Household,,1366 UNION ST SW,Warren,OH,44485,10
 Williams Household,,3021 BEAL ST NW,Warren,OH,44485,9
 Williams Household,,2254 BRIER ST SE,Warren,OH,44484,9
 Williams Household,,744 KINSMAN ST NW,Warren,OH,44483,9
 Williams Household,,745 MELWOOD DR NE,Warren,OH,44483,9
-Williams Household,,2501 PARKMAN RD NW APT 313,Warren,OH,44485,9
+Williams Household,,2501 PARKMAN RD NW UNIT 313,Warren,OH,44485,9
 Williams Household,,605 PHILLIPS DR SW,Warren,OH,44485,9
 Williams Household,,1607 TOD AVE NW,Warren,OH,44485,9
 Williams Household,,3373 RED FOX RUN DR NW,Warren,OH,44485,9
@@ -2894,7 +2896,7 @@ Williams Household,,910 BRUCEWOOD DR SE,Warren,OH,44484,7
 Williams Household,,542 PERKINS DR NW,Warren,OH,44483,7
 Williams Household,,1910 WESTWOOD DR NW,Warren,OH,44485,7
 Williams Household,,2434 OAK ST SW,Warren,OH,44485,7
-Williams Household,,3745 E MARKET ST APT 112,Warren,OH,44484,6
+Williams Household,,3745 E MARKET ST UNIT 112,Warren,OH,44484,6
 Williams Household,,587 KENMORE AVE SE,Warren,OH,44483,6
 Williams Household,,1457 ATLANTIC ST NE,Warren,OH,44483,6
 Williams Household,,1216 HIGHLAND AVE SW,Warren,OH,44485,6
@@ -2915,7 +2917,7 @@ Wilson Household,,1607 FERNDALE AVE SW,Warren,OH,44485,10
 Wilson Household,,456 CENTRAL PARKWAY AVE SE,Warren,OH,44483,10
 Wilson Household,,2014 SHERIDAN AVE NE,Warren,OH,44483,10
 Wilson Household,,2390 STEWART DR NW,Warren,OH,44485,10
-Wilson Household,,2300 PLAZA AVE NE APT 516,Warren,OH,44483,10
+Wilson Household,,2300 PLAZA AVE NE UNIT 516,Warren,OH,44483,10
 Wilson Household,,1677 HAMILTON ST SW,Warren,OH,44485,9
 Wilson Household,,1707 HAMILTON ST SW,Warren,OH,44485,9
 Wilson Household,,662 WILDWOOD DR NE,Warren,OH,44483,9
@@ -2929,26 +2931,26 @@ Wilson Household,,616 KENILWORTH AVE NE,Warren,OH,44483,7
 Wilson Household,,136 BONNIE BRAE AVE NE,Warren,OH,44483,6
 Windom Household,,3758 E MARKET ST,Warren,OH,44484,10
 Winters Household,,2326 ESTABROOK AVE NW,Warren,OH,44485,6
-Wiseman Household,,2501 PARKMAN RD NW APT 315,Warren,OH,44485,8
+Wiseman Household,,2501 PARKMAN RD NW UNIT 315,Warren,OH,44485,8
 Wisneski Household,,1457 DREXEL AVE NW,Warren,OH,44485,8
 Wissinger Household,,1161 HARRISON ST NE,Warren,OH,44483,5
 Wistar Household,,1177 CENTRAL PARKWAY AVE SE,Warren,OH,44484,8
-Wiswell Household,,2098 REEVES RD NE APT 7,Warren,OH,44483,10
+Wiswell Household,,2098 REEVES RD NE UNIT 7,Warren,OH,44483,10
 Wiswell Household,,1121 RAYMOND ST NW,Warren,OH,44485,8
-Witherow Household,,2245 NORTHWEST BLVD NW,Warren,OH,44485,8
+Witherow Household,,2245 NW BLVD NW,Warren,OH,44485,8
 Wolfe Household,,1630 SOUTHERN BLVD NW,Warren,OH,44485,5
 Wolfson Household,,841 FAIRMOUNT AVE NE,Warren,OH,44483,9
 Wonders Household,,1349 BEECHCREST ST NW,Warren,OH,44485,9
 Wood Household,,2798 MILTON ST SE,Warren,OH,44484,10
 Woodford Household,,1863 IRENE AVE NE,Warren,OH,44483,9
-Woodling Household,,169 KENMORE AVE NE APT 209,Warren,OH,44483,8
+Woodling Household,,169 KENMORE AVE NE UNIT 209,Warren,OH,44483,8
 Woodling Superak Household,,631 BONNIE BRAE AVE NE,Warren,OH,44483,7
 Woods Household,,806 PERKINSWOOD BLVD NE,Warren,OH,44483,9
 Woods Household,,157 DELAWARE AVE NW,Warren,OH,44485,9
 Woods Household,,2832 MERRIWEATHER ST NW,Warren,OH,44485,7
 Woods Household,,835 FOURTH ST SW,Warren,OH,44483,5
 Woodyard Household,,1964 SHERIDAN AVE NE,Warren,OH,44483,10
-Woolensack Household,,1105 NORTH RD SE,Warren,OH,44484,10
+Woolensack Household,,1105 N RD SE,Warren,OH,44484,10
 Workley Household,,791 WOODBINE AVE SE,Warren,OH,44484,10
 Wortman Household,,2307 MONTGOMERY AVE NW,Warren,OH,44485,9
 Wright Household,,1756 SHERIDAN AVE NE,Warren,OH,44483,8
@@ -2956,7 +2958,7 @@ Wright Household,,2111 SARATOGA AVE SW,Warren,OH,44485,7
 Wright Household,,446 OHIO AVE NW,Warren,OH,44485,6
 Wyand Household,,2885 CITADEL DR NE,Warren,OH,44483,6
 Wynn Household,,636 LAIRD AVE NE,Warren,OH,44483,9
-Yakubek Household,,182 HIGH ST NE APT 305,Warren,OH,44481,5
+Yakubek Household,,182 HIGH ST NE UNIT 305,Warren,OH,44481,5
 Yancey Household,,440 COMSTOCK ST NW,Warren,OH,44483,10
 Yancy Household,,1825 STONEHENGE AVE NE,Warren,OH,44483,10
 Yannucci Household,,151 ROYAL TROON DR SE,Warren,OH,44484,10
@@ -2977,7 +2979,7 @@ Youll Household,,725 BONNIE BRAE AVE NE,Warren,OH,44483,5
 Young Household,,1517 DREXEL AVE NW,Warren,OH,44485,10
 Young Household,,2820 LEXINGTON AVE NW,Warren,OH,44485,9
 Young Household,,935 TOD AVE NW,Warren,OH,44485,6
-Yuhoss Household,,4415 BERKSHIRE DR SE APT 3,Warren,OH,44484,6
+Yuhoss Household,,4415 BERKSHIRE DR SE UNIT 3,Warren,OH,44484,6
 Yuricek Household,,1815 EDGEWOOD ST NE,Warren,OH,44483,9
 Zadroski Household,,670 MEADOWBROOK AVE SE,Warren,OH,44484,10
 Zadroski Household,,309 BUTLER RD NE,Warren,OH,44483,6
@@ -2989,7 +2991,7 @@ Zell Household,,1521 DEERFIELD AVE SW,Warren,OH,44485,7
 Zervas Household,,400 ADELAIDE AVE NE,Warren,OH,44483,5
 Ziegler Household,,2893 RANDOLPH ST NW,Warren,OH,44485,10
 Ziegler Household,,2097 MARY DR NE,Warren,OH,44483,5
-Zigler Swope Smith Household,,3070 W MARKET ST APT G,Warren,OH,44485,6
+Zigler Swope Smith Household,,3070 W MARKET ST UNIT G,Warren,OH,44485,6
 Zigmont Household,,2141 TOD AVE NW,Warren,OH,44485,6
 Zillinger Household,,412 BELVEDERE AVE NE,Warren,OH,44483,6
 Zillinger Household,,797 HAZELWOOD AVE SE,Warren,OH,44484,5
