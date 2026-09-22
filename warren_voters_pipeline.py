@@ -176,6 +176,34 @@ def nonblank_count_formula(row: int, columns: list[int]) -> str:
     return f"={'+'.join(parts)}"
 
 
+def build_summary_sheet(wb, ws, header_to_col: dict[str, int], max_row: int, column_maxes: dict[str, int]) -> None:
+    """Add/replace a 'Summary' sheet with a COUNTIF super-voter ladder.
+
+    For each score column present, one row per threshold from >=1 up to that
+    column's own max value in the data, e.g. row ">=3" for Dems shows
+    =COUNTIF(Dems range, ">="&3). Columns with a lower max simply show 0 on
+    the rows above their own max, so the table stays rectangular.
+    """
+    overall_max = max(column_maxes.values(), default=0)
+    if overall_max <= 0:
+        return
+    if "Summary" in wb.sheetnames:
+        del wb["Summary"]
+    summary = wb.create_sheet("Summary")
+
+    sheet_ref = f"'{ws.title}'" if any(ch in ws.title for ch in " -") else ws.title
+    summary.cell(row=1, column=1, value="Threshold (>=)")
+    ordered_headers = [header for header in header_to_col if header in column_maxes]
+    for col_offset, header in enumerate(ordered_headers, start=2):
+        summary.cell(row=1, column=col_offset, value=header)
+        col_letter = excel_column_letter(header_to_col[header])
+        data_range = f"{sheet_ref}!${col_letter}$2:${col_letter}${max_row}"
+        for threshold in range(1, overall_max + 1):
+            row = threshold + 1
+            summary.cell(row=row, column=1, value=threshold)
+            summary.cell(row=row, column=col_offset, value=f'=COUNTIF({data_range},">="&$A{row})')
+
+
 def score_existing_xlsx_values(input_path: Path, output_path: Path, recent_years: int, exclude_presidential_general: bool = True) -> int:
     df = pd.read_excel(input_path, dtype=str, keep_default_na=False)
     df.columns = [str(column).strip() for column in df.columns]
@@ -217,6 +245,20 @@ def score_existing_xlsx_values(input_path: Path, output_path: Path, recent_years
     )
     output_path.parent.mkdir(parents=True, exist_ok=True)
     result.to_excel(output_path, index=False, engine="openpyxl")
+
+    from openpyxl import load_workbook as _load_workbook
+
+    summary_headers = ["Total:", "Dems", "REPS", "Latest"] + moved_score_cols
+    column_maxes = {
+        header: int(result[header].max())
+        for header in summary_headers
+        if header in result.columns and len(result) and result[header].notna().any()
+    }
+    header_to_col = {header: result.columns.get_loc(header) + 1 for header in column_maxes}
+    wb = _load_workbook(output_path)
+    build_summary_sheet(wb, wb.active, header_to_col, len(result) + 1, column_maxes)
+    wb.save(output_path)
+
     return len(latest_cols)
 
 
@@ -285,6 +327,7 @@ def score_existing_xlsx_formulas(input_path: Path, output_path: Path, recent_yea
             columns = [column for column in columns if not is_presidential_general(column)]
         recent_score_positions[header] = [inserted_before_votes[column] for column in columns]
 
+    column_maxes = {header: 0 for header in ("Total:", "Dems", "REPS", "Latest", *extra_headers)}
     for row in range(2, ws.max_row + 1):
         vote_range = f"${first_vote_letter}${row}:${last_vote_letter}${row}"
         ws.cell(row=row, column=insert_position, value=f"=COUNTA({vote_range})")
@@ -297,6 +340,28 @@ def score_existing_xlsx_formulas(input_path: Path, output_path: Path, recent_yea
                 cell.value = nonblank_count_formula(row, local_positions)
             else:
                 cell.value = nonblank_count_formula(row, recent_score_positions.get(header, []))
+
+        vote_vals = {column: str(ws.cell(row=row, column=column).value or "").strip() for column in vote_positions}
+        row_total = sum(1 for value in vote_vals.values() if value != "")
+        row_dems = sum(1 for value in vote_vals.values() if value == "D")
+        row_reps = sum(1 for value in vote_vals.values() if value == "R")
+        row_latest = sum(1 for column in latest_positions if vote_vals.get(column, "") != "")
+        row_local = sum(1 for column in local_positions if vote_vals.get(column, "") != "")
+        column_maxes["Total:"] = max(column_maxes["Total:"], row_total)
+        column_maxes["Dems"] = max(column_maxes["Dems"], row_dems)
+        column_maxes["REPS"] = max(column_maxes["REPS"], row_reps)
+        column_maxes["Latest"] = max(column_maxes["Latest"], row_latest)
+        column_maxes[LOCAL_TOTAL_COL] = max(column_maxes[LOCAL_TOTAL_COL], row_local)
+        for header, positions in recent_score_positions.items():
+            row_recent = sum(1 for column in positions if vote_vals.get(column, "") != "")
+            column_maxes[header] = max(column_maxes[header], row_recent)
+
+    header_to_col = {
+        "Total:": insert_position, "Dems": insert_position + 1,
+        "REPS": insert_position + 2, "Latest": insert_position + 3,
+    }
+    header_to_col.update({header: insert_position + 4 + offset for offset, header in enumerate(extra_headers)})
+    build_summary_sheet(wb, ws, header_to_col, ws.max_row, column_maxes)
 
     if hasattr(wb, "calculation"):
         wb.calculation.fullCalcOnLoad = True
@@ -374,6 +439,19 @@ def filter_xlsx_by_ward(input_path: Path, ward: str, output_path: Path) -> None:
 
     output_path.parent.mkdir(parents=True, exist_ok=True)
     result.to_excel(output_path, index=False, engine="openpyxl")
+
+    from openpyxl import load_workbook as _load_workbook
+
+    column_maxes = {
+        column: int(result[column].max())
+        for column in SCORE_VALUE_COLUMNS
+        if column in result.columns and pd.api.types.is_numeric_dtype(result[column]) and result[column].notna().any()
+    }
+    header_to_col = {column: result.columns.get_loc(column) + 1 for column in column_maxes}
+    wb = _load_workbook(output_path)
+    build_summary_sheet(wb, wb.active, header_to_col, len(result) + 1, column_maxes)
+    wb.save(output_path)
+
     print(f"Ward {target} workbook written: {output_path}")
     print(f"Ward {target} voters: {len(result)}")
 

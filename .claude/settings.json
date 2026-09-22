@@ -7,11 +7,13 @@
       "Bash(python3 *)",
       "Bash(python3 warren_voters_pipeline.py --input \"downloads/TRUMBULL \\(1\\).txt\")",
       "Bash(git *)",
-      "Bash(python3 warren_voters_pipeline.py)",
+      "Bash('python3', *)",
       "Bash(python3 -c ' *)",
       "Bash(git status *)",
       "Bash(python3 -m py_compile warren_voters_pipeline.py)",
-      "Bash(python3 warren_voters_pipeline.py --ward-xlsx outputs/2026/warren-all-scored_2026-09-15.xlsx --ward 4)"
+      "Bash(python3 warren_voters_pipeline.py --ward-xlsx outputs/2026/warren-all-scored_2026-09-15.xlsx --ward 4)",
+      "Bash(python3 warren_voters_pipeline.py --ward-xlsx outputs/2026/warren-all-scored_2026-09-15.xlsx --ward 4 --ward-output outputs/2026/warren-ward4-scored_2026-09-15.xlsx)",
+      "Bash(python3 -c \"import ast; ast.parse\\(open\\('warren_voters_pipeline.py'\\).read\\(\\)\\)\")"
     ]
   }
 }
