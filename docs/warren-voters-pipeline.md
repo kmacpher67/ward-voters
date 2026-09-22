@@ -26,19 +26,21 @@ machine where SOS access works.
 1. **Load & filter**: read the raw `.txt`, keep rows where `CITY == "WARREN CITY"`
    (all 7 wards, not just one).
 2. **Score every voter**:
-   - `TOTAL_VOTES` — count of non-blank election columns, all-time.
+   - `Local_Tot` — count of non-blank odd-year election columns, all-time.
+     In Ohio, odd-year elections are the local/municipal cycle, so this is the
+     lifetime local-vote score. This replaced the older `TOTAL_VOTES` field.
    - `VOTES_LAST_4YR` — count of non-blank election columns dated within the
      last N years (`--years`, default 4), **excluding presidential-year
      GENERAL elections** (`GENERAL-MM/DD/YYYY` where `YYYY % 4 == 0`, e.g.
      `GENERAL-11/05/2024`) by default — presidential-year turnout is not
      representative of local/municipal turnout. Pass
-     `--include-presidential-general` to count them. `TOTAL_VOTES` is
-     unaffected and always includes presidential-year elections.
-   - Sorted by `TOTAL_VOTES` descending.
+     `--include-presidential-general` to count them. `Local_Tot` is
+     unaffected and always uses odd-year elections only.
+   - Sorted by `Local_Tot` descending.
    - `→ outputs/<year>/warren-all_<date>.xlsx`
 3. **Filter to local super voters**: keep rows with `VOTES_LAST_4YR >= 1` by
    default. Use `--min-recent-votes N` for a stricter definition. Remaining
-   voters are ranked by recent-vote score descending, then `TOTAL_VOTES`
+   voters are ranked by recent-vote score descending, then `Local_Tot`
    descending.
    - `→ outputs/<year>/warren-all-4yr-vote1_<date>.xlsx`
 4. **Apply no-delivery exceptions**: remove every voter whose residential
@@ -50,7 +52,7 @@ machine where SOS access works.
 5. **Dedupe to one row per household**: group the recent-voter list by a
    canonicalized `RESIDENTIAL_ADDRESS1 + RESIDENTIAL_SECONDARY_ADDR` (trim
    whitespace, remove punctuation, standardize directions/street types, and
-   treat `UNIT`, `APT`, and `APARTMENT` equivalently). Keep the highest-`TOTAL_VOTES` voter per address as the
+   treat `UNIT`, `APT`, and `APARTMENT` equivalently). Keep the highest-`Local_Tot` voter per address as the
    household representative, and emit it in the Vista mailing-list template
    format (`Vista_ListTemplate.xlsx`): `Recipient, Company, Address, City,
    State, Zip code`, with `Recipient = "<Last_Name> Household"`.
@@ -93,7 +95,7 @@ Recommended copy/paste upgrade instruction:
 > voter whose normalized address/city/state/ZIP matches an active exception.
 > Perform this before household deduplication and before applying the
 > 3,000-address cap. Sort remaining households by `VOTES_LAST_4YR` descending,
-> then `TOTAL_VOTES` descending, dedupe by residential street address plus unit,
+> then `Local_Tot` descending, dedupe by residential street address plus unit,
 > and retain only the first 3,000 addresses. Export an audit file of removed
 > voter IDs and the exception row that caused each removal. Do not use mailing
 > address as a fallback for the official-home exclusion.
@@ -125,13 +127,41 @@ python3 warren_voters_pipeline.py \
   --score-output outputs/2026/warren-all-scored_2026-09-15.xlsx
 ```
 
-This preserves the source and inserts `Total:`, `Dems`, `REPS`, and `Latest`
-after `WARD`. The columns are calculated values: all-time nonblank votes,
-`D` votes, `R` votes, and nonblank votes in the last six calendar years
-(excluding presidential-year GENERAL elections by default, same rule as
-`VOTES_LAST_4YR` above), respectively. Change the recent window with
-`--recent-years N`; use `--include-presidential-general` to count
-presidential-year GENERAL elections in `Latest` too.
+This preserves the source and inserts `Total:`, `Dems`, `REPS`, `Latest`, and
+`Local_Tot` after `WARD`. If the source already has a `VOTES_LAST_*YR` column,
+that column is moved next to these score columns too, ahead of the election
+history columns. By default the inserted columns are stored as numeric values,
+not live Excel formulas:
+
+- `Total:` counts all nonblank election columns.
+- `Dems` counts election columns equal to `D`.
+- `REPS` counts election columns equal to `R`.
+- `Latest` counts nonblank election columns in the last six calendar years,
+  excluding presidential-year GENERAL elections by default, same rule as
+  `VOTES_LAST_4YR` above.
+- `Local_Tot` counts nonblank odd-year election columns only. If the source
+  workbook has the old `TOTAL_VOTES` column, it is replaced with this
+  recalculated `Local_Tot` value.
+
+Use `--recent-years N` to change the `Latest` window; use
+`--include-presidential-general` to count presidential-year GENERAL elections
+in `Latest` too. Use `--score-format formulas` to write those four inserted
+columns as live Excel formulas instead:
+
+```bash
+python3 warren_voters_pipeline.py \
+  --score-xlsx outputs/2026/warren-all_2026-09-15.xlsx \
+  --score-output outputs/2026/warren-all-scored-formulas_2026-09-15.xlsx \
+  --score-format formulas
+```
+
+Formula mode writes `=COUNTA(...)`, `=COUNTIF(...,"D")`,
+`=COUNTIF(...,"R")`, and a row-specific `Latest` sum of nonblank recent
+election cells. `Local_Tot` remains a calculated numeric value in both modes.
+Open the workbook in Excel or LibreOffice to calculate and display formula
+results. Value mode is safer for viewers that do not recalculate formulas. The
+ward-filter mode preserves these score columns as numbers instead of rewriting
+them as text.
 
 To pull a single ward out of an existing workbook (raw or scored), use the
 same script's ward-filter mode:

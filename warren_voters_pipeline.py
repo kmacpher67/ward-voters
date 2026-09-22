@@ -10,9 +10,9 @@ Pipeline (see docs/warren-voters-pipeline.md for full write-up):
      to pick a specific file, or --download to retry the Selenium fetch
      first (see download_trumbull_ward.py for that logic).
   2. Filter to CITY == "WARREN CITY" (all wards) -> warren-all
-  3. Score every voter: TOTAL_VOTES (all-time non-blank election columns) and
+  3. Score every voter: Local_Tot (odd-year non-blank election columns) and
      VOTES_LAST_4YR (non-blank election columns dated within the last 4
-     years). Sort by TOTAL_VOTES desc.
+     years). Sort by Local_Tot desc.
   4. Filter to VOTES_LAST_4YR >= 1 -> warren-all-4yr-vote1
   5. Dedupe warren-all-4yr-vote1 to one row per household, keyed on
      RESIDENTIAL_ADDRESS1 + RESIDENTIAL_SECONDARY_ADDR, rank by recent local
@@ -40,6 +40,9 @@ from pathlib import Path
 import pandas as pd
 
 VOTE_COL_RE = re.compile(r"^(PRIMARY|GENERAL|SPECIAL)-(\d{2})/(\d{2})/(\d{4})$")
+LOCAL_TOTAL_COL = "Local_Tot"
+LEGACY_TOTAL_COL = "TOTAL_VOTES"
+SCORE_VALUE_COLUMNS = ("Total:", "Dems", "REPS", "Latest", LOCAL_TOTAL_COL, LEGACY_TOTAL_COL, "VOTES_LAST_4YR")
 
 
 def parse_args() -> argparse.Namespace:
@@ -83,6 +86,12 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument("--score-xlsx", default="", help="Existing .xlsx workbook to add Total:/Dems/REPS/Latest columns to")
     parser.add_argument("--score-output", default="", help="Output .xlsx path for --score-xlsx (default: add -scored before .xlsx)")
+    parser.add_argument(
+        "--score-format",
+        choices=("values", "formulas"),
+        default="values",
+        help="Write --score-xlsx inserted columns as calculated numbers or live Excel formulas (default: values)",
+    )
     parser.add_argument("--ward-xlsx", default="", help="Existing .xlsx workbook to filter down to a single WARD (e.g. an already-scored workbook)")
     parser.add_argument("--ward", default="", help='Ward to keep for --ward-xlsx, e.g. "4" or "WARREN-WARD 4"')
     parser.add_argument("--ward-output", default="", help="Output .xlsx path for --ward-xlsx (default: add -ward<N> before .xlsx)")
@@ -119,6 +128,11 @@ def vote_year(col: str) -> int:
     return int(VOTE_COL_RE.match(col).group(4))
 
 
+def is_odd_year_vote(col: str) -> bool:
+    """True for odd-year elections, the Ohio local/municipal cycle used here."""
+    return vote_year(col) % 2 == 1
+
+
 def is_presidential_general(col: str) -> bool:
     """True for a GENERAL election column in a presidential year (year % 4 == 0)."""
     match = VOTE_COL_RE.match(col)
@@ -133,7 +147,8 @@ def add_scores(df: pd.DataFrame, vote_cols: list[str], years: int, exclude_presi
         recent_cols = [c for c in recent_cols if not is_presidential_general(c)]
 
     non_blank = df[vote_cols].apply(lambda s: s.str.strip().ne(""))
-    df["TOTAL_VOTES"] = non_blank.sum(axis=1)
+    local_cols = [c for c in vote_cols if is_odd_year_vote(c)]
+    df[LOCAL_TOTAL_COL] = non_blank[local_cols].sum(axis=1) if local_cols else 0
 
     if recent_cols:
         recent_non_blank = df[recent_cols].apply(lambda s: s.str.strip().ne(""))
@@ -144,23 +159,16 @@ def add_scores(df: pd.DataFrame, vote_cols: list[str], years: int, exclude_presi
     return df
 
 
-def score_existing_xlsx(input_path: Path, output_path: Path, recent_years: int, exclude_presidential_general: bool = True) -> None:
-    """Add the legacy Excel scoring columns to an already-created workbook.
+def excel_column_letter(index: int) -> str:
+    """Convert a 1-based column index to an Excel column letter."""
+    letters = ""
+    while index:
+        index, remainder = divmod(index - 1, 26)
+        letters = chr(65 + remainder) + letters
+    return letters
 
-    The source workbook is not modified.  The four columns are inserted after
-    WARD and contain calculated values rather than Excel formulas so they work
-    in viewers that do not recalculate formulas:
 
-      Total:  all non-blank election cells
-      Dems    election cells equal to D
-      REPS    election cells equal to R
-      Latest  non-blank election cells dated within the recent-year window,
-              excluding presidential-year (year % 4 == 0) GENERAL elections
-              by default (see --include-presidential-general)
-    """
-    if recent_years < 0:
-        raise ValueError("--recent-years must be zero or greater")
-
+def score_existing_xlsx_values(input_path: Path, output_path: Path, recent_years: int, exclude_presidential_general: bool = True) -> int:
     df = pd.read_excel(input_path, dtype=str, keep_default_na=False)
     df.columns = [str(column).strip() for column in df.columns]
     vote_cols = vote_columns(df)
@@ -181,12 +189,144 @@ def score_existing_xlsx(input_path: Path, output_path: Path, recent_years: int, 
         latest_cols = [column for column in latest_cols if not is_presidential_general(column)]
     scores["Latest"] = non_blank[latest_cols].sum(axis=1) if latest_cols else 0
 
+    local_cols = [column for column in vote_cols if is_odd_year_vote(column)]
+    df[LOCAL_TOTAL_COL] = non_blank[local_cols].sum(axis=1) if local_cols else 0
+    if LEGACY_TOTAL_COL in df.columns:
+        df = df.drop(columns=[LEGACY_TOTAL_COL])
+    existing_score_cols = [LOCAL_TOTAL_COL]
+    existing_score_cols.extend(column for column in df.columns if re.match(r"^VOTES_LAST_\d+YR$", column))
+
     ward_position = df.columns.get_loc("WARD") + 1
-    result = pd.concat([df.iloc[:, :ward_position], scores, df.iloc[:, ward_position:]], axis=1)
+    after_ward = df.iloc[:, ward_position:]
+    moved_score_cols = [column for column in existing_score_cols if column in after_ward.columns]
+    remaining_after_ward = after_ward.drop(columns=moved_score_cols)
+    result = pd.concat(
+        [df.iloc[:, :ward_position], scores, df[moved_score_cols], remaining_after_ward],
+        axis=1,
+    )
     output_path.parent.mkdir(parents=True, exist_ok=True)
     result.to_excel(output_path, index=False, engine="openpyxl")
+    return len(latest_cols)
+
+
+def score_existing_xlsx_formulas(input_path: Path, output_path: Path, recent_years: int, exclude_presidential_general: bool = True) -> int:
+    from openpyxl import load_workbook
+
+    wb = load_workbook(input_path)
+    ws = wb.active
+    headers = {str(ws.cell(1, column).value or "").strip(): column for column in range(1, ws.max_column + 1)}
+    carried_score_headers = [
+        header for header in headers
+        if header == LOCAL_TOTAL_COL or header == LEGACY_TOTAL_COL or re.match(r"^VOTES_LAST_\d+YR$", header)
+    ]
+    carried_values = {
+        header: [ws.cell(row=row, column=headers[header]).value for row in range(2, ws.max_row + 1)]
+        for header in carried_score_headers
+        if header not in (LOCAL_TOTAL_COL, LEGACY_TOTAL_COL)
+    }
+    for column in sorted((headers[header] for header in carried_score_headers), reverse=True):
+        ws.delete_cols(column)
+
+    headers = {str(ws.cell(1, column).value or "").strip(): column for column in range(1, ws.max_column + 1)}
+    if "WARD" not in headers:
+        raise KeyError(f"Column WARD not found in {input_path}")
+    original_vote_columns = {
+        header: column for header, column in headers.items()
+        if VOTE_COL_RE.match(header)
+    }
+    if not original_vote_columns:
+        raise KeyError(f"No election columns found in {input_path}")
+
+    extra_headers = [LOCAL_TOTAL_COL]
+    extra_headers.extend(header for header in carried_score_headers if re.match(r"^VOTES_LAST_\d+YR$", header))
+
+    insert_position = headers["WARD"] + 1
+    insert_amount = 4 + len(extra_headers)
+    ws.insert_cols(insert_position, amount=insert_amount)
+    for offset, header in enumerate(("Total:", "Dems", "REPS", "Latest")):
+        ws.cell(row=1, column=insert_position + offset, value=header)
+    for offset, header in enumerate(extra_headers, start=4):
+        ws.cell(row=1, column=insert_position + offset, value=header)
+
+    inserted_before_votes = {
+        header: column + insert_amount if column >= insert_position else column
+        for header, column in original_vote_columns.items()
+    }
+    vote_positions = sorted(inserted_before_votes.values())
+    first_vote_letter = excel_column_letter(vote_positions[0])
+    last_vote_letter = excel_column_letter(vote_positions[-1])
+
+    current_year = datetime.today().year
+    latest_cols = [
+        column for column in original_vote_columns
+        if vote_year(column) >= current_year - recent_years
+    ]
+    if exclude_presidential_general:
+        latest_cols = [column for column in latest_cols if not is_presidential_general(column)]
+    latest_positions = [inserted_before_votes[column] for column in latest_cols]
+    local_positions = [
+        inserted_before_votes[column] for column in original_vote_columns
+        if is_odd_year_vote(column)
+    ]
+
+    for row in range(2, ws.max_row + 1):
+        vote_range = f"${first_vote_letter}${row}:${last_vote_letter}${row}"
+        ws.cell(row=row, column=insert_position, value=f"=COUNTA({vote_range})")
+        ws.cell(row=row, column=insert_position + 1, value=f'=COUNTIF({vote_range},"D")')
+        ws.cell(row=row, column=insert_position + 2, value=f'=COUNTIF({vote_range},"R")')
+        latest_parts = [
+            f'IF({excel_column_letter(column)}{row}<>"",1,0)'
+            for column in latest_positions
+        ]
+        ws.cell(row=row, column=insert_position + 3, value=f"={'+'.join(latest_parts)}" if latest_parts else "=0")
+        for offset, header in enumerate(extra_headers, start=4):
+            cell = ws.cell(row=row, column=insert_position + offset)
+            if header == LOCAL_TOTAL_COL:
+                cell.value = sum(
+                    1 for column in local_positions
+                    if str(ws.cell(row=row, column=column).value or "").strip() != ""
+                )
+            else:
+                values = carried_values.get(header, [])
+                cell.value = values[row - 2] if row - 2 < len(values) else None
+
+    if hasattr(wb, "calculation"):
+        wb.calculation.fullCalcOnLoad = True
+        wb.calculation.forceFullCalc = True
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    wb.save(output_path)
+    return len(latest_cols)
+
+
+def score_existing_xlsx(
+    input_path: Path,
+    output_path: Path,
+    recent_years: int,
+    exclude_presidential_general: bool = True,
+    score_format: str = "values",
+) -> None:
+    """Add the legacy Excel scoring columns to an already-created workbook.
+
+    The source workbook is not modified. The four columns are inserted after
+    WARD and can be written either as calculated values or Excel formulas:
+
+      Total:  all non-blank election cells
+      Dems    election cells equal to D
+      REPS    election cells equal to R
+      Latest  non-blank election cells dated within the recent-year window,
+              excluding presidential-year (year % 4 == 0) GENERAL elections
+              by default (see --include-presidential-general)
+    """
+    if recent_years < 0:
+        raise ValueError("--recent-years must be zero or greater")
+    if score_format == "values":
+        latest_count = score_existing_xlsx_values(input_path, output_path, recent_years, exclude_presidential_general)
+    elif score_format == "formulas":
+        latest_count = score_existing_xlsx_formulas(input_path, output_path, recent_years, exclude_presidential_general)
+    else:
+        raise ValueError(f'Unknown score format "{score_format}"')
     print(f"Scored workbook written: {output_path}")
-    print(f"Scoring columns: Total:, Dems, REPS, Latest ({len(latest_cols)} recent election columns)")
+    print(f"Scoring columns: Total:, Dems, REPS, Latest ({latest_count} recent election columns, {score_format})")
 
 
 def normalize_ward(value: object) -> str:
@@ -217,6 +357,12 @@ def filter_xlsx_by_ward(input_path: Path, ward: str, output_path: Path) -> None:
     result = df.loc[df["WARD"].map(normalize_ward) == target].copy()
     if result.empty:
         raise ValueError(f'No rows matched ward "{ward}" (normalized: "{target}") in {input_path}')
+    for column in SCORE_VALUE_COLUMNS:
+        if column in result.columns:
+            converted = pd.to_numeric(result[column], errors="coerce")
+            non_blank = result[column].astype(str).str.strip().ne("")
+            if converted[non_blank].notna().all():
+                result[column] = converted
 
     output_path.parent.mkdir(parents=True, exist_ok=True)
     result.to_excel(output_path, index=False, engine="openpyxl")
@@ -230,7 +376,7 @@ def build_deduped_mailing_list(df: pd.DataFrame, recent_col: str) -> pd.DataFram
         lambda row: residential_address_key(combined_residential_address(row["RESIDENTIAL_ADDRESS1"], row["RESIDENTIAL_SECONDARY_ADDR"])),
         axis=1,
     )
-    work = work.sort_values([recent_col, "TOTAL_VOTES"], ascending=[False, False], kind="stable").copy()
+    work = work.sort_values([recent_col, LOCAL_TOTAL_COL], ascending=[False, False], kind="stable").copy()
     reps = work.groupby("_ADDR_KEY", as_index=False, sort=False).first()
 
     address = reps["RESIDENTIAL_ADDRESS1"].map(fix_address)
@@ -480,7 +626,7 @@ def main() -> int:
             output_path = Path(args.score_output).expanduser().resolve()
         else:
             output_path = input_path.with_name(f"{input_path.stem}-scored{input_path.suffix}")
-        score_existing_xlsx(input_path, output_path, args.recent_years, args.exclude_presidential_general)
+        score_existing_xlsx(input_path, output_path, args.recent_years, args.exclude_presidential_general, args.score_format)
         return 0
 
     if args.ward_xlsx:
@@ -521,7 +667,7 @@ def main() -> int:
 
     warren = add_scores(warren, vote_cols, args.years, args.exclude_presidential_general)
     recent_col = f"VOTES_LAST_{args.years}YR"
-    warren = warren.sort_values("TOTAL_VOTES", ascending=False, kind="stable")
+    warren = warren.sort_values(LOCAL_TOTAL_COL, ascending=False, kind="stable")
 
     if args.min_recent_votes < 0:
         raise ValueError("--min-recent-votes must be zero or greater")
@@ -534,7 +680,7 @@ def main() -> int:
         axis=1,
     )
     recent_voters = recent_voters.sort_values(
-        [recent_col, "TOTAL_VOTES"], ascending=[False, False], kind="stable"
+        [recent_col, LOCAL_TOTAL_COL], ascending=[False, False], kind="stable"
     )
     pres_note = " (excl. presidential GENERAL)" if args.exclude_presidential_general else ""
     print(f"Voters with >={args.min_recent_votes} vote(s) in last {args.years} years{pres_note}: {len(recent_voters)}")

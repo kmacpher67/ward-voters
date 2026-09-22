@@ -39,7 +39,7 @@ Outputs are written under `outputs/<year>/` so each run stays grouped by year.
 
 See [docs/warren-voters-pipeline.md](docs/warren-voters-pipeline.md) for full
 details. Filters the raw Trumbull SOS file to Warren City (all wards), scores
-every voter by total lifetime votes and votes in the last 4 years, and
+every voter by lifetime odd-year local votes and votes in the last 4 years, and
 produces a household-deduped mailing list in the Vista template format.
 
 ```
@@ -73,9 +73,13 @@ python3 warren_voters_pipeline.py \
   --score-output outputs/2026/warren-all-scored_2026-09-15.xlsx
 ```
 
-This inserts `Total:`, `Dems`, `REPS`, and `Latest` immediately after `WARD`.
-`Latest` counts nonblank election columns from the last six calendar years;
-use `--recent-years N` to change that window. The source workbook is preserved.
+This inserts `Total:`, `Dems`, `REPS`, `Latest`, and `Local_Tot` immediately
+after `WARD`, and moves any existing `VOTES_LAST_*YR` score next to them. By
+default those inserted columns are numeric values. Add `--score-format formulas`
+to write live Excel formulas for `Total:`, `Dems`, `REPS`, and `Latest`
+instead. `Latest` counts nonblank election columns from the last six calendar
+years; use `--recent-years N` to change that window. The source workbook is
+preserved.
 
 To filter any existing Warren workbook (raw or already scored) down to one
 ward, without touching the input file:
