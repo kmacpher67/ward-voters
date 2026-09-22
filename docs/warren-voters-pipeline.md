@@ -130,8 +130,7 @@ python3 warren_voters_pipeline.py \
 This preserves the source and inserts `Total:`, `Dems`, `REPS`, `Latest`, and
 `Local_Tot` after `WARD`. If the source already has a `VOTES_LAST_*YR` column,
 that column is moved next to these score columns too, ahead of the election
-history columns. By default the inserted columns are stored as numeric values,
-not live Excel formulas:
+history columns. By default the inserted score columns are live Excel formulas:
 
 - `Total:` counts all nonblank election columns.
 - `Dems` counts election columns equal to `D`.
@@ -145,14 +144,14 @@ not live Excel formulas:
 
 Use `--recent-years N` to change the `Latest` window; use
 `--include-presidential-general` to count presidential-year GENERAL elections
-in `Latest` too. Use `--score-format formulas` to write the inserted score
-columns as live Excel formulas instead:
+in `Latest` too. Use `--score-format values` to write hard-coded numeric
+values instead:
 
 ```bash
 python3 warren_voters_pipeline.py \
   --score-xlsx outputs/2026/warren-all_2026-09-15.xlsx \
-  --score-output outputs/2026/warren-all-scored-formulas_2026-09-15.xlsx \
-  --score-format formulas
+  --score-output outputs/2026/warren-all-scored-values_2026-09-15.xlsx \
+  --score-format values
 ```
 
 Formula mode writes `=COUNTA(...)`, `=COUNTIF(...,"D")`,
@@ -160,7 +159,7 @@ Formula mode writes `=COUNTA(...)`, `=COUNTIF(...,"D")`,
 election cells. It also writes formula versions of `Local_Tot` and any
 `VOTES_LAST_*YR` column present in the source workbook. Open the workbook in
 Excel or LibreOffice to calculate and display formula results. Value mode is
-safer for viewers that do not recalculate formulas. The ward-filter mode
+available for viewers that do not recalculate formulas. The ward-filter mode
 preserves these score columns as numbers instead of rewriting them as text.
 
 To pull a single ward out of an existing workbook (raw or scored), use the

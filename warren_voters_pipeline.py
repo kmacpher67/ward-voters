@@ -89,8 +89,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--score-format",
         choices=("values", "formulas"),
-        default="values",
-        help="Write --score-xlsx inserted columns as calculated numbers or live Excel formulas (default: values)",
+        default="formulas",
+        help="Write --score-xlsx inserted columns as live Excel formulas or calculated numbers (default: formulas)",
     )
     parser.add_argument("--ward-xlsx", default="", help="Existing .xlsx workbook to filter down to a single WARD (e.g. an already-scored workbook)")
     parser.add_argument("--ward", default="", help='Ward to keep for --ward-xlsx, e.g. "4" or "WARREN-WARD 4"')
@@ -311,7 +311,7 @@ def score_existing_xlsx(
     output_path: Path,
     recent_years: int,
     exclude_presidential_general: bool = True,
-    score_format: str = "values",
+    score_format: str = "formulas",
 ) -> None:
     """Add the legacy Excel scoring columns to an already-created workbook.
 
